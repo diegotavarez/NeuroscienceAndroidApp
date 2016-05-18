@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CameraDemo</string>
+    <string name="app_name">Neuroscience App</string>
     <string name="action_settings">Settings</string>
     <string name="button_text">select photo</string>
     <string name="dialog_title">Add Photo</string>

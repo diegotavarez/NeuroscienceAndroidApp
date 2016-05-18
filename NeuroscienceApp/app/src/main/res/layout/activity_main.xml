@@ -16,13 +16,9 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:id="@+id/select_picture"
-            android:paddingLeft="120dp"
-            android:paddingRight="120dp"
-            android:paddingTop="120dp"
-            android:paddingBottom="120dp"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:src="@drawable/camera_icon"
-            android:background="@color/colorDarkBg"/>
+            android:background="@android:color/transparent"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -34,10 +30,11 @@
     <Button
         android:layout_width="fill_parent"
         android:text="Start"
+        android:id="@+id/bt_start"
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:layout_gravity="center_horizontal|bottom"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorDarkBg"
         android:background="@android:color/transparent"/>
 
 
