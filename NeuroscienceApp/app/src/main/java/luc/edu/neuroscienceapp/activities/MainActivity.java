@@ -1,4 +1,4 @@
-package luc.edu.neuroscienceapp;
+package luc.edu.neuroscienceapp.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import luc.edu.neuroscienceapp.R;
 
 public class MainActivity extends Activity {
     public static final int CAMERA_REQUEST = 1;
