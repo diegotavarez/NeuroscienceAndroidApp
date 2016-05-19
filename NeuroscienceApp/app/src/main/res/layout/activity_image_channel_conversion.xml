@@ -10,7 +10,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:background="@color/colorPrimary"
-        android:text="@string/step_1"
+        android:text="@string/step_2"
         android:textSize="18sp"
         android:gravity="center"
         android:id="@+id/text_step_1" />
@@ -21,10 +21,10 @@
         android:layout_weight="2"
         android:orientation="vertical">
 
-        <ImageButton
+        <ImageView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:id="@+id/select_picture"
+            android:id="@+id/grayscale_picture"
             android:scaleType="fitCenter"
             android:src="@drawable/camera_icon"
             android:background="@android:color/transparent"/>
@@ -38,8 +38,8 @@
 
     <Button
         android:layout_width="fill_parent"
-        android:text="Start"
-        android:id="@+id/bt_start"
+        android:text="Next"
+        android:id="@+id/bt_step2"
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:layout_gravity="center_horizontal|bottom"

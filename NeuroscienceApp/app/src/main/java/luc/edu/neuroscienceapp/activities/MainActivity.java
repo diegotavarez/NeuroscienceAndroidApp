@@ -2,12 +2,17 @@ package luc.edu.neuroscienceapp.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
@@ -17,16 +22,21 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+
 import luc.edu.neuroscienceapp.R;
 
 public class MainActivity extends Activity {
     public static final int CAMERA_REQUEST = 1;
     public static final int GALLERY_REQUEST = 2;
+
     public boolean imageSelected = false;
+
     private ImageButton btSelectPicture;
     private Button btStart;
     private String selectedImagePath;
-
+    private Bitmap imageBitmap;
+    private ProgressDialog mProgressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +51,18 @@ public class MainActivity extends Activity {
         });
 
         btStart = (Button)findViewById(R.id.bt_start);
+        btStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Start", Toast.LENGTH_SHORT).show();
+                mProgressDialog = new ProgressDialog(MainActivity.this);
+                mProgressDialog.setMessage("Pobieranie");
+                mProgressDialog.setIndeterminate(false);
+                mProgressDialog.setMax(100);
+                mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                new ImageLoader().execute();
+            }
+        });
     }
 
     @Override
@@ -77,7 +99,6 @@ public class MainActivity extends Activity {
                     {
                         Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         startActivityForResult(takePhotoIntent, CAMERA_REQUEST);
-
                         imageSelected = true;
                         break;
                     }
@@ -88,7 +109,6 @@ public class MainActivity extends Activity {
                                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         galleryIntent.setType("image/*");
                         startActivityForResult(galleryIntent.createChooser(galleryIntent, "Select File"), GALLERY_REQUEST);
-
                         imageSelected = true;
                         break;
                     }
@@ -108,12 +128,16 @@ public class MainActivity extends Activity {
                 selectedImagePath = getPath(selectedImageUri);
                 btSelectPicture.setImageURI(selectedImageUri);
                 btStart.setBackgroundColor(Color.parseColor("#00E676"));
+
+                imageBitmap = ((BitmapDrawable)btSelectPicture.getDrawable()).getBitmap();
             }
             else if (requestCode == CAMERA_REQUEST) {
-                Uri selectedImageUri = data.getData();
-                selectedImagePath = getPath(selectedImageUri);
-                btSelectPicture.setImageURI(selectedImageUri);
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                btSelectPicture.setImageBitmap(photo);
                 btStart.setBackgroundColor(Color.parseColor("#00E676"));
+
+                imageBitmap = ((BitmapDrawable)btSelectPicture.getDrawable()).getBitmap();
+
             }
         }
     }
@@ -136,5 +160,58 @@ public class MainActivity extends Activity {
         }
         // this is our fallback here
         return uri.getPath();
+    }
+
+    private class ImageLoader extends AsyncTask <Context, Integer, byte[]>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Create ProgressBar
+            //mProgressDialog = new ProgressDialog(getBaseContext());
+            // Set your ProgressBar Title
+            mProgressDialog.setTitle("Loading");
+            mProgressDialog.setIcon(R.drawable.camera_icon);
+            // Set your ProgressBar Message
+            mProgressDialog.setMessage("Converting image to grayscale channel");
+            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setMax(100);
+            mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            // Show ProgressBar
+            mProgressDialog.setCancelable(false);
+            //  mProgressDialog.setCanceledOnTouchOutside(false);
+            mProgressDialog.show();
+        }
+
+        @Override
+        protected byte[] doInBackground(Context... arg0) {
+
+            byte[] byteArray = null;
+
+            try {
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byteArray = stream.toByteArray();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return byteArray;
+        }
+
+        @Override
+        protected void onPostExecute( byte[] result )  {
+            mProgressDialog.dismiss();
+            Intent intent = new Intent(getApplicationContext(), ImageChannelConversionActivity.class);
+            intent.putExtra("initial_image",result);
+            startActivity(intent);
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... progress) {
+            super.onProgressUpdate(progress);
+            mProgressDialog.setProgress(progress[0]);
+        }
+
     }
 }
