@@ -213,7 +213,7 @@ public class MainActivity extends Activity {
         return state.equals(Environment.MEDIA_MOUNTED);
     }
 
-    private class ImageLoader extends AsyncTask <Context, Integer, byte[]>{
+    private class ImageLoader extends AsyncTask <Context, Integer, Bitmap>{
 
         @Override
         protected void onPreExecute() {
@@ -234,27 +234,17 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        protected byte[] doInBackground(Context... arg0) {
+        protected Bitmap doInBackground(Context... arg0) {
 
-            byte[] byteArray = null;
-
-            try {
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byteArray = stream.toByteArray();
-                publishProgress();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return byteArray;
+            return imageBitmap;
         }
 
         @Override
-        protected void onPostExecute( byte[] result )  {
+        protected void onPostExecute( Bitmap result )  {
             Intent intent = new Intent(getApplicationContext(), ImageChannelConversionActivity.class);
             //intent.putExtra("initial_image",result);
 
-            Global.bytesBitmap = result;
+            Global.img = result;
             startActivity(intent);
             mProgressDialog.dismiss();
 

@@ -23,8 +23,10 @@ public class ImageChannelConversionActivity extends Activity {
         ImageView iv_grayscaleImage = (ImageView)findViewById(R.id.grayscale_picture);
 
         //byte[] byteArray = getIntent().getByteArrayExtra("initial_image");
-        byte[] byteArray = Global.bytesBitmap;
-        Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        //byte[] byteArray = Global.bytesBitmap;
+        //Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+
+        Bitmap bmp = Global.img;
         Bitmap grayscaleBitmap = new ImageProcessing().toGrayscale(bmp);
         iv_grayscaleImage.setImageBitmap(grayscaleBitmap);
 
