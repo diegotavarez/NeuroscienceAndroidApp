@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.IOException;
 
 import luc.edu.neuroscienceapp.R;
+import luc.edu.neuroscienceapp.entities.Global;
 
 public class MainActivity extends Activity {
     public static final int CAMERA_REQUEST = 1;
@@ -141,8 +142,6 @@ public class MainActivity extends Activity {
                 try{
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                     btSelectPicture.setImageBitmap(bitmap);
-
-                    Toast.makeText(getApplicationContext(),"Setou bitmap gallery",Toast.LENGTH_SHORT).show();
                 }
                 catch (IOException e)
                 {
@@ -155,13 +154,8 @@ public class MainActivity extends Activity {
                 btStart.setBackgroundColor(Color.parseColor("#00E676"));
                 Bitmap bitmap = null;
                 try{
-
-                    Toast.makeText(getApplicationContext(), "entrou no try", Toast.LENGTH_SHORT).show();
-                    // by this point we have the camera photo on disk
                     bitmap = BitmapFactory.decodeFile(takenPhotoUri.getPath());
                     btSelectPicture.setImageBitmap(bitmap);
-
-                    Toast.makeText(getApplicationContext(),"Setou bitmap camera",Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e)
                 {
@@ -173,9 +167,6 @@ public class MainActivity extends Activity {
             }
 
             Toast.makeText(getApplicationContext(),imageBitmap.getHeight() + " / " + imageBitmap.getWidth(),Toast.LENGTH_SHORT).show();
-
-
-
         }
     }
 
@@ -266,7 +257,9 @@ public class MainActivity extends Activity {
         protected void onPostExecute( byte[] result )  {
             mProgressDialog.dismiss();
             Intent intent = new Intent(getApplicationContext(), ImageChannelConversionActivity.class);
-            intent.putExtra("initial_image",result);
+            //intent.putExtra("initial_image",result);
+
+            Global.bytesBitmap = result;
             startActivity(intent);
 
         }

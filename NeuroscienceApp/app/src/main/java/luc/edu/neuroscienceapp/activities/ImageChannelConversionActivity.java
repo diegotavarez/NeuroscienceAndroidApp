@@ -8,8 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
+import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.utils.ImageProcessing;
 
 public class ImageChannelConversionActivity extends Activity {
@@ -20,10 +22,14 @@ public class ImageChannelConversionActivity extends Activity {
         setContentView(R.layout.activity_image_channel_conversion);
         ImageView iv_grayscaleImage = (ImageView)findViewById(R.id.grayscale_picture);
 
-        byte[] byteArray = getIntent().getByteArrayExtra("initial_image");
+        //byte[] byteArray = getIntent().getByteArrayExtra("initial_image");
+        byte[] byteArray = Global.bytesBitmap;
         Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         Bitmap grayscaleBitmap = new ImageProcessing().toGrayscale(bmp);
         iv_grayscaleImage.setImageBitmap(grayscaleBitmap);
+
+        Toast.makeText(getApplicationContext(), grayscaleBitmap.getHeight() + " / " + grayscaleBitmap.getWidth(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
