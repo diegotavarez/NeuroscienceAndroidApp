@@ -24,14 +24,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 
-public class MainActivity extends Activity {
+public class SelectPictureActivity extends Activity {
     public static final int CAMERA_REQUEST = 1;
     public static final int GALLERY_REQUEST = 2;
 
@@ -50,7 +49,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_select_picture);
 
         btSelectPicture = (ImageButton)findViewById(R.id.select_picture);
         btSelectPicture.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +63,7 @@ public class MainActivity extends Activity {
         btStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Start", Toast.LENGTH_SHORT).show();
-                mProgressDialog = new ProgressDialog(MainActivity.this);
+                mProgressDialog = new ProgressDialog(SelectPictureActivity.this);
                 new ImageLoader().execute();
             }
         });
@@ -162,7 +160,7 @@ public class MainActivity extends Activity {
 
             }
 
-            Toast.makeText(getApplicationContext(),imageBitmap.getHeight() + " / " + imageBitmap.getWidth(),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(),imageBitmap.getHeight() + " / " + imageBitmap.getWidth(),Toast.LENGTH_SHORT).show();
         }
     }
 

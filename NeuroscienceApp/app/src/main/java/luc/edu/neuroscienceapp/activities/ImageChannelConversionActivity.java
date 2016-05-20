@@ -30,7 +30,7 @@ public class ImageChannelConversionActivity extends Activity {
         Bitmap grayscaleBitmap = new ImageProcessing().toGrayscale(bmp);
         iv_grayscaleImage.setImageBitmap(grayscaleBitmap);
 
-        Toast.makeText(getApplicationContext(), grayscaleBitmap.getHeight() + " / " + grayscaleBitmap.getWidth(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), grayscaleBitmap.getHeight() + " / " + grayscaleBitmap.getWidth(), Toast.LENGTH_SHORT).show();
 
     }
 
