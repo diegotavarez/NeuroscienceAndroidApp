@@ -30,23 +30,26 @@ public class ImageProcessing {
         return bmpGrayscale;
     }
 
-    public DenseMatrix64F bitmap2Matrix(Bitmap bmp)
+    public static DenseMatrix64F bmpToMatrix(Bitmap source)
     {
-        int width, height;
-        height = bmp.getHeight();
-        width = bmp.getWidth();
-        DenseMatrix64F matrix = new DenseMatrix64F(width, height);
-        for (int i = 0; i < height; ++i) {
-            for (int j = 0; j < width; ++j) {
-                matrix.add(i,j,bmp.getPixel(i,j));
+        int width = source.getWidth();
+        int height = source.getHeight();
+        DenseMatrix64F result = new DenseMatrix64F(width,height);
+        int[] pixels = new int[width*height];
+        source.getPixels(pixels, 0, width, 0, 0, width, height);
+        int pixelsIndex = 0;
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                result.add(i,j,pixels[pixelsIndex]);
+                pixelsIndex++;
             }
         }
-        return matrix;
+        return result;
     }
 
 
     public void process (Bitmap bmp) {
-        DenseMatrix64F img = bitmap2Matrix(bmp);
+        DenseMatrix64F img = bmpToMatrix(bmp);
 
     }
 
