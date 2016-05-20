@@ -14,7 +14,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +25,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 
 import luc.edu.neuroscienceapp.R;
 
@@ -37,6 +41,11 @@ public class MainActivity extends Activity {
     private String selectedImagePath;
     private Bitmap imageBitmap;
     private ProgressDialog mProgressDialog;
+
+    public String photoFileName = "photo.jpg";
+    public final String APP_TAG = "NeuroscienceApp";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +63,7 @@ public class MainActivity extends Activity {
         btStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Start", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Start", Toast.LENGTH_SHORT).show();
                 mProgressDialog = new ProgressDialog(MainActivity.this);
                 mProgressDialog.setMessage("Pobieranie");
                 mProgressDialog.setIndeterminate(false);
@@ -98,6 +107,7 @@ public class MainActivity extends Activity {
                     case "Take Photo":
                     {
                         Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, getPhotoFileUri(photoFileName));
                         startActivityForResult(takePhotoIntent, CAMERA_REQUEST);
                         imageSelected = true;
                         break;
@@ -126,21 +136,49 @@ public class MainActivity extends Activity {
             if (requestCode == GALLERY_REQUEST) {
                 Uri selectedImageUri = data.getData();
                 selectedImagePath = getPath(selectedImageUri);
-                btSelectPicture.setImageURI(selectedImageUri);
                 btStart.setBackgroundColor(Color.parseColor("#00E676"));
 
+                try{
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                    btSelectPicture.setImageBitmap(bitmap);
+
+                    Toast.makeText(getApplicationContext(),"Setou bitmap gallery",Toast.LENGTH_SHORT).show();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
                 imageBitmap = ((BitmapDrawable)btSelectPicture.getDrawable()).getBitmap();
             }
             else if (requestCode == CAMERA_REQUEST) {
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                btSelectPicture.setImageBitmap(photo);
+                Uri takenPhotoUri = getPhotoFileUri(photoFileName);
                 btStart.setBackgroundColor(Color.parseColor("#00E676"));
+                Bitmap bitmap = null;
+                try{
 
-                imageBitmap = ((BitmapDrawable)btSelectPicture.getDrawable()).getBitmap();
+                    Toast.makeText(getApplicationContext(), "entrou no try", Toast.LENGTH_SHORT).show();
+                    // by this point we have the camera photo on disk
+                    bitmap = BitmapFactory.decodeFile(takenPhotoUri.getPath());
+                    btSelectPicture.setImageBitmap(bitmap);
+
+                    Toast.makeText(getApplicationContext(),"Setou bitmap camera",Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+                imageBitmap = bitmap;
 
             }
+
+            Toast.makeText(getApplicationContext(),imageBitmap.getHeight() + " / " + imageBitmap.getWidth(),Toast.LENGTH_SHORT).show();
+
+
+
         }
     }
+
 
     public String getPath(Uri uri) {
         // just some safety built in
@@ -160,6 +198,32 @@ public class MainActivity extends Activity {
         }
         // this is our fallback here
         return uri.getPath();
+    }
+
+    public Uri getPhotoFileUri(String fileName) {
+        // Only continue if the SD Card is mounted
+        if (isExternalStorageAvailable()) {
+            // Get safe storage directory for photos
+            // Use `getExternalFilesDir` on Context to access package-specific directories.
+            // This way, we don't need to request external read/write runtime permissions.
+            File mediaStorageDir = new File(
+                    getExternalFilesDir(Environment.DIRECTORY_PICTURES), APP_TAG);
+
+            // Create the storage directory if it does not exist
+            if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+                Log.d(APP_TAG, "failed to create directory");
+            }
+
+            // Return the file target for the photo based on filename
+            return Uri.fromFile(new File(mediaStorageDir.getPath() + File.separator + fileName));
+        }
+        return null;
+    }
+
+    // Returns true if external storage for photos is available
+    private boolean isExternalStorageAvailable() {
+        String state = Environment.getExternalStorageState();
+        return state.equals(Environment.MEDIA_MOUNTED);
     }
 
     private class ImageLoader extends AsyncTask <Context, Integer, byte[]>{
