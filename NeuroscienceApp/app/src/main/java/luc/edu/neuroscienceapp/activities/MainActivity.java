@@ -66,10 +66,6 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Start", Toast.LENGTH_SHORT).show();
                 mProgressDialog = new ProgressDialog(MainActivity.this);
-                mProgressDialog.setMessage("Pobieranie");
-                mProgressDialog.setIndeterminate(false);
-                mProgressDialog.setMax(100);
-                mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 new ImageLoader().execute();
             }
         });
@@ -229,13 +225,12 @@ public class MainActivity extends Activity {
             mProgressDialog.setIcon(R.drawable.camera_icon);
             // Set your ProgressBar Message
             mProgressDialog.setMessage("Converting image to grayscale channel");
-            mProgressDialog.setIndeterminate(false);
-            mProgressDialog.setMax(100);
-            mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            // Show ProgressBar
-            mProgressDialog.setCancelable(false);
             //  mProgressDialog.setCanceledOnTouchOutside(false);
             mProgressDialog.show();
+
+//            pdia = new ProgressDialog(yourContext);
+//            pdia.setMessage("Loading...");
+//            pdia.show();
         }
 
         @Override
@@ -247,6 +242,7 @@ public class MainActivity extends Activity {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byteArray = stream.toByteArray();
+                publishProgress();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -255,19 +251,13 @@ public class MainActivity extends Activity {
 
         @Override
         protected void onPostExecute( byte[] result )  {
-            mProgressDialog.dismiss();
             Intent intent = new Intent(getApplicationContext(), ImageChannelConversionActivity.class);
             //intent.putExtra("initial_image",result);
 
             Global.bytesBitmap = result;
             startActivity(intent);
+            mProgressDialog.dismiss();
 
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-            super.onProgressUpdate(progress);
-            mProgressDialog.setProgress(progress[0]);
         }
 
     }
