@@ -9,4 +9,8 @@
     <string name="title_activity_image_channel_conversion">ImageChannelConversionActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_menu">MenuActivity</string>
+
+    <string name="option_examples">See Examples</string>
+    <string name="option_choose">Choose your Own Picture</string>
 </resources>
