@@ -1,11 +1,15 @@
 package luc.edu.neuroscienceapp.activities;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import luc.edu.neuroscienceapp.R;
+import luc.edu.neuroscienceapp.entities.Global;
+import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
 public class PatchesActivity extends AppCompatActivity {
 
@@ -13,6 +17,10 @@ public class PatchesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patches);
+
+        Bitmap[] bitmaps = ImageProcessing.process(Global.imgGrayscale);
+        ImageView iv = (ImageView) findViewById(R.id.grayscale_picture);
+        iv.setImageBitmap(bitmaps[0]);
     }
 
     @Override

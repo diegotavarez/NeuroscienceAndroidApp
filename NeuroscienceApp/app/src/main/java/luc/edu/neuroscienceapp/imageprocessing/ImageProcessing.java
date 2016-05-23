@@ -114,7 +114,7 @@ public class ImageProcessing {
     }
 
 
-    public static void process(Bitmap bmp) {
+    public static Bitmap[] process(Bitmap bmp) {
 
         SimpleMatrix image = bmpToMatrix(bmp);
 
@@ -188,8 +188,16 @@ public class ImageProcessing {
 
         Log.v("bla bla", "foi4");
 
+        double[][] data = {{100,200,100,24,25,26,45,64},{134,120,12,34,0,0,12,34},{23,14,14,200,
+                100,200,100,24},{25,26,45,64,134,120,12,34},{0,0,12,34,23,14,14,200},
+                {100,200,100,24,25,26,45,64},{134,120,12,34,0,0,12,34},{23,14,14,200,23,21,0,0}};
+
         Bitmap[] pca_images = new Bitmap[num_pca];
-        for (int i = 0; i < num_pca; ++i) {
+
+        SimpleMatrix m = new SimpleMatrix(data);
+        pca_images[0] = matrixToBmp(m);
+
+        for (int i = 1; i < num_pca; ++i) {
             SimpleMatrix column = principalComponents.extractMatrix(0, principalComponents.numRows(), i, i+1);
             column.reshape(patch_size,patch_size);
             pca_images[i] = matrixToBmp(column);
@@ -200,6 +208,8 @@ public class ImageProcessing {
         Log.v("bla bla", "im done");
 
         // This is ICA
+
+        return pca_images;
 
     }
 

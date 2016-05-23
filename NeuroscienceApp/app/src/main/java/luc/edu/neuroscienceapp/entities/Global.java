@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 
 public class Global {
   public static Bitmap img;
+  public static Bitmap imgGrayscale;
   public static byte[] bytesBitmap;
 }
 
