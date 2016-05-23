@@ -16,15 +16,15 @@
         android:weightSum="1"
         android:background="@color/colorPrimary">
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:text="@string/option_examples"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/grass_grayscale"
-            android:alpha="0.2"
-            android:background="@android:color/transparent"/>
+        <!--<ImageButton-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:text="@string/option_examples"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:src="@drawable/grass_grayscale"-->
+            <!--android:alpha="0.2"-->
+            <!--android:background="@android:color/transparent"/>-->
 
     </LinearLayout>
 
