@@ -1,8 +1,8 @@
-Neuroscience Efficient Coding App
+#Neuroscience Efficient Coding App
 
-Key Contributers: Carlee Bettler, Laryssa Seabra, Diego Tavares, Anne Zhao 
+##Key Contributers: Carlee Bettler, Laryssa Seabra, Diego Tavares, Anne Zhao 
 
-Key Concepts
+###Key Concepts
 
 • Our brain uses efficient coding, processing sensory information with the least amount of electrical impulses possible
 
@@ -36,9 +36,9 @@ Key Concepts
 
         • Gabor-like filters
 
-Our Goal: Create an app for neuroscience students that illustrates the concepts (i.e. straight-forwardness) of efficient coding algorithms.  
+###Our Goal: Create an app for neuroscience students that illustrates the concepts (i.e. straight-forwardness) of efficient coding algorithms.  
 
-Main Steps:
+###Main Steps:
 
 • Translate code written in Python by Ann Zhao into Java
 
