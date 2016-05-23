@@ -13,7 +13,6 @@
         <activity
             android:name=".activities.SelectPictureActivity"
             android:label="@string/option_choose" >
-
         </activity>
         <activity
             android:name=".activities.ImageChannelConversionActivity"
@@ -27,6 +26,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.GalleryActivity"
+            android:label="@string/title_activity_gallery"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 

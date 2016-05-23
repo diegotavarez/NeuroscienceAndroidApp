@@ -27,6 +27,14 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        btExamples.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentGallery = new Intent(MenuActivity.this, GalleryActivity.class);
+                startActivity(intentGallery);
+            }
+        });
     }
 
     @Override

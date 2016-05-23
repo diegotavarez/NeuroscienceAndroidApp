@@ -13,4 +13,9 @@
 
     <string name="option_examples">See Examples</string>
     <string name="option_choose">Choose your Own Picture</string>
+
+    <string name="action_see_patches">See Patches</string>
+    <string name="backdrop_title">Examples</string>
+    <string name="backdrop_subtitle">Try natural and non-natural images to understand the concepts.</string>
+    <string name="title_activity_gallery">GalleryActivity</string>
 </resources>
