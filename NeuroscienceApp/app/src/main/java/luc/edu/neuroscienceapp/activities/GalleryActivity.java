@@ -104,13 +104,13 @@ public class GalleryActivity extends AppCompatActivity {
                 R.drawable.newspaper,
                 R.drawable.shirt};
 
-        Image a = new Image("Non-natural", covers[0]);
+        Image a = new Image("Carpet", covers[0]);
         albumList.add(a);
 
-        a = new Image("Natural", covers[1]);
+        a = new Image("Cat", covers[1]);
         albumList.add(a);
 
-        a = new Image("Non-natural", covers[2]);
+        a = new Image("Door", covers[2]);
         albumList.add(a);
 
         a = new Image("Flowers", covers[3]);

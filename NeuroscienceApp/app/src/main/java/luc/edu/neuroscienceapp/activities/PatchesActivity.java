@@ -19,8 +19,41 @@ public class PatchesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patches);
 
         Bitmap[] bitmaps = ImageProcessing.process(Global.imgGrayscale);
-        ImageView iv = (ImageView) findViewById(R.id.grayscale_picture);
-        iv.setImageBitmap(bitmaps[0]);
+
+        ImageView p00 = (ImageView) findViewById(R.id.grayscale_picture_0_0);
+        ImageView p01 = (ImageView) findViewById(R.id.grayscale_picture_0_1);
+        ImageView p02 = (ImageView) findViewById(R.id.grayscale_picture_0_2);
+        ImageView p03 = (ImageView) findViewById(R.id.grayscale_picture_0_3);
+        ImageView p10 = (ImageView) findViewById(R.id.grayscale_picture_1_0);
+        ImageView p11 = (ImageView) findViewById(R.id.grayscale_picture_1_1);
+        ImageView p12 = (ImageView) findViewById(R.id.grayscale_picture_1_2);
+        ImageView p13 = (ImageView) findViewById(R.id.grayscale_picture_1_3);
+        ImageView p20 = (ImageView) findViewById(R.id.grayscale_picture_2_0);
+        ImageView p21 = (ImageView) findViewById(R.id.grayscale_picture_2_1);
+        ImageView p22 = (ImageView) findViewById(R.id.grayscale_picture_2_2);
+        ImageView p23 = (ImageView) findViewById(R.id.grayscale_picture_2_3);
+        ImageView p30 = (ImageView) findViewById(R.id.grayscale_picture_3_0);
+        ImageView p31 = (ImageView) findViewById(R.id.grayscale_picture_3_1);
+        ImageView p32 = (ImageView) findViewById(R.id.grayscale_picture_3_2);
+        ImageView p33 = (ImageView) findViewById(R.id.grayscale_picture_3_3);
+        p00.setImageBitmap(bitmaps[0]);
+        p01.setImageBitmap(bitmaps[1]);
+        p02.setImageBitmap(bitmaps[2]);
+        p03.setImageBitmap(bitmaps[3]);
+        p20.setImageBitmap(bitmaps[4]);
+        p10.setImageBitmap(bitmaps[5]);
+        p11.setImageBitmap(bitmaps[6]);
+        p12.setImageBitmap(bitmaps[7]);
+        p13.setImageBitmap(bitmaps[8]);
+        p20.setImageBitmap(bitmaps[9]);
+        p21.setImageBitmap(bitmaps[10]);
+        p22.setImageBitmap(bitmaps[11]);
+        p23.setImageBitmap(bitmaps[12]);
+        p30.setImageBitmap(bitmaps[13]);
+        p31.setImageBitmap(bitmaps[14]);
+        p32.setImageBitmap(bitmaps[15]);
+        p33.setImageBitmap(bitmaps[16]);
+
     }
 
     @Override

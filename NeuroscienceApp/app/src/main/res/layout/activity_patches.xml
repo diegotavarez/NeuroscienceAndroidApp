@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:background="@color/colorPrimary"
+        android:background="@color/viewBg"
         android:text="@string/step_3"
         android:textSize="18sp"
         android:gravity="center"
@@ -18,21 +18,208 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:layout_weight="0.5"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:weightSum="4"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:id="@+id/grayscale_picture"
+            android:id="@+id/grayscale_picture_0_0"
             android:scaleType="fitCenter"
             android:src="@drawable/camera_icon"
             android:background="@android:color/transparent"/>
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Add a picture"/>
+            android:id="@+id/grayscale_picture_0_1"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_0_2"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_0_3"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:layout_weight="0.5"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_1_0"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_1_1"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_1_2"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_1_3"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:layout_weight="0.5"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_2_0"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_2_1"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_2_2"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_2_3"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_3_0"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/grayscale_picture_3_1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_3_2"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture_3_3"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
     </LinearLayout>
 
 

@@ -19,8 +19,7 @@ public class MenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        LayoutInflater inflater = getLayoutInflater();
-        final View v = inflater.inflate(R.layout.activity_menu, null);
+
 
         btExamples = (ImageButton) findViewById(R.id.bt_examples);
         btChoose = (ImageButton) findViewById(R.id.bt_choose);

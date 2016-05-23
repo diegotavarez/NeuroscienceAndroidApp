@@ -13,7 +13,8 @@
     <string name="title_activity_menu">MenuActivity</string>
 
     <string name="option_examples">See Examples</string>
-    <string name="option_choose">Choose your Own Picture</string>
+    <string name="option_gallery">Choose a picture</string>
+    <string name="option_choose">Take a Picture</string>
 
     <string name="action_see_patches">See Patches</string>
     <string name="backdrop_title">Examples</string>
