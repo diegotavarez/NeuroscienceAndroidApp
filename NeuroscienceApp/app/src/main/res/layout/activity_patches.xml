@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity"
+    android:weightSum="3"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="@color/colorPrimary"
+        android:text="@string/step_3"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:id="@+id/text_step_3" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/grayscale_picture"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera_icon"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Add a picture"/>
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:text="Finish"
+        android:id="@+id/bt_step2"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textColor="@color/colorDarkBg"
+        android:background="@android:color/transparent"/>
+
+
+</LinearLayout>

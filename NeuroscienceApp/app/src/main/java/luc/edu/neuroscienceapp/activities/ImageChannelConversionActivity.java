@@ -1,11 +1,14 @@
 package luc.edu.neuroscienceapp.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -15,12 +18,13 @@ import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
 public class ImageChannelConversionActivity extends Activity {
-
+    Button btStep2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_channel_conversion);
         ImageView iv_grayscaleImage = (ImageView)findViewById(R.id.grayscale_picture);
+        btStep2 = (Button) findViewById(R.id.bt_step2);
 
         //byte[] byteArray = getIntent().getByteArrayExtra("initial_image");
         //byte[] byteArray = Global.bytesBitmap;
@@ -32,6 +36,13 @@ public class ImageChannelConversionActivity extends Activity {
 
         //Toast.makeText(getApplicationContext(), grayscaleBitmap.getHeight() + " / " + grayscaleBitmap.getWidth(), Toast.LENGTH_SHORT).show();
 
+        btStep2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPatches = new Intent(ImageChannelConversionActivity.this, PatchesActivity.class);
+                startActivity(intentPatches);
+            }
+        });
     }
 
     @Override

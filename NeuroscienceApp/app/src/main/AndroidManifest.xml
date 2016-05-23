@@ -32,6 +32,10 @@
             android:label="@string/title_activity_gallery"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".activities.PatchesActivity"
+            android:label="@string/title_activity_patches" >
+        </activity>
     </application>
 
 </manifest>

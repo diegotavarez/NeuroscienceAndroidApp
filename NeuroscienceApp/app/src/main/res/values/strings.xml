@@ -6,6 +6,7 @@
 
     <string name="step_1">Please select a picture to start.</string>
     <string name="step_2">Image converted to grayscale.</string>
+    <string name="step_3">Patches from receptive field in primary visual cortex.</string>
     <string name="title_activity_image_channel_conversion">ImageChannelConversionActivity</string>
 
     <string name="hello_world">Hello world!</string>
@@ -18,4 +19,5 @@
     <string name="backdrop_title">Examples</string>
     <string name="backdrop_subtitle">Try natural and non-natural images to understand the concepts.</string>
     <string name="title_activity_gallery">GalleryActivity</string>
+    <string name="title_activity_patches">PatchesActivity</string>
 </resources>
