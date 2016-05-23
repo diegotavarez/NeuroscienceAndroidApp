@@ -50,20 +50,3 @@ Main Steps:
      
      o Process auditory info 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
