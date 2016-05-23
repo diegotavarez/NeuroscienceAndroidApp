@@ -16,7 +16,7 @@ Key Concepts
 
 • Neural efficient coding can (incredibly!) be replicated with statistical algorithms
 
-  o	Specifically, uses ICA (independent component analysis) to analyze images 
+    o Specifically, uses ICA (independent component analysis) to analyze images 
   
 •	Hones in on important information (cocktail party effect)
 
@@ -46,9 +46,9 @@ Main Steps:
 
 • Test app and expand features
 
-  o	Add own photos
-  
-  o	Process auditory info 
+     o Add own photos
+     
+     o Process auditory info 
 
 
 
