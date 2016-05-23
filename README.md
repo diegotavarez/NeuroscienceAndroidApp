@@ -3,6 +3,7 @@ Neuroscience Efficient Coding App
 Key Contributers: Carlee Bettler, Laryssa Seabra, Diego Tavares, Anne Zhao 
 
 Key Concepts
+
 •	Our brain uses efficient coding, processing sensory information with the least amount of electrical impulses pos¬sible
   o Optimized to process natural stimuli 
     •	i.e. images and sounds from nature
