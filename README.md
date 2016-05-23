@@ -6,7 +6,7 @@ Key Concepts
 
 •	Our brain uses efficient coding, processing sensory information with the least amount of electrical impulses possible
 
-  o Optimized to process natural stimuli 
+    o Optimized to process natural stimuli 
   
     •	i.e. images and sounds from nature
   o	Type of sparse coding
