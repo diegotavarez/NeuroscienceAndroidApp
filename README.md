@@ -4,11 +4,11 @@ Key Contributers: Carlee Bettler, Laryssa Seabra, Diego Tavares, Anne Zhao
 
 Key Concepts
 
-•	Our brain uses efficient coding, processing sensory information with the least amount of electrical impulses possible
+• Our brain uses efficient coding, processing sensory information with the least amount of electrical impulses possible
 
     o Optimized to process natural stimuli 
   
-    •	i.e. images and sounds from nature
+        • i.e. images and sounds from nature
   o	Type of sparse coding
 •	Akin to sparse matrix structure; Lots of 0s, minimum 1s
 •	Neural efficient coding can (incredibly!) be replicated with statistical algorithms
