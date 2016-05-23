@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
-import luc.edu.neuroscienceapp.utils.ImageProcessing;
+import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
 public class ImageChannelConversionActivity extends Activity {
 

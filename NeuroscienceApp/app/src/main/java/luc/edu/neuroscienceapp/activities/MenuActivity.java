@@ -3,22 +3,27 @@ package luc.edu.neuroscienceapp.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import luc.edu.neuroscienceapp.R;
 
 public class MenuActivity extends Activity {
-    Button btExamples, btChoose;
+    ImageButton btExamples, btChoose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        btExamples = (Button) findViewById(R.id.bt_examples);
-        btChoose = (Button) findViewById(R.id.bt_choose);
+        LayoutInflater inflater = getLayoutInflater();
+        final View v = inflater.inflate(R.layout.activity_menu, null);
+
+        btExamples = (ImageButton) findViewById(R.id.bt_examples);
+        btChoose = (ImageButton) findViewById(R.id.bt_choose);
 
         btChoose.setOnClickListener(new View.OnClickListener() {
             @Override
