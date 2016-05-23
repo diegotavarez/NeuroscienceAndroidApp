@@ -26,16 +26,6 @@
 
 •	Resemble Gabor-filter like response properties of eye cells 
 
-    o A. Original natural image
-
-    o B. Random samples from original
-
-    o C. Filters from ICA
-
-    o D. Experimentally measured visual neural filters
-
-        • Gabor-like filters
-
 ###Our Goal: Create an app for neuroscience students that illustrates the concepts (i.e. straight-forwardness) of efficient coding algorithms.  
 
 ###Main Steps:
