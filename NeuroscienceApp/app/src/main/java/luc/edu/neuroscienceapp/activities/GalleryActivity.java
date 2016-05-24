@@ -21,13 +21,13 @@ import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
-import luc.edu.neuroscienceapp.entities.Image;
+import luc.edu.neuroscienceapp.entities.CardImage;
 
 public class GalleryActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ImagesAdapter adapter;
-    private List<Image> albumList;
+    private List<CardImage> albumList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,28 +104,28 @@ public class GalleryActivity extends AppCompatActivity {
                 R.drawable.newspaper,
                 R.drawable.shirt};
 
-        Image a = new Image("Carpet", covers[0]);
+        CardImage a = new CardImage("Carpet", covers[0]);
         albumList.add(a);
 
-        a = new Image("Cat", covers[1]);
+        a = new CardImage("Cat", covers[1]);
         albumList.add(a);
 
-        a = new Image("Door", covers[2]);
+        a = new CardImage("Door", covers[2]);
         albumList.add(a);
 
-        a = new Image("Flowers", covers[3]);
+        a = new CardImage("Flowers", covers[3]);
         albumList.add(a);
 
-        a = new Image("Grass", covers[4]);
+        a = new CardImage("Grass", covers[4]);
         albumList.add(a);
 
-        a = new Image("Grasshopper", covers[5]);
+        a = new CardImage("Grasshopper", covers[5]);
         albumList.add(a);
 
-        a = new Image("Newspaper", covers[6]);
+        a = new CardImage("Newspaper", covers[6]);
         albumList.add(a);
 
-        a = new Image("Shirt", covers[7]);
+        a = new CardImage("Shirt", covers[7]);
         albumList.add(a);
 
         adapter.notifyDataSetChanged();

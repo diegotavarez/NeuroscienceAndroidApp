@@ -1,4 +1,4 @@
-package luc.edu.neuroscienceapp.imageprocessing;
+package luc.edu.neuroscienceapp.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +13,7 @@ import java.io.File;
 /**
  * Created by diegotavarez on 5/20/16.
  */
-public class FileManagement {
+public class FileManager {
     public File createTemporaryFile(String part, String ext) throws Exception
     {
         File tempDir= Environment.getExternalStorageDirectory();

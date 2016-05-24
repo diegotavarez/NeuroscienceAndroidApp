@@ -1,30 +1,25 @@
 package luc.edu.neuroscienceapp.activities;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.io.IOException;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
-import luc.edu.neuroscienceapp.imageprocessing.FileManagement;
+import luc.edu.neuroscienceapp.utils.FileManager;
 
 public class MenuActivity extends AppCompatActivity {
     public static final int CAMERA_REQUEST = 1;
@@ -37,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
     public String photoFileName = "photo.jpg";
     public final String APP_TAG = "NeuroscienceApp";
     ImageButton btExamples, btChoose, btGallery;
-    FileManagement fileManagement = new FileManagement();
+    FileManager fileManager = new FileManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +48,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileManagement.getPhotoFileUri(photoFileName,getApplicationContext(),APP_TAG));
+                takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileManager.getPhotoFileUri(photoFileName,getApplicationContext(),APP_TAG));
                 startActivityForResult(takePhotoIntent, CAMERA_REQUEST);
                 imageSelected = true;
             }
@@ -84,7 +79,7 @@ public class MenuActivity extends AppCompatActivity {
 
             if (requestCode == GALLERY_REQUEST) {
                 Uri selectedImageUri = data.getData();
-                selectedImagePath = fileManagement.getPath(selectedImageUri,this);
+                selectedImagePath = fileManager.getPath(selectedImageUri,this);
                 //btStart.setBackgroundColor(Color.parseColor("#00E676"));
 
                 try{
@@ -97,7 +92,7 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
             else if (requestCode == CAMERA_REQUEST) {
-                Uri takenPhotoUri = fileManagement.getPhotoFileUri(photoFileName,getApplicationContext(),APP_TAG);
+                Uri takenPhotoUri = fileManager.getPhotoFileUri(photoFileName,getApplicationContext(),APP_TAG);
                 Bitmap bitmap = null;
                 try{
                     bitmap = BitmapFactory.decodeFile(takenPhotoUri.getPath());

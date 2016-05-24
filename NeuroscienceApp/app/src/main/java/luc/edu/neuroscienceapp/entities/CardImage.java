@@ -3,14 +3,14 @@ package luc.edu.neuroscienceapp.entities;
 /**
  * Created by diegotavarez on 5/23/16.
  */
-public class Image {
+public class CardImage {
     private String name;
     private int thumbnail;
 
-    public Image() {
+    public CardImage() {
     }
 
-    public Image(String name, int thumbnail) {
+    public CardImage(String name, int thumbnail) {
         this.name = name;
         this.thumbnail = thumbnail;
     }

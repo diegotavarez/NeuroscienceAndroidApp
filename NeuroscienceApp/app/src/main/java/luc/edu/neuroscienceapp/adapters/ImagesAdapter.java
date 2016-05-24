@@ -20,12 +20,12 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
-import luc.edu.neuroscienceapp.entities.Image;
+import luc.edu.neuroscienceapp.entities.CardImage;
 
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<Image> imageList;
+    private List<CardImage> imageList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, count;
@@ -41,7 +41,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     }
 
 
-    public ImagesAdapter(Context mContext, List<Image> albumList) {
+    public ImagesAdapter(Context mContext, List<CardImage> albumList) {
         this.mContext = mContext;
         this.imageList = albumList;
     }
@@ -56,7 +56,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Image album = imageList.get(position);
+        CardImage album = imageList.get(position);
         holder.title.setText(album.getName());
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
 
