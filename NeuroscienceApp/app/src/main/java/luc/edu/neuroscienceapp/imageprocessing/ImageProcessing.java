@@ -74,6 +74,41 @@ public class ImageProcessing {
         return bit;
     }
 
+    private static Bitmap matrixToBmpScaled(SimpleMatrix image) {
+        int width = image.numCols();
+        int height = image.numRows();
+        Bitmap bit = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        int alpha = 255;
+        Pair<Double,Double> minmax = elementMinMax(image);
+        double min = minmax.getLeft();
+        double max = minmax.getRight();
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                double c = image.get(j,i);
+                int color = (int) (255 * (c - min) / (max - min));
+                int newcolor = (alpha << 24) | (color << 16) | (color << 8) | color;
+                bit.setPixel(i,j,newcolor);
+            }
+        }
+        return bit;
+    }
+
+    private static Pair<Double,Double> elementMinMax(SimpleMatrix image) {
+        double min = Double.MAX_VALUE;
+        double max = Double.MIN_VALUE;
+        for (int i = 0; i < image.numRows(); ++i) {
+            for (int j = 0; j < image.numCols(); ++j) {
+                double curr = image.get(j,i);
+                if (min > curr)
+                    min = curr;
+                if (curr > max)
+                    max = curr;
+            }
+        }
+        return new Pair(min,max);
+    }
+
     static double[][] toDoubleMatrix (SimpleMatrix A) {
         Log.v("bla bla", "foi entrou0");
         double[][] result = new double[A.numRows()][A.numCols()];
@@ -146,7 +181,7 @@ public class ImageProcessing {
         SimpleMatrix image_patches = new SimpleMatrix(patch_size * patch_size, numMaxPatches);
         // Getting the random pairs (x,y)
         Set<Pair<Integer, Integer>> indices = pickRandom(numMaxTries, 1, imGb.numRows() - patch_size,
-                1, imGb.numCols() - patch_size);
+                                                                      1, imGb.numCols() - patch_size);
         Iterator<Pair<Integer, Integer>> iterator = indices.iterator();
 
 
@@ -185,22 +220,25 @@ public class ImageProcessing {
         Log.v("bla bla", "foi dps ps");
         principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, num_pca);
 
+        String str = "";
+        Log.v("bla bla", "HERE IS PCA:");
+        for (int i = 0; i < principalComponents.numRows(); ++i) {
+            for (int j = 0; j < principalComponents.numCols(); ++j) {
+                str += principalComponents.get(i,j) + " ";
+            }
+            Log.v("bla bla", str);
+            str = "";
+        }
 
         Log.v("bla bla", "foi4");
 
-        double[][] data = {{100,200,100,24,25,26,45,64},{134,120,12,34,0,0,12,34},{23,14,14,200,
-                100,200,100,24},{25,26,45,64,134,120,12,34},{0,0,12,34,23,14,14,200},
-                {100,200,100,24,25,26,45,64},{134,120,12,34,0,0,12,34},{23,14,14,200,23,21,0,0}};
-
         Bitmap[] pca_images = new Bitmap[num_pca];
 
-        SimpleMatrix m = new SimpleMatrix(data);
-        pca_images[0] = matrixToBmp(m);
 
-        for (int i = 1; i < num_pca; ++i) {
+        for (int i = 0; i < num_pca; ++i) {
             SimpleMatrix column = principalComponents.extractMatrix(0, principalComponents.numRows(), i, i+1);
             column.reshape(patch_size,patch_size);
-            pca_images[i] = matrixToBmp(column);
+            pca_images[i] = matrixToBmpScaled(column);
         }
 
         Log.v("bla bla", "foi5");
