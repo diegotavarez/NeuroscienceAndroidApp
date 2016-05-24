@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import luc.edu.neuroscienceapp.R;
@@ -134,7 +135,7 @@ public class MenuActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class ImageLoader extends AsyncTask<Context, Integer, Bitmap> {
+    private class ImageLoader extends AsyncTask<Context, Integer, byte[]> {
 
         @Override
         protected void onPreExecute() {
@@ -151,17 +152,27 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Bitmap doInBackground(Context... arg0) {
+        protected byte[] doInBackground(Context... arg0) {
 
-            return imageBitmap;
+            byte[] byteArray = null;
+
+            try {
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byteArray = stream.toByteArray();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return byteArray;
         }
 
         @Override
-        protected void onPostExecute( Bitmap result )  {
+        protected void onPostExecute( byte[] result )  {
             Intent intent = new Intent(getApplicationContext(), ImageChannelConversionActivity.class);
-            //intent.putExtra("initial_image",result);
 
-            Global.img = result;
+            //intent.putExtra("initial_image",result);
+            Global.bytesBitmap = result;
+
             startActivity(intent);
             mProgressDialog.dismiss();
 
