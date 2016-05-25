@@ -32,7 +32,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     private List<CardImage> imageList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, id, category;
+        public TextView title, category;
         public ImageView thumbnail, overflow;
 
         public MyViewHolder(View view) {
@@ -42,14 +42,6 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             overflow = (ImageView) view.findViewById(R.id.overflow);
-
-            thumbnail.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intentCard = new Intent(mContext, GrayscaleCardActivity.class);
-                    //intentCard.putExtra("card_id", )
-                }
-            });
         }
     }
 
@@ -70,9 +62,19 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         CardImage album = imageList.get(position);
+        Integer id = album.getId();
+
         holder.title.setText(album.getName());
         holder.category.setText(album.getCategory());
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
+
+        holder.thumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCard = new Intent(mContext, GrayscaleCardActivity.class);
+                //intentCard.putExtra("card_id", id);
+            }
+        });
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override

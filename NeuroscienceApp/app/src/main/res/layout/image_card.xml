@@ -58,14 +58,6 @@
                     android:textSize="@dimen/category_size" />
             </LinearLayout>
 
-                <!--<ImageView-->
-                    <!--android:id="@+id/overflow"-->
-                    <!--android:layout_width="@dimen/ic_album_overflow_width"-->
-                    <!--android:layout_height="@dimen/ic_album_overflow_height"-->
-                    <!--android:layout_marginTop="@dimen/ic_album_overflow_margin_top"-->
-                    <!--android:scaleType="centerCrop"-->
-                    <!--android:src="@drawable/ic_dots" />-->
-
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
