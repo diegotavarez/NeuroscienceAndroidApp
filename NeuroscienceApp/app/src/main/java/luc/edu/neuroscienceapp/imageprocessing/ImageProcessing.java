@@ -153,8 +153,6 @@ public class ImageProcessing {
 
         SimpleMatrix image = bmpToMatrix(bmp);
 
-        Bitmap bit = matrixToBmp(image);
-
         int filter_size = 16;
         double gabor_sx = 2.0;
         double gabor_sy = 3.5;

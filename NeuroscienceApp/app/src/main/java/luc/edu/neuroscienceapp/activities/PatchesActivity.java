@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
@@ -18,7 +19,9 @@ public class PatchesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patches);
 
-        Bitmap[] bitmaps = ImageProcessing.process(Global.imgGrayscale);
+        Bitmap bt = Global.imgGrayscale;
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bt, bt.getWidth(), bt.getHeight(), false);
+        Bitmap[] bitmaps = ImageProcessing.process(scaledBitmap);
 
         ImageView p00 = (ImageView) findViewById(R.id.grayscale_picture_0_0);
         ImageView p01 = (ImageView) findViewById(R.id.grayscale_picture_0_1);
