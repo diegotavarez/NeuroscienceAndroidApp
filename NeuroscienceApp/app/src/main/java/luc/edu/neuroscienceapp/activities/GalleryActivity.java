@@ -97,12 +97,12 @@ public class GalleryActivity extends AppCompatActivity {
         int[] covers = new int[]{
                 R.drawable.carpet,
                 R.drawable.cat,
-                R.drawable.door,
                 R.drawable.flowers,
                 R.drawable.grass,
                 R.drawable.grasshopper,
                 R.drawable.newspaper,
-                R.drawable.shirt};
+                R.drawable.starry_night,
+                R.drawable.tv_static};
 
         CardImage a = new CardImage("Carpet", covers[0]);
         albumList.add(a);
@@ -110,22 +110,22 @@ public class GalleryActivity extends AppCompatActivity {
         a = new CardImage("Cat", covers[1]);
         albumList.add(a);
 
-        a = new CardImage("Door", covers[2]);
+        a = new CardImage("Flowers", covers[2]);
         albumList.add(a);
 
-        a = new CardImage("Flowers", covers[3]);
+        a = new CardImage("Grass", covers[3]);
         albumList.add(a);
 
-        a = new CardImage("Grass", covers[4]);
+        a = new CardImage("Grasshopper", covers[4]);
         albumList.add(a);
 
-        a = new CardImage("Grasshopper", covers[5]);
+        a = new CardImage("Newspaper", covers[5]);
         albumList.add(a);
 
-        a = new CardImage("Newspaper", covers[6]);
+        a = new CardImage("Starry Night", covers[6]);
         albumList.add(a);
 
-        a = new CardImage("Shirt", covers[7]);
+        a = new CardImage("TV Static", covers[7]);
         albumList.add(a);
 
         adapter.notifyDataSetChanged();
