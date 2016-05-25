@@ -4,6 +4,8 @@ package luc.edu.neuroscienceapp.adapters;
  * Created by diegotavarez on 5/23/16.
  */
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,9 +19,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
+import luc.edu.neuroscienceapp.activities.GrayscaleCardActivity;
 import luc.edu.neuroscienceapp.entities.CardImage;
 
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHolder> {
@@ -28,20 +32,22 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     private List<CardImage> imageList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, count;
+        public TextView title, id, category;
         public ImageView thumbnail, overflow;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
-            count = (TextView) view.findViewById(R.id.count);
+            category = (TextView) view.findViewById(R.id.category);
+
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             overflow = (ImageView) view.findViewById(R.id.overflow);
 
             thumbnail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, title.getText() + " selected", Toast.LENGTH_SHORT).show();
+                    Intent intentCard = new Intent(mContext, GrayscaleCardActivity.class);
+                    //intentCard.putExtra("card_id", )
                 }
             });
         }
@@ -65,6 +71,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         CardImage album = imageList.get(position);
         holder.title.setText(album.getName());
+        holder.category.setText(album.getCategory());
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
@@ -111,4 +118,9 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     public int getItemCount() {
         return imageList.size();
     }
+
+    public final CardImage getItem(final int position) {
+        return imageList.get(position);
+    }
+
 }

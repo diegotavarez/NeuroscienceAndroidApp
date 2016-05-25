@@ -6,13 +6,18 @@ package luc.edu.neuroscienceapp.entities;
 public class CardImage {
     private String name;
     private int thumbnail;
+    private int id;
+
+    private String category;
 
     public CardImage() {
     }
 
-    public CardImage(String name, int thumbnail) {
+    public CardImage(String name, int thumbnail, int id, String category) {
         this.name = name;
         this.thumbnail = thumbnail;
+        this.id = id;
+        this.category = category;
     }
 
     public String getName() {
@@ -29,5 +34,21 @@ public class CardImage {
 
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

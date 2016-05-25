@@ -104,28 +104,28 @@ public class GalleryActivity extends AppCompatActivity {
                 R.drawable.starry_night,
                 R.drawable.tv_static};
 
-        CardImage a = new CardImage("Carpet", covers[0]);
+        CardImage a = new CardImage("Carpet", covers[0],0,"Artificial");
         albumList.add(a);
 
-        a = new CardImage("Cat", covers[1]);
+        a = new CardImage("Cat", covers[1],1,"Natural");
         albumList.add(a);
 
-        a = new CardImage("Flowers", covers[2]);
+        a = new CardImage("Flowers", covers[2],2,"Natural");
         albumList.add(a);
 
-        a = new CardImage("Grass", covers[3]);
+        a = new CardImage("Grass", covers[3],3,"Natural");
         albumList.add(a);
 
-        a = new CardImage("Grasshopper", covers[4]);
+        a = new CardImage("Grasshopper", covers[4],4,"Natural");
         albumList.add(a);
 
-        a = new CardImage("Newspaper", covers[5]);
+        a = new CardImage("Newspaper", covers[5],5,"Artificial");
         albumList.add(a);
 
-        a = new CardImage("Starry Night", covers[6]);
+        a = new CardImage("Starry Night", covers[6],6,"Artificial");
         albumList.add(a);
 
-        a = new CardImage("TV Static", covers[7]);
+        a = new CardImage("TV Static", covers[7],7,"Artificial");
         albumList.add(a);
 
         adapter.notifyDataSetChanged();

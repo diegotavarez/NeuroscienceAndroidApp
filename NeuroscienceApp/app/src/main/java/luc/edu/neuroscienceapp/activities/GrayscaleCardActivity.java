@@ -4,15 +4,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import luc.edu.neuroscienceapp.R;
 
 public class GrayscaleCardActivity extends AppCompatActivity {
+    ImageView grayscalePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grayscale_card);
+
+        int[] covers = new int[]{
+                R.drawable.carpet_grayscale,
+                R.drawable.cat_grayscale,
+                R.drawable.flowers_grayscale,
+                R.drawable.grass_grayscale,
+                R.drawable.grasshopper_grayscale,
+                R.drawable.newspaper_grayscale,
+                R.drawable.starry_night_grayscale,
+                R.drawable.tv_static_grayscale};
+
+        grayscalePicture = (ImageView) findViewById(R.id.grayscale_picture);
+        grayscalePicture.setBackground(getDrawable(covers[0]));
     }
 
     @Override
