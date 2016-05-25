@@ -110,18 +110,12 @@ public class ImageProcessing {
     }
 
     static double[][] toDoubleMatrix (SimpleMatrix A) {
-        Log.v("bla bla", "foi entrou0");
         double[][] result = new double[A.numRows()][A.numCols()];
-        Log.v("bla bla", "foi entrouinit");
         for (int i = 0; i < A.numRows(); ++i) {
             for (int j = 0; j < A.numCols(); ++j) {
-                Log.v("bla bla", "foi entrou1");
                 result[i][j] = A.get(i,j);
-                Log.v("bla bla", "foi entrou2");
             }
-            Log.v("bla bla", "foi uma linha " + i + " / " + A.numRows());
         }
-        Log.v("bla bla", "foi saiu");
         return result;
     }
 
@@ -148,6 +142,16 @@ public class ImageProcessing {
         return picked;
     }
 
+    static double[][] toMatrix (SimpleMatrix A) {
+        double[][] result = new double[A.numRows()][A.numCols()];
+        for (int i = 0; i < A.numRows(); ++i) {
+            for (int j = 0; j < A.numCols(); ++j) {
+                result[i][j] = A.get(i,j);
+            }
+        }
+        return result;
+    }
+
 
     public static Bitmap[] process(Bitmap bmp) {
 
@@ -159,6 +163,7 @@ public class ImageProcessing {
         double gabor_fx = 0.2;
         double gabor_fy = 0.0;
 
+        Log.v("bla bla", "initializing gabor filter...");
         SimpleMatrix gb_filter = new GaborFilter(filter_size,
                 gabor_sx,
                 gabor_sy,
@@ -166,7 +171,8 @@ public class ImageProcessing {
                 gabor_fy).filter;
         SimpleMatrix imGb = Convolution.convolution2D(image, image.numRows(), image.numCols(), gb_filter, filter_size, filter_size);
 
-        Log.v("bla bla", "foi1");
+        Log.v("bla bla", "done with gabor filter and convolution");
+        Log.v("bla bla", "starting to get the patches...");
 
         // Finding images patches
         int patch_size = 8;
@@ -181,9 +187,6 @@ public class ImageProcessing {
         Set<Pair<Integer, Integer>> indices = pickRandom(numMaxTries, 1, imGb.numRows() - patch_size,
                                                                       1, imGb.numCols() - patch_size);
         Iterator<Pair<Integer, Integer>> iterator = indices.iterator();
-
-
-        Log.v("bla bla", "foi2");
 
         int cnt = 0;
         while (iterator.hasNext() && cnt < numMaxPatches) {
@@ -200,35 +203,23 @@ public class ImageProcessing {
             cnt++;
         }
 
-        Log.v("bla bla", "foi3");
+        Log.v("bla bla", "patches completed...");
+        Log.v("bla bla", "initializing PCA...");
 
         // This is PCA
         PrincipalComponentAnalysis pca = new PrincipalComponentAnalysis();
-        Log.v("bla bla", "foi pc initialized");
         int num_pca = 20;
         SimpleMatrix patches_trans = image_patches.transpose();
-        Log.v("bla bla", "foi aq");
-        Log.v("bla bla", "foi " + patches_trans.numCols() + " x " + patches_trans.numRows());
         DenseMatrix64F pc = pca.pca(patches_trans);
-        Log.v("bla bla", "foi dps pc initialized");
         SimpleMatrix principalComponents = new SimpleMatrix(pc);
 
         // The columns now are the principal components, rows are features
         principalComponents = principalComponents.transpose();
-        Log.v("bla bla", "foi dps ps");
         principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, num_pca);
 
-        String str = "";
-        Log.v("bla bla", "HERE IS PCA:");
-        for (int i = 0; i < principalComponents.numRows(); ++i) {
-            for (int j = 0; j < principalComponents.numCols(); ++j) {
-                str += principalComponents.get(i,j) + " ";
-            }
-            Log.v("bla bla", str);
-            str = "";
-        }
+        Log.v("bla bla", "finished PCA...");
 
-        Log.v("bla bla", "foi4");
+        Log.v("bla bla", "making Bitmap array out of PCA results...");
 
         Bitmap[] pca_images = new Bitmap[num_pca];
 
@@ -239,11 +230,13 @@ public class ImageProcessing {
             pca_images[i] = matrixToBmpScaled(column);
         }
 
-        Log.v("bla bla", "foi5");
-
-        Log.v("bla bla", "im done");
+        Log.v("bla bla", "finished process!");
 
         // This is ICA
+//        int ica_comp = 20; // components we want to use
+//        double[][] X = toMatrix(image_patches);
+//        FastICA ica = new FastICA(X, ica_comp);
+//        double[][] mixing = ica.getMixingMatrix();
 
         return pca_images;
 
