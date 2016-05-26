@@ -3,6 +3,7 @@ package luc.edu.neuroscienceapp.adapters;
 /**
  * Created by diegotavarez on 5/23/16.
  */
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -32,13 +33,14 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     private List<CardImage> imageList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, category;
+        public TextView title, category, id;
         public ImageView thumbnail, overflow;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             category = (TextView) view.findViewById(R.id.category);
+            id = (TextView) view.findViewById(R.id.id);
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             overflow = (ImageView) view.findViewById(R.id.overflow);
@@ -62,17 +64,19 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         CardImage album = imageList.get(position);
-        Integer id = album.getId();
 
         holder.title.setText(album.getName());
         holder.category.setText(album.getCategory());
+        holder.id.setText(String.valueOf(album.getId()));
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentCard = new Intent(mContext, GrayscaleCardActivity.class);
-                //intentCard.putExtra("card_id", id);
+                intentCard.putExtra("card_id", holder.id.getText().toString());
+                intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intentCard);
             }
         });
 

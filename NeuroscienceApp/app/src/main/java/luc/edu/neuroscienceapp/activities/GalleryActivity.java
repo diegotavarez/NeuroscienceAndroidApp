@@ -41,7 +41,7 @@ public class GalleryActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         albumList = new ArrayList<>();
-        adapter = new ImagesAdapter(this, albumList);
+        adapter = new ImagesAdapter(getApplicationContext(), albumList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);

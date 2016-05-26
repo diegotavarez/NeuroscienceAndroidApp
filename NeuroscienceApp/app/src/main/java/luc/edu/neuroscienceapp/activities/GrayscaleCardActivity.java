@@ -1,15 +1,20 @@
 package luc.edu.neuroscienceapp.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 
 public class GrayscaleCardActivity extends AppCompatActivity {
     ImageView grayscalePicture;
+    Button btNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +31,19 @@ public class GrayscaleCardActivity extends AppCompatActivity {
                 R.drawable.starry_night_grayscale,
                 R.drawable.tv_static_grayscale};
 
+        Bundle extras = getIntent().getExtras();
+        int cardId = Integer.parseInt(extras.getString("card_id"));
+
         grayscalePicture = (ImageView) findViewById(R.id.grayscale_picture);
-        grayscalePicture.setBackground(getDrawable(covers[0]));
+        grayscalePicture.setBackground(getDrawable(covers[cardId]));
+
+        btNext = (Button) findViewById(R.id.bt_step2);
+        btNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

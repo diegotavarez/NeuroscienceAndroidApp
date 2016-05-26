@@ -31,6 +31,11 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
+            android:name=".activities.GrayscaleCardActivity"
+            android:label="@string/backdrop_title"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
             android:name=".activities.PatchesActivity"
             android:theme="@style/AppTheme"
             android:label="@string/title_activity_patches" >
