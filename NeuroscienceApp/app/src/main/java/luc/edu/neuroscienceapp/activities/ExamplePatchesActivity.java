@@ -1,6 +1,5 @@
 package luc.edu.neuroscienceapp.activities;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,38 +11,34 @@ import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 
-public class GrayscaleCardActivity extends AppCompatActivity {
+public class ExamplePatchesActivity extends AppCompatActivity {
     ImageView grayscalePicture;
-    Button btNext;
+    Button btFinish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grayscale_card);
+        setContentView(R.layout.activity_example_patches);
 
         int[] covers = new int[]{
-                R.drawable.carpet_grayscale,
-                R.drawable.cat_grayscale,
-                R.drawable.flowers_grayscale,
-                R.drawable.grass_grayscale,
-                R.drawable.grasshopper_grayscale,
-                R.drawable.newspaper_grayscale,
-                R.drawable.starry_night_grayscale,
-                R.drawable.tv_static_grayscale};
+                R.drawable.carpet_ica,
+                R.drawable.cat_ica,
+                R.drawable.flowers_ica,
+                R.drawable.grass_ica,
+                R.drawable.grass_ica,
+                R.drawable.newspaper_ica,
+                R.drawable.starry_night_ica,
+                R.drawable.tv_static_ica};
 
-        Bundle extras = getIntent().getExtras();
-        final int cardId = Integer.parseInt(extras.getString("card_id"));
-
-        grayscalePicture = (ImageView) findViewById(R.id.grayscale_picture);
+        int cardId = getIntent().getIntExtra("grayscale_card_id",0);
+        grayscalePicture = (ImageView) findViewById(R.id.patches_picture);
         grayscalePicture.setBackground(getDrawable(covers[cardId]));
 
-        btNext = (Button) findViewById(R.id.bt_step2);
-        btNext.setOnClickListener(new View.OnClickListener() {
+        btFinish = (Button) findViewById(R.id.bt_finish);
+        btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GrayscaleCardActivity.this, ExamplePatchesActivity.class);
-                intent.putExtra("grayscale_card_id",cardId);
-                startActivity(intent);
+
             }
         });
     }
@@ -51,7 +46,7 @@ public class GrayscaleCardActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_grayscale_card, menu);
+        getMenuInflater().inflate(R.menu.menu_example_patches, menu);
         return true;
     }
 

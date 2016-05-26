@@ -21,4 +21,5 @@
     <string name="backdrop_subtitle">Try natural and non-natural images to understand the concepts.</string>
     <string name="title_activity_gallery">GalleryActivity</string>
     <string name="title_activity_patches">PatchesActivity</string>
+    <string name="title_activity_example_patches">ExamplePatchesActivity</string>
 </resources>
