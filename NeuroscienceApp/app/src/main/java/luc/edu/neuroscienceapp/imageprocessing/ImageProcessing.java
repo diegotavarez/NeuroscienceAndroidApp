@@ -176,7 +176,7 @@ public class ImageProcessing {
 
         // Finding images patches
         int patch_size = 8;
-        int numPatches = 50000;
+        int numPatches = 200;
         int numMaxPossiblePatches = (imGb.numCols() - patch_size) * (imGb.numRows() - patch_size);
         int numMaxPatches = (numPatches <= numMaxPossiblePatches) ? numPatches : numMaxPossiblePatches;
         int numTries = numPatches * 2;

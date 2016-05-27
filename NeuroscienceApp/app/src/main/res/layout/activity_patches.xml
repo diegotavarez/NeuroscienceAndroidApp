@@ -226,7 +226,7 @@
     <Button
         android:layout_width="fill_parent"
         android:text="Finish"
-        android:id="@+id/bt_step2"
+        android:id="@+id/bt_finish"
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:layout_gravity="center_horizontal|bottom"
