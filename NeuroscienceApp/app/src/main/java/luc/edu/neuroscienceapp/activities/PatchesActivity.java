@@ -2,11 +2,13 @@ package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,6 +24,13 @@ public class PatchesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patches);
+        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0);
+
+        Snackbar snackbar = Snackbar
+                .make(viewGroup, getResources().getString(R.string.step_3), Snackbar.LENGTH_SHORT);
+
+        snackbar.show();
 
         btFinish = (Button) findViewById(R.id.bt_finish);
         btFinish.setOnClickListener(new View.OnClickListener() {

@@ -1,11 +1,13 @@
 package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,6 +22,12 @@ public class GrayscaleCardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grayscale_card);
+
+        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0);
+        Snackbar snackbar = Snackbar
+                .make(viewGroup, getResources().getString(R.string.step_2), Snackbar.LENGTH_SHORT);
+        snackbar.show();
 
         int[] covers = new int[]{
                 R.drawable.carpet_grayscale,

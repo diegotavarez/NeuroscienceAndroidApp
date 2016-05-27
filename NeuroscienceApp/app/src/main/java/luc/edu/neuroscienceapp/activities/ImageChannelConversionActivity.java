@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,25 +23,30 @@ import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
 public class ImageChannelConversionActivity extends AppCompatActivity {
     Button btStep2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_channel_conversion);
+        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
+                .findViewById(android.R.id.content)).getChildAt(0);
+
         ImageView iv_grayscaleImage = (ImageView)findViewById(R.id.grayscale_picture);
         btStep2 = (Button) findViewById(R.id.bt_step2);
+
+        Snackbar snackbar = Snackbar
+                .make(viewGroup, getResources().getString(R.string.step_2), Snackbar.LENGTH_SHORT);
+        snackbar.show();
 
         //byte[] byteArray = getIntent().getByteArrayExtra("initial_image");
         byte[] byteArray = Global.bytesBitmap;
         Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-
         //Bitmap bmp = Global.img;
 
         Bitmap grayscaleBitmap = new ImageProcessing().toGrayscale(bmp);
         iv_grayscaleImage.setImageBitmap(grayscaleBitmap);
 
         Global.imgGrayscale = grayscaleBitmap;
-
-        //Toast.makeText(getApplicationContext(), grayscaleBitmap.getHeight() + " / " + grayscaleBitmap.getWidth(), Toast.LENGTH_SHORT).show();
 
         btStep2.setOnClickListener(new View.OnClickListener() {
             @Override
