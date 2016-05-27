@@ -2,6 +2,7 @@ package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
 public class PatchesActivity extends AppCompatActivity {
-    Button btFinish;
+    FloatingActionButton btFinish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class PatchesActivity extends AppCompatActivity {
 
         snackbar.show();
 
-        btFinish = (Button) findViewById(R.id.bt_finish);
+        btFinish = (FloatingActionButton) findViewById(R.id.fab_finish);
         btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

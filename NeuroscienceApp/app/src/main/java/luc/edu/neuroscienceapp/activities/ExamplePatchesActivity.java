@@ -1,6 +1,7 @@
 package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ import luc.edu.neuroscienceapp.R;
 
 public class ExamplePatchesActivity extends AppCompatActivity {
     ImageView grayscalePicture;
-    Button btFinish;
+    FloatingActionButton btFinish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class ExamplePatchesActivity extends AppCompatActivity {
         grayscalePicture = (ImageView) findViewById(R.id.patches_picture);
         grayscalePicture.setBackground(getDrawable(covers[cardId]));
 
-        btFinish = (Button) findViewById(R.id.bt_finish);
+        btFinish = (FloatingActionButton) findViewById(R.id.fab_finish);
         btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

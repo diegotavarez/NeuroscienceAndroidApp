@@ -1,22 +1,21 @@
 package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 
 public class GrayscaleCardActivity extends AppCompatActivity {
     ImageView grayscalePicture;
-    Button btNext;
+    private FloatingActionButton btNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,7 @@ public class GrayscaleCardActivity extends AppCompatActivity {
         grayscalePicture = (ImageView) findViewById(R.id.grayscale_picture);
         grayscalePicture.setBackground(getDrawable(covers[cardId]));
 
-        btNext = (Button) findViewById(R.id.bt_step2);
+        btNext = (FloatingActionButton) findViewById(R.id.fab_step2);
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

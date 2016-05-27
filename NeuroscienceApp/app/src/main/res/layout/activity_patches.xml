@@ -1,24 +1,19 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.MainActivity"
-    android:weightSum="3"
-    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:background="@color/viewBg"
-        android:text="@string/step_3"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:id="@+id/text_step_3" />
+<android.support.design.widget.CoordinatorLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="1.5"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="5dp"
@@ -73,7 +68,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="5dp"
-        android:layout_weight="0.5"
+        android:layout_weight="1.5"
         android:weightSum="4"
         android:orientation="horizontal">
 
@@ -125,7 +120,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="5dp"
-        android:layout_weight="0.5"
+        android:layout_weight="1.5"
         android:weightSum="4"
         android:orientation="horizontal">
 
@@ -174,10 +169,11 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="1.5"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="5dp"
+        android:id="@+id/layout"
         android:weightSum="4"
         android:orientation="horizontal">
 
@@ -222,16 +218,24 @@
 
     </LinearLayout>
 
-
-    <Button
-        android:layout_width="fill_parent"
-        android:text="Finish"
-        android:id="@+id/bt_finish"
+    <LinearLayout
+        android:id="@+id/viewB"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:layout_gravity="center_horizontal|bottom"
-        android:textColor="@color/colorDarkBg"
-        android:background="@android:color/transparent"/>
-
+        android:layout_weight="4"
+        android:background="@color/viewBg"
+        android:orientation="horizontal"/>
 
 </LinearLayout>
+
+<android.support.design.widget.FloatingActionButton
+    android:id="@+id/fab_finish"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:clickable="true"
+    android:src="@drawable/camera_icon"
+    app:layout_anchor="@id/layout"
+    app:layout_anchorGravity="bottom|right|end"/>
+
+</android.support.design.widget.CoordinatorLayout>

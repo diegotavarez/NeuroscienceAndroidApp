@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -22,7 +23,7 @@ import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
 public class ImageChannelConversionActivity extends AppCompatActivity {
-    Button btStep2;
+    FloatingActionButton btStep2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class ImageChannelConversionActivity extends AppCompatActivity {
                 .findViewById(android.R.id.content)).getChildAt(0);
 
         ImageView iv_grayscaleImage = (ImageView)findViewById(R.id.grayscale_picture);
-        btStep2 = (Button) findViewById(R.id.bt_step2);
+        btStep2 = (FloatingActionButton) findViewById(R.id.fab_step2);
 
         Snackbar snackbar = Snackbar
                 .make(viewGroup, getResources().getString(R.string.step_2), Snackbar.LENGTH_SHORT);
