@@ -14,6 +14,7 @@
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
             android:layout_weight="0.4"
+            android:elevation="5dp"
             android:background="@drawable/camera_icon"
             android:orientation="horizontal"/>
 
