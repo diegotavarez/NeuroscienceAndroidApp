@@ -1,6 +1,4 @@
-package luc.edu.neuroscienceapp.imageprocessing;
-
-/*
+package luc.edu.neuroscienceapp.imageprocessing;/*
  * Copyright (c) 2009-2014, Peter Abeles. All Rights Reserved.
  *
  * This file is part of Efficient Java Matrix Library (EJML).
@@ -38,7 +36,7 @@ import org.ejml.simple.SimpleMatrix;
  * to maximize information.
  * </p>
  * <p>
- * PCA is typically derived as an eigenvalue problem.  However in this implementation {@link org.ejml.interfaces.decomposition.SingularValueDecomposition SVD}
+ * PCA is typically derived as an eigenvalue problem.  However in this implementation {@link SingularValueDecomposition SVD}
  * is used instead because it will produce a more numerically stable solution.  Computation using EVD requires explicitly
  * computing the variance of each sample set. The variance is computed by squaring the residual, which can
  * cause loss of precision.
@@ -110,6 +108,7 @@ public class PrincipalComponentAnalysis {
      * smaller than the number of elements in the input vector.
      */
     public void computeBasis( int numComponents ) {
+    	System.out.println(sampleIndex + " / " + A.getNumRows());
         if( numComponents > A.getNumCols() )
             throw new IllegalArgumentException("More components requested that the data's length.");
         if( sampleIndex != A.getNumRows() )
@@ -201,7 +200,7 @@ public class PrincipalComponentAnalysis {
 
         DenseMatrix64F s = new DenseMatrix64F(A.getNumCols(),1);
         DenseMatrix64F r = DenseMatrix64F.wrap(numComponents,1,eigenData);
-
+        
         CommonOps.multTransA(V_t,r,s);
 
         DenseMatrix64F mean = DenseMatrix64F.wrap(A.getNumCols(),1,this.mean);
@@ -220,7 +219,7 @@ public class PrincipalComponentAnalysis {
      * The error is computed by projecting the sample into eigenspace then projecting
      * it back into sample space and
      * </p>
-     *
+     * 
      * @param sampleA The sample whose membership status is being considered.
      * @return Its membership error.
      */
@@ -256,7 +255,7 @@ public class PrincipalComponentAnalysis {
 
         return NormOps.normF(dots);
     }
-
+    
     // Added this method so it wouldn't need too many lines in main
     public DenseMatrix64F pca(SimpleMatrix matrix) {
         mean = new double[matrix.numCols()];
@@ -264,7 +263,7 @@ public class PrincipalComponentAnalysis {
         sampleIndex = matrix.numRows();
         numComponents = -1;
         this.computeBasis(matrix.numCols());
-
+        
         return this.V_t;
     }
 }

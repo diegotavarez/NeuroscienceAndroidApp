@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.fastica.FastICAException;
+
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
@@ -46,7 +48,12 @@ public class PatchesActivity extends AppCompatActivity {
 
         Bitmap bt = Global.imgGrayscale;
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(bt, bt.getWidth(), bt.getHeight(), false);
-        Bitmap[] bitmaps = ImageProcessing.process(scaledBitmap);
+        Bitmap[] bitmaps = new Bitmap[0];
+        try {
+            bitmaps = ImageProcessing.process(scaledBitmap);
+        } catch (FastICAException e) {
+            e.printStackTrace();
+        }
 
         ImageView p00 = (ImageView) findViewById(R.id.grayscale_picture_0_0);
         ImageView p01 = (ImageView) findViewById(R.id.grayscale_picture_0_1);

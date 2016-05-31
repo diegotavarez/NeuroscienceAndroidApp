@@ -55,10 +55,10 @@ public class Convolution extends Thread {
      * @return the 2D array representing the new image
      */
     public static SimpleMatrix convolution2D(SimpleMatrix input,
-                                             int width, int height,
-                                             SimpleMatrix kernel,
-                                             int kernelWidth,
-                                             int kernelHeight){
+                                            int width, int height,
+                                            SimpleMatrix kernel,
+                                            int kernelWidth,
+                                            int kernelHeight){
         int smallWidth = width - kernelWidth + 1;
         int smallHeight = height - kernelHeight + 1;
         SimpleMatrix output = new SimpleMatrix(smallWidth,smallHeight);
@@ -69,7 +69,7 @@ public class Convolution extends Thread {
         }
         for(int i=0;i<smallWidth;++i){
             for(int j=0;j<smallHeight;++j){
-                output.set(i, j, singlePixelConvolution(input,i,j,kernel,
+            	output.set(i, j, singlePixelConvolution(input,i,j,kernel,
                         kernelWidth,kernelHeight));
             }
         }

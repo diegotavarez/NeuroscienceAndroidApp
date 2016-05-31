@@ -1,5 +1,6 @@
 package luc.edu.neuroscienceapp.imageprocessing;
 
+import android.content.SyncStatusObserver;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
@@ -9,6 +10,8 @@ import android.util.Log;
 
 import org.ejml.data.DenseMatrix64F;
 import org.ejml.simple.SimpleMatrix;
+import org.fastica.FastICA;
+import org.fastica.FastICAException;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -41,12 +44,12 @@ public class ImageProcessing {
     {
         int width = source.getWidth();
         int height = source.getHeight();
-        SimpleMatrix result = new SimpleMatrix(width,height);
+        SimpleMatrix result = new SimpleMatrix(height,width);
         int[] pixels = new int[width*height];
         source.getPixels(pixels, 0, width, 0, 0, width, height);
         int pixelsIndex = 0;
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 int p = pixels[pixelsIndex];
                 int r = (p & 0xff0000) >> 16;
                 // int g = (p & 0x00ff00) >> 8;
@@ -99,7 +102,8 @@ public class ImageProcessing {
         double max = Double.MIN_VALUE;
         for (int i = 0; i < image.numRows(); ++i) {
             for (int j = 0; j < image.numCols(); ++j) {
-                double curr = image.get(j,i);
+                double curr = image.get(i,j);
+//                double curr = image.get(j,i);
                 if (min > curr)
                     min = curr;
                 if (curr > max)
@@ -152,93 +156,75 @@ public class ImageProcessing {
         return result;
     }
 
+    public static Bitmap[] process(Bitmap bmp) throws FastICAException {
+        return process(bmp, 300, 20);
+    }
 
-    public static Bitmap[] process(Bitmap bmp) {
+    public static Bitmap[] process(Bitmap bmp, int numPatches, int num_ica) throws FastICAException {
 
         SimpleMatrix image = bmpToMatrix(bmp);
 
-        int filter_size = 16;
-        double gabor_sx = 2.0;
-        double gabor_sy = 3.5;
-        double gabor_fx = 0.2;
-        double gabor_fy = 0.0;
 
-        Log.v("bla bla", "initializing gabor filter...");
-        SimpleMatrix gb_filter = new GaborFilter(filter_size,
-                gabor_sx,
-                gabor_sy,
-                gabor_fx,
-                gabor_fy).filter;
-        SimpleMatrix imGb = Convolution.convolution2D(image, image.numRows(), image.numCols(), gb_filter, filter_size, filter_size);
-
-        Log.v("bla bla", "done with gabor filter and convolution");
-        Log.v("bla bla", "starting to get the patches...");
-
-        // Finding images patches
+        // Collecting patches
         int patch_size = 8;
-        int numPatches = 200;
-        int numMaxPossiblePatches = (imGb.numCols() - patch_size) * (imGb.numRows() - patch_size);
+        int numMaxPossiblePatches = (image.numCols()-patch_size)*(image.numRows()-patch_size);
         int numMaxPatches = (numPatches <= numMaxPossiblePatches) ? numPatches : numMaxPossiblePatches;
-        int numTries = numPatches * 2;
+        int numTries = numPatches*2;
         int numMaxTries = (numTries <= numMaxPossiblePatches) ? numTries : numMaxPossiblePatches;
 
-        SimpleMatrix image_patches = new SimpleMatrix(patch_size * patch_size, numMaxPatches);
-        // Getting the random pairs (x,y)
-        Set<Pair<Integer, Integer>> indices = pickRandom(numMaxTries, 1, imGb.numRows() - patch_size,
-                                                                      1, imGb.numCols() - patch_size);
+        SimpleMatrix image_patches = new SimpleMatrix(patch_size*patch_size, numMaxPatches);
+        Set<Pair<Integer,Integer>> indices = pickRandom(numMaxTries, 1, image.numRows()-patch_size,
+                1, image.numCols()-patch_size);
+
+
         Iterator<Pair<Integer, Integer>> iterator = indices.iterator();
 
         int cnt = 0;
         while (iterator.hasNext() && cnt < numMaxPatches) {
-            Pair<Integer, Integer> p = iterator.next();
+            Pair<Integer,Integer> p = iterator.next();
             int x = p.getLeft();
             int y = p.getRight();
-            SimpleMatrix window = imGb.extractMatrix(x, x + patch_size, y, y + patch_size);
+            SimpleMatrix window = image.extractMatrix(x, x+patch_size, y, y+patch_size);
             double std = calculateStd(window);
             if (std > 0) {
-                window.reshape(patch_size * patch_size, 1);
-                // Set the hole column in the matrix
+                window.reshape(patch_size*patch_size, 1);
                 image_patches.insertIntoThis(0, cnt, window);
             }
             cnt++;
         }
 
-        Log.v("bla bla", "patches completed...");
-        Log.v("bla bla", "initializing PCA...");
+//        // PCA
+//        int num_pca = 20;
+//        PrincipalComponentAnalysis pca = new PrincipalComponentAnalysis();
+//        DenseMatrix64F pc = pca.pca(image_patches.transpose());
+//        SimpleMatrix principalComponents = new SimpleMatrix(pc);
+//        principalComponents = principalComponents.transpose();
+//        principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, num_pca);
+//
+//        Log.v("bla bla", principalComponents.numRows() + " x " + principalComponents.numCols());
+//        Log.v("bla bla", principalComponents.toString());
+//
+//        Bitmap[] pca_images = new Bitmap[num_pca];
+//        for (int i = 0; i < num_pca; ++i) {
+//            SimpleMatrix column = principalComponents.extractMatrix(0, principalComponents.numRows(), i, i + 1);
+//            column.reshape(patch_size, patch_size);
+//            pca_images[i] = matrixToBmpScaled(column);
+//        }
 
-        // This is PCA
-        PrincipalComponentAnalysis pca = new PrincipalComponentAnalysis();
-        int num_pca = 20;
-        SimpleMatrix patches_trans = image_patches.transpose();
-        DenseMatrix64F pc = pca.pca(patches_trans);
-        SimpleMatrix principalComponents = new SimpleMatrix(pc);
+        // ICA
+        double[][] X = toMatrix(image_patches);
+        FastICA ica = new FastICA(X, num_ica);
+        SimpleMatrix icaMatrix = new SimpleMatrix(ica.getSeparatingMatrix());
+//        SimpleMatrix icaMatrix = new SimpleMatrix(ica.getMixingMatrix());
 
-        // The columns now are the principal components, rows are features
-        principalComponents = principalComponents.transpose();
-        principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, num_pca);
-
-        Log.v("bla bla", "finished PCA...");
-
-        Log.v("bla bla", "making Bitmap array out of PCA results...");
-
-        Bitmap[] pca_images = new Bitmap[num_pca];
-
-
-        for (int i = 0; i < num_pca; ++i) {
-            SimpleMatrix column = principalComponents.extractMatrix(0, principalComponents.numRows(), i, i+1);
-            column.reshape(patch_size,patch_size);
-            pca_images[i] = matrixToBmpScaled(column);
+        Bitmap[] ica_images = new Bitmap[num_ica];
+        for (int i = 0; i < num_ica; ++i) {
+            SimpleMatrix column = icaMatrix.extractMatrix(i, i+1, 0, icaMatrix.numCols());
+            column.reshape(patch_size, patch_size);
+            ica_images[i] = matrixToBmpScaled(column);
         }
 
-        Log.v("bla bla", "finished process!");
-
-        // This is ICA
-//        int ica_comp = 20; // components we want to use
-//        double[][] X = toMatrix(image_patches);
-//        FastICA ica = new FastICA(X, ica_comp);
-//        double[][] mixing = ica.getMixingMatrix();
-
-        return pca_images;
+        return ica_images;
 
     }
 
