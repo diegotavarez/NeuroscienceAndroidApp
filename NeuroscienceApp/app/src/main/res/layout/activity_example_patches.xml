@@ -18,13 +18,43 @@
             android:background="@drawable/camera_icon"
             android:orientation="horizontal"/>
 
-        <LinearLayout
+
+        <ScrollView
             android:id="@+id/viewB"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
-            android:background="@color/viewBg"
-            android:orientation="horizontal"/>
+            android:background="@color/viewBg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/info_title_margin"
+                    android:paddingLeft="@dimen/info_title_margin"
+                    android:paddingRight="@dimen/info_title_margin"
+                    android:textSize="@dimen/info_title_size"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorAccent"
+                    android:text="Lorem Ipsum"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/info_content_margin"
+                    android:paddingLeft="@dimen/info_content_margin"
+                    android:paddingRight="@dimen/info_content_margin"
+                    android:textSize="@dimen/info_content_size"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="@string/lorem_ipsum_parag"/>
+            </LinearLayout>
+        </ScrollView>
+
 
     </LinearLayout>
 

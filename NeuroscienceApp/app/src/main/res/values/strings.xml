@@ -22,4 +22,6 @@
     <string name="title_activity_gallery">GalleryActivity</string>
     <string name="title_activity_patches">PatchesActivity</string>
     <string name="title_activity_example_patches">ExamplePatchesActivity</string>
+
+    <string name="lorem_ipsum_parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu libero eget sem ornare consequat. Nunc dictum, lectus vitae aliquam consequat, nisi enim pretium leo, et euismod tortor nulla et metus. Sed et lacus est. Morbi pulvinar risus sed placerat posuere. Nam fermentum nibh eu velit pharetra, non ultrices odio condimentum. Etiam porttitor, enim ac imperdiet laoreet, lacus tortor vulputate magna, eu viverra lorem ipsum at urna. Nullam aliquet orci ac augue pellentesque, et blandit metus fringilla. Vestibulum dictum erat quis sapien vulputate dignissim. Ut lacinia lacus at purus malesuada, et maximus libero imperdiet. Nulla facilisi. Morbi auctor ligula sit amet sem dictum hendrerit. Curabitur sem dui, finibus et molestie vel, viverra a velit. Duis ante metus, consequat a hendrerit a, sodales id nisl. Donec a dolor sit amet lectus placerat accumsan. Vivamus at ligula dapibus, auctor libero interdum, consectetur purus.</string>
 </resources>
