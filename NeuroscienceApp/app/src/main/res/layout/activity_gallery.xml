@@ -61,7 +61,7 @@
                         android:gravity="right"
                         android:textStyle="italic"
                         android:alpha="0.8"
-                        android:textColor="@color/colorTextLight"
+                        android:textColor="@color/colorAccent"
                         android:textSize="@dimen/backdrop_title" />
 
                     <TextView

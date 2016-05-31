@@ -41,7 +41,7 @@
                     android:paddingLeft="@dimen/album_title_padding"
                     android:paddingRight="@dimen/album_title_padding"
                     android:paddingTop="@dimen/album_title_padding"
-                    android:textColor="@color/image_title"
+                    android:textColor="@color/colorPrimaryDark"
                     android:text="Title"
                     android:textSize="@dimen/album_title" />
 
@@ -52,7 +52,7 @@
                     android:paddingBottom="@dimen/songs_count_padding_bottom"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:text="Category"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textStyle="italic"
                     android:paddingRight="@dimen/album_title_padding"
                     android:textSize="@dimen/category_size" />
