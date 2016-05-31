@@ -44,6 +44,10 @@
             android:name=".activities.ExamplePatchesActivity"
             android:label="@string/title_activity_example_patches" >
         </activity>
+        <activity
+            android:name=".activities.AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
     </application>
 
 </manifest>

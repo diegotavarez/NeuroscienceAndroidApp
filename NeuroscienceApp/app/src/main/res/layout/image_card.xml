@@ -71,24 +71,6 @@
                 android:paddingRight="@dimen/album_title_padding"
                 android:textSize="@dimen/category_size" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical" >
-
-                <ImageButton
-                    android:id="@+id/overflow"
-                    android:layout_width="@dimen/ic_album_overflow_width"
-                    android:layout_height="@dimen/ic_album_overflow_height"
-                    android:layout_marginTop="@dimen/ic_album_overflow_margin_top"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_dots"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@android:color/transparent"
-                    android:layout_centerVertical="true"/>
-            </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
 

@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="luc.edu.neuroscienceapp.activities.AboutActivity"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/info_title_size"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:layout_height="wrap_content" />
+
+    <TextView android:text="Project Oriented by:"
+        android:layout_width="wrap_content"
+        android:textStyle="italic"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Mark V. Albert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Loyola University Chicago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView android:text="Developed by:"
+        android:layout_width="wrap_content"
+        android:textStyle="italic"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Carlee Bettler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Alana Laryssa Seabra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Diego Tavares Pereira"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView android:text="Anne Zhao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+
+</LinearLayout>

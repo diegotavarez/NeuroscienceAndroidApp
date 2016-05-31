@@ -34,7 +34,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, category, id;
-        public ImageView thumbnail, overflow;
+        public ImageView thumbnail;
 
         public MyViewHolder(View view) {
             super(view);
@@ -43,7 +43,6 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             id = (TextView) view.findViewById(R.id.id);
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
-            overflow = (ImageView) view.findViewById(R.id.overflow);
         }
     }
 
@@ -80,12 +79,6 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             }
         });
 
-        holder.overflow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showPopupMenu(holder.overflow);
-            }
-        });
     }
 
     /**

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Neuroscience App</string>
+
+    <string name="about">About</string>
+
     <string name="action_settings">Settings</string>
     <string name="button_text">select photo</string>
     <string name="dialog_title">Add Photo</string>
@@ -7,7 +10,7 @@
     <string name="step_1">Please select a picture to start.</string>
     <string name="step_2">Image converted to grayscale.</string>
     <string name="step_3">Patches from receptive field in primary visual cortex.</string>
-    <string name="title_activity_image_channel_conversion">ImageChannelConversionActivity</string>
+    <string name="title_activity_image_channel_conversion">Neuroscience App</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_menu">MenuActivity</string>
@@ -19,9 +22,11 @@
     <string name="action_see_patches">See Patches</string>
     <string name="backdrop_title">Examples</string>
     <string name="backdrop_subtitle">Try natural and non-natural images to understand the concepts.</string>
-    <string name="title_activity_gallery">GalleryActivity</string>
-    <string name="title_activity_patches">PatchesActivity</string>
-    <string name="title_activity_example_patches">ExamplePatchesActivity</string>
+    <string name="title_activity_gallery">Examples</string>
+    <string name="title_activity_patches">Patches from receptive fields</string>
+    <string name="title_activity_example_patches">Patches from receptive fields</string>
 
     <string name="lorem_ipsum_parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu libero eget sem ornare consequat. Nunc dictum, lectus vitae aliquam consequat, nisi enim pretium leo, et euismod tortor nulla et metus. Sed et lacus est. Morbi pulvinar risus sed placerat posuere. Nam fermentum nibh eu velit pharetra, non ultrices odio condimentum. Etiam porttitor, enim ac imperdiet laoreet, lacus tortor vulputate magna, eu viverra lorem ipsum at urna. Nullam aliquet orci ac augue pellentesque, et blandit metus fringilla. Vestibulum dictum erat quis sapien vulputate dignissim. Ut lacinia lacus at purus malesuada, et maximus libero imperdiet. Nulla facilisi. Morbi auctor ligula sit amet sem dictum hendrerit. Curabitur sem dui, finibus et molestie vel, viverra a velit. Duis ante metus, consequat a hendrerit a, sodales id nisl. Donec a dolor sit amet lectus placerat accumsan. Vivamus at ligula dapibus, auctor libero interdum, consectetur purus.</string>
+    <string name="title_activity_about">About the App</string>
+
 </resources>
