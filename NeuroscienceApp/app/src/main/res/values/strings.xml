@@ -21,7 +21,7 @@
 
     <string name="action_see_patches">See Patches</string>
     <string name="backdrop_title">Examples</string>
-    <string name="backdrop_subtitle">Try natural and non-natural images to understand the concepts.</string>
+    <string name="backdrop_subtitle">These are the receptive fields from your brain when looking at a natural image. Check the examples to see how the receptive fields from those images would look like.</string>
     <string name="title_activity_gallery">Examples</string>
     <string name="title_activity_patches">Patches from receptive fields</string>
     <string name="title_activity_example_patches">Patches from receptive fields</string>

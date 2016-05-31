@@ -247,7 +247,7 @@ android:layout_height="match_parent">
                 android:paddingRight="@dimen/info_title_margin"
                 android:textSize="@dimen/info_title_size"
                 android:textStyle="normal"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimary"
                 android:text="Lorem Ipsum"/>
 
             <TextView

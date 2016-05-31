@@ -43,16 +43,16 @@ public class GalleryActivity extends AppCompatActivity {
         albumList = new ArrayList<>();
         adapter = new ImagesAdapter(getApplicationContext(), albumList);
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
         prepareAlbums();
 
         try {
-            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.grass_ica).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,24 +70,24 @@ public class GalleryActivity extends AppCompatActivity {
         appBarLayout.setExpanded(true);
 
         // hiding & showing the title when toolbar expanded & collapsed
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = false;
-            int scrollRange = -1;
-
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle(getString(R.string.app_name));
-                    isShow = true;
-                } else if (isShow) {
-                    collapsingToolbar.setTitle(" ");
-                    isShow = false;
-                }
-            }
-        });
+//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+//            boolean isShow = false;
+//            int scrollRange = -1;
+//
+//            @Override
+//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+//                if (scrollRange == -1) {
+//                    scrollRange = appBarLayout.getTotalScrollRange();
+//                }
+//                if (scrollRange + verticalOffset == 0) {
+//                    collapsingToolbar.setTitle(getString(R.string.app_name));
+//                    isShow = true;
+//                } else if (isShow) {
+//                    collapsingToolbar.setTitle(" ");
+//                    isShow = false;
+//                }
+//            }
+//        });
     }
 
     /**
@@ -104,28 +104,28 @@ public class GalleryActivity extends AppCompatActivity {
                 R.drawable.starry_night,
                 R.drawable.tv_static};
 
-        CardImage a = new CardImage("Carpet", covers[0],0,"Artificial");
+        CardImage a = new CardImage("Carpet", covers[0],0,"Non-natural Image");
         albumList.add(a);
 
-        a = new CardImage("Cat", covers[1],1,"Natural");
+        a = new CardImage("Cat", covers[1],1,"Natural Image");
         albumList.add(a);
 
-        a = new CardImage("Flowers", covers[2],2,"Natural");
+        a = new CardImage("Flowers", covers[2],2,"Natural Image");
         albumList.add(a);
 
-        a = new CardImage("Grass", covers[3],3,"Natural");
+        a = new CardImage("Grass", covers[3],3,"Natural Image");
         albumList.add(a);
 
-        a = new CardImage("Grasshopper", covers[4],4,"Natural");
+        a = new CardImage("Grasshopper", covers[4],4,"Natural Image");
         albumList.add(a);
 
-        a = new CardImage("Newspaper", covers[5],5,"Artificial");
+        a = new CardImage("Newspaper", covers[5],5,"Artificial Image");
         albumList.add(a);
 
-        a = new CardImage("Starry Night", covers[6],6,"Artificial");
+        a = new CardImage("Starry Night", covers[6],6,"Artificial Image");
         albumList.add(a);
 
-        a = new CardImage("TV Static", covers[7],7,"Artificial");
+        a = new CardImage("TV Static", covers[7],7,"Artificial Image");
         albumList.add(a);
 
         adapter.notifyDataSetChanged();

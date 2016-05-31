@@ -39,7 +39,7 @@
                     android:paddingRight="@dimen/info_title_margin"
                     android:textSize="@dimen/info_title_size"
                     android:textStyle="normal"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:text="Lorem Ipsum"/>
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:paddingRight="@dimen/info_content_margin"
                     android:textSize="@dimen/info_content_size"
                     android:textStyle="normal"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorText"
                     android:text="@string/lorem_ipsum_parag"/>
 
             </LinearLayout>
