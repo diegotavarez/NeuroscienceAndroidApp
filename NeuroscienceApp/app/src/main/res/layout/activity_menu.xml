@@ -13,18 +13,31 @@
         android:gravity="center_vertical|center_horizontal"
         android:layout_weight="2.5"
         android:elevation="@dimen/activity_horizontal_margin"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:weightSum="1"
         android:background="@color/colorPrimary">
-
+        <TextView
+            android:layout_width="230dp"
+            android:paddingLeft="50dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal|center_vertical"
+            android:textStyle="italic"
+            android:textSize="17sp"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:textColor="@color/colorTextLight"
+            android:layout_height="match_parent"
+            android:text="@string/main_subtitle"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
+            android:scaleType="fitEnd"
             android:alpha="0.8"
             android:backgroundTint="@color/colorAccent"
-            android:src="@drawable/grass"/>
+            android:src="@drawable/halfbrain"
+            android:id="@+id/imageView" />
+
 
     </LinearLayout>
 
