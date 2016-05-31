@@ -154,7 +154,7 @@ public class ImageProcessing {
     }
 
     public static Bitmap[] process(Bitmap bmp) throws FastICAException {
-        return process(bmp, 300, 20);
+        return process(bmp, 150, 20);
     }
 
     public static Bitmap[] process(Bitmap bmp, int numPatches, int num_ica) throws FastICAException {
