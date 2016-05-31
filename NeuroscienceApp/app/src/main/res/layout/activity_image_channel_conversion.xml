@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:src="@drawable/camera_icon"
+        android:src="@drawable/right_arrow"
         app:layout_anchor="@id/grayscale_picture"
         app:layout_anchorGravity="bottom|right|end"/>
 
