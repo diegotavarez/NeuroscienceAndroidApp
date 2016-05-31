@@ -1,14 +1,11 @@
 package luc.edu.neuroscienceapp.imageprocessing;
 
-import android.content.SyncStatusObserver;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
-import android.util.Log;
 
-import org.ejml.data.DenseMatrix64F;
 import org.ejml.simple.SimpleMatrix;
 import org.fastica.FastICA;
 import org.fastica.FastICAException;
@@ -157,7 +154,7 @@ public class ImageProcessing {
     }
 
     public static Bitmap[] process(Bitmap bmp) throws FastICAException {
-        return process(bmp, 300, 20);
+        return process(bmp, 150, 20);
     }
 
     public static Bitmap[] process(Bitmap bmp, int numPatches, int num_ica) throws FastICAException {
@@ -175,7 +172,6 @@ public class ImageProcessing {
         SimpleMatrix image_patches = new SimpleMatrix(patch_size*patch_size, numMaxPatches);
         Set<Pair<Integer,Integer>> indices = pickRandom(numMaxTries, 1, image.numRows()-patch_size,
                 1, image.numCols()-patch_size);
-
 
         Iterator<Pair<Integer, Integer>> iterator = indices.iterator();
 
@@ -200,9 +196,6 @@ public class ImageProcessing {
 //        SimpleMatrix principalComponents = new SimpleMatrix(pc);
 //        principalComponents = principalComponents.transpose();
 //        principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, num_pca);
-//
-//        Log.v("bla bla", principalComponents.numRows() + " x " + principalComponents.numCols());
-//        Log.v("bla bla", principalComponents.toString());
 //
 //        Bitmap[] pca_images = new Bitmap[num_pca];
 //        for (int i = 0; i < num_pca; ++i) {
