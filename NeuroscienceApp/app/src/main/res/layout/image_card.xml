@@ -25,10 +25,20 @@
                 android:clickable="true"
                 android:scaleType="fitXY" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:id="@+id/card_color"
+                android:background="@color/colorAccent"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -41,7 +51,7 @@
                     android:paddingLeft="@dimen/album_title_padding"
                     android:paddingRight="@dimen/album_title_padding"
                     android:paddingTop="@dimen/album_title_padding"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorText"
                     android:text="Title"
                     android:textSize="@dimen/album_title" />
 

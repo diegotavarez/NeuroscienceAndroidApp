@@ -22,6 +22,7 @@ import java.util.List;
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
 import luc.edu.neuroscienceapp.entities.CardImage;
+import luc.edu.neuroscienceapp.entities.Global;
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -94,39 +95,46 @@ public class GalleryActivity extends AppCompatActivity {
      * Adding few albums for testing
      */
     private void prepareAlbums() {
-        int[] covers = new int[]{
-                R.drawable.carpet,
-                R.drawable.cat,
-                R.drawable.flowers,
-                R.drawable.grass,
-                R.drawable.grasshopper,
-                R.drawable.newspaper,
-                R.drawable.starry_night,
-                R.drawable.tv_static};
+        int[] covers = Global.covers;
+        String[] titles = Global.titles;
+        boolean[] labels = Global.labels;
 
-        CardImage a = new CardImage("Carpet", covers[0],0,"Non-natural Image");
-        albumList.add(a);
+        CardImage a = null;
+        String lab = "";
+        for (int i = 0; i < covers.length; i++) {
+            if (labels[i]) {
+                lab = "Natural Image";
+            } else {
+                lab = "Non-natural Image";
+            }
+            a = new CardImage(titles[i], covers[i], i, lab);
+            albumList.add(a);
+        }
 
-        a = new CardImage("Cat", covers[1],1,"Natural Image");
-        albumList.add(a);
 
-        a = new CardImage("Flowers", covers[2],2,"Natural Image");
-        albumList.add(a);
-
-        a = new CardImage("Grass", covers[3],3,"Natural Image");
-        albumList.add(a);
-
-        a = new CardImage("Grasshopper", covers[4],4,"Natural Image");
-        albumList.add(a);
-
-        a = new CardImage("Newspaper", covers[5],5,"Artificial Image");
-        albumList.add(a);
-
-        a = new CardImage("Starry Night", covers[6],6,"Artificial Image");
-        albumList.add(a);
-
-        a = new CardImage("TV Static", covers[7],7,"Artificial Image");
-        albumList.add(a);
+//        CardImage a = new CardImage("Carpet", covers[0],0,"Non-natural Image");
+//        albumList.add(a);
+//
+//        a = new CardImage("Cat", covers[1],1,"Natural Image");
+//        albumList.add(a);
+//
+//        a = new CardImage("Flowers", covers[2],2,"Natural Image");
+//        albumList.add(a);
+//
+//        a = new CardImage("Grass", covers[3],3,"Natural Image");
+//        albumList.add(a);
+//
+//        a = new CardImage("Grasshopper", covers[4],4,"Natural Image");
+//        albumList.add(a);
+//
+//        a = new CardImage("Newspaper", covers[5],5,"Artificial Image");
+//        albumList.add(a);
+//
+//        a = new CardImage("Starry Night", covers[6],6,"Artificial Image");
+//        albumList.add(a);
+//
+//        a = new CardImage("TV Static", covers[7],7,"Artificial Image");
+//        albumList.add(a);
 
         adapter.notifyDataSetChanged();
     }

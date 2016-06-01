@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,15 +37,18 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, category, id;
         public ImageView thumbnail;
+        public LinearLayout cardColor;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             category = (TextView) view.findViewById(R.id.category);
             id = (TextView) view.findViewById(R.id.id);
+            cardColor = (LinearLayout) view.findViewById(R.id.card_color);
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
         }
+
     }
 
 
@@ -78,6 +83,16 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
                 mContext.startActivity(intentCard);
             }
         });
+
+
+        if (holder.category.getText().toString().equals("Natural Image")) {
+            holder.cardColor.setBackgroundColor(Color.parseColor("#8bc34a"));
+            holder.category.setTextColor(Color.parseColor("#8bc34a"));
+        } else {
+            holder.cardColor.setBackgroundColor(Color.parseColor("#EF6C00"));
+            holder.category.setTextColor(Color.parseColor("#EF6C00"));
+
+        }
 
     }
 

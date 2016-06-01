@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import luc.edu.neuroscienceapp.R;
+import luc.edu.neuroscienceapp.entities.Global;
 
 public class GrayscaleCardActivity extends AppCompatActivity {
     ImageView grayscalePicture;
@@ -28,15 +29,7 @@ public class GrayscaleCardActivity extends AppCompatActivity {
                 .make(viewGroup, getResources().getString(R.string.step_2), Snackbar.LENGTH_SHORT);
         snackbar.show();
 
-        int[] covers = new int[]{
-                R.drawable.carpet_grayscale,
-                R.drawable.cat_grayscale,
-                R.drawable.flowers_grayscale,
-                R.drawable.grass_grayscale,
-                R.drawable.grasshopper_grayscale,
-                R.drawable.newspaper_grayscale,
-                R.drawable.starry_night_grayscale,
-                R.drawable.tv_static_grayscale};
+        int[] covers = Global.covers_grayscale;
 
         Bundle extras = getIntent().getExtras();
         final int cardId = Integer.parseInt(extras.getString("card_id"));

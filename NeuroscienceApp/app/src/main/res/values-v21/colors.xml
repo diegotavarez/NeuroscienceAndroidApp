@@ -8,6 +8,9 @@
     <color name="colorTextLight">#EEEEEE</color>
     <color name="colorDarkBg">#222222</color>
 
+    <color name="colorNatural">#90A4AE</color>
+    <color name="colorArtificial">#607D8B</color>
+
     <color name="viewBg">#f1f5f8</color>
     <color name="image_title">#4c4c4c</color>
 </resources>
