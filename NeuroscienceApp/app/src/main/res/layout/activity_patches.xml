@@ -248,7 +248,7 @@ android:layout_height="match_parent">
                 android:textSize="@dimen/info_title_size"
                 android:textStyle="normal"
                 android:textColor="@color/colorPrimary"
-                android:text="Lorem Ipsum"/>
+                android:text="@string/patches_title"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -259,7 +259,7 @@ android:layout_height="match_parent">
                 android:textSize="@dimen/info_content_size"
                 android:textStyle="normal"
                 android:textColor="@color/colorPrimaryDark"
-                android:text="@string/lorem_ipsum_parag"/>
+                android:text="@string/patches_parag"/>
 
         </LinearLayout>
     </ScrollView>

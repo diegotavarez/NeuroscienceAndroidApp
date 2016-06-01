@@ -40,7 +40,7 @@
                     android:textSize="@dimen/info_title_size"
                     android:textStyle="normal"
                     android:textColor="@color/colorPrimary"
-                    android:text="Lorem Ipsum"/>
+                    android:text="@string/grayscale_picture_title"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                     android:textSize="@dimen/info_content_size"
                     android:textStyle="normal"
                     android:textColor="@color/colorText"
-                    android:text="@string/lorem_ipsum_parag"/>
+                    android:text="@string/grayscale_picture_parag"/>
 
             </LinearLayout>
         </ScrollView>
