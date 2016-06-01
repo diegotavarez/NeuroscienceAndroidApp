@@ -52,7 +52,7 @@ public class GalleryActivity extends AppCompatActivity {
         prepareAlbums();
 
         try {
-            Glide.with(this).load(R.drawable.grass_ica).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.real_receptive_fields).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
