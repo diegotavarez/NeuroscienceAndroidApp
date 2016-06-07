@@ -26,8 +26,6 @@ public class ImageProcessing {
         height = bmpOriginal.getHeight();
         width = bmpOriginal.getWidth();
 
-        System.out.println("Antes: "+width+" "+height);
-
         /*
         This section is an effort to solve the bug (crash) the app has with large images
 
@@ -46,8 +44,6 @@ public class ImageProcessing {
         /*
         End of bug solving effort
          */
-
-        System.out.println("Depois: "+width+" "+height);
 
         Bitmap bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bmpGrayscale);
