@@ -10,9 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import org.fastica.FastICAException;
 
@@ -20,13 +18,13 @@ import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
-public class PatchesActivity extends AppCompatActivity {
+public class ImagePatchesActivity extends AppCompatActivity {
     FloatingActionButton btFinish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patches);
+        setContentView(R.layout.activity_image_patches);
         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0);
 
@@ -39,7 +37,7 @@ public class PatchesActivity extends AppCompatActivity {
         btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PatchesActivity.this, MenuActivity.class);
+                Intent intent = new Intent(ImagePatchesActivity.this, ImageMenuActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish(); // call this to finish the current activity
@@ -107,7 +105,7 @@ public class PatchesActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            Intent intentAbout = new Intent(PatchesActivity.this, AboutActivity.class);
+            Intent intentAbout = new Intent(ImagePatchesActivity.this, AboutActivity.class);
             startActivity(intentAbout);
             return true;
         }

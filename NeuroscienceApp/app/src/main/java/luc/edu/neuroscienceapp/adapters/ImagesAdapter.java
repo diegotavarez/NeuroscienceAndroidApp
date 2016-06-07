@@ -3,10 +3,8 @@ package luc.edu.neuroscienceapp.adapters;
 /**
  * Created by diegotavarez on 5/23/16.
  */
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -22,11 +20,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
-import luc.edu.neuroscienceapp.activities.GrayscaleCardActivity;
+import luc.edu.neuroscienceapp.activities.ImageGrayscaleCardActivity;
 import luc.edu.neuroscienceapp.entities.CardImage;
 
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHolder> {
@@ -77,7 +74,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentCard = new Intent(mContext, GrayscaleCardActivity.class);
+                Intent intentCard = new Intent(mContext, ImageGrayscaleCardActivity.class);
                 intentCard.putExtra("card_id", holder.id.getText().toString());
                 intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intentCard);

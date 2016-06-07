@@ -14,14 +14,14 @@ import android.widget.ImageView;
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 
-public class GrayscaleCardActivity extends AppCompatActivity {
+public class ImageGrayscaleCardActivity extends AppCompatActivity {
     ImageView grayscalePicture;
     private FloatingActionButton btNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grayscale_card);
+        setContentView(R.layout.activity_image_grayscale_card);
 
         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0);
@@ -41,7 +41,7 @@ public class GrayscaleCardActivity extends AppCompatActivity {
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GrayscaleCardActivity.this, ExamplePatchesActivity.class);
+                Intent intent = new Intent(ImageGrayscaleCardActivity.this, ImageExamplePatchesActivity.class);
                 intent.putExtra("grayscale_card_id",cardId);
                 startActivity(intent);
             }
@@ -64,7 +64,7 @@ public class GrayscaleCardActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            Intent intentAbout = new Intent(GrayscaleCardActivity.this, AboutActivity.class);
+            Intent intentAbout = new Intent(ImageGrayscaleCardActivity.this, AboutActivity.class);
             startActivity(intentAbout);
             return true;
         }

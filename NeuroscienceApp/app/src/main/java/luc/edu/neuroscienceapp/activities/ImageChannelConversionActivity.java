@@ -1,11 +1,9 @@
 package luc.edu.neuroscienceapp.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
@@ -52,7 +47,7 @@ public class ImageChannelConversionActivity extends AppCompatActivity {
         btStep2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentPatches = new Intent(ImageChannelConversionActivity.this, PatchesActivity.class);
+                Intent intentPatches = new Intent(ImageChannelConversionActivity.this, ImagePatchesActivity.class);
                 startActivity(intentPatches);
             }
         });

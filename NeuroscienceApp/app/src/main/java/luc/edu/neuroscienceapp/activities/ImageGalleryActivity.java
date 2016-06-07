@@ -24,7 +24,7 @@ import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
 import luc.edu.neuroscienceapp.entities.CardImage;
 import luc.edu.neuroscienceapp.entities.Global;
 
-public class GalleryActivity extends AppCompatActivity {
+public class ImageGalleryActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ImagesAdapter adapter;
@@ -33,7 +33,7 @@ public class GalleryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gallery);
+        setContentView(R.layout.activity_image_gallery);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

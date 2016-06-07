@@ -10,12 +10,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,7 +22,7 @@ import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.utils.FileManager;
 
-public class MenuActivity extends AppCompatActivity {
+public class ImageMenuActivity extends AppCompatActivity {
     public static final int CAMERA_REQUEST = 1;
     public static final int GALLERY_REQUEST = 2;
     public boolean imageSelected = false;
@@ -40,7 +38,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_image_menu);
         
         btExamples = (ImageButton) findViewById(R.id.bt_examples);
         btChoose = (ImageButton) findViewById(R.id.bt_choose);
@@ -59,7 +57,7 @@ public class MenuActivity extends AppCompatActivity {
         btExamples.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentGallery = new Intent(MenuActivity.this, GalleryActivity.class);
+                Intent intentGallery = new Intent(ImageMenuActivity.this, ImageGalleryActivity.class);
                 startActivity(intentGallery);
             }
         });
@@ -108,7 +106,7 @@ public class MenuActivity extends AppCompatActivity {
                 imageBitmap = bitmap;
 
             }
-            mProgressDialog = new ProgressDialog(MenuActivity.this);
+            mProgressDialog = new ProgressDialog(ImageMenuActivity.this);
             new ImageLoader().execute();
             //Toast.makeText(getApplicationContext(),imageBitmap.getHeight() + " / " + imageBitmap.getWidth(),Toast.LENGTH_SHORT).show();
         }
@@ -130,7 +128,7 @@ public class MenuActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            Intent intentAbout = new Intent(MenuActivity.this, AboutActivity.class);
+            Intent intentAbout = new Intent(ImageMenuActivity.this, AboutActivity.class);
             startActivity(intentAbout);
             return true;
         }

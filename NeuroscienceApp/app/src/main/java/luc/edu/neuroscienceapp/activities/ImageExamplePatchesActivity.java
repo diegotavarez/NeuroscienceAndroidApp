@@ -9,21 +9,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 
-public class ExamplePatchesActivity extends AppCompatActivity {
+public class ImageExamplePatchesActivity extends AppCompatActivity {
     ImageView grayscalePicture;
     FloatingActionButton btFinish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_example_patches);
+        setContentView(R.layout.activity_image_example_patches);
 
         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0);
@@ -41,7 +39,7 @@ public class ExamplePatchesActivity extends AppCompatActivity {
         btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ExamplePatchesActivity.this, MenuActivity.class);
+                Intent intent = new Intent(ImageExamplePatchesActivity.this, ImageMenuActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish(); // call this to finish the current activitys
@@ -65,7 +63,7 @@ public class ExamplePatchesActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            Intent intentAbout = new Intent(ExamplePatchesActivity.this, AboutActivity.class);
+            Intent intentAbout = new Intent(ImageExamplePatchesActivity.this, AboutActivity.class);
             startActivity(intentAbout);
             return true;
         }

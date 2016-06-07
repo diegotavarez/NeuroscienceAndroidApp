@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"Clicked image button", Toast.LENGTH_SHORT).show();
-                Intent image_intent = new Intent(MainActivity.this, MenuActivity.class);
+                Intent image_intent = new Intent(MainActivity.this, ImageMenuActivity.class);
                 startActivity(image_intent);
 
             }
