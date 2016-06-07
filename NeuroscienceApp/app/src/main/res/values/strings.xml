@@ -22,6 +22,9 @@
     <string name="option_gallery_sound">Pick a sound</string>
     <string name="option_choose_sound">Record</string>
 
+    <string name="option_sound">Sound</string>
+    <string name="option_image">Image</string>
+
     <string name="action_see_patches">See Patches</string>
     <string name="backdrop_title">Examples</string>
     <!--<string name="backdrop_subtitle">These are the receptive fields from your brain when looking at a natural image. Check the examples to see how the receptive fields from those images would look like.</string>-->

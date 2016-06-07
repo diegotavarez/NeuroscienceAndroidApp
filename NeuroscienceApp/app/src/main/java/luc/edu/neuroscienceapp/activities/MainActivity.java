@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"Clicked sound button", Toast.LENGTH_SHORT).show();
+                Intent sound_intent = new Intent(MainActivity.this, SoundMenuActivity.class);
+                startActivity(sound_intent);
 
             }
         });
