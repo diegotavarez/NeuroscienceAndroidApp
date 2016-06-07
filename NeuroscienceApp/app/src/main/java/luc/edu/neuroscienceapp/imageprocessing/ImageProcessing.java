@@ -26,6 +26,29 @@ public class ImageProcessing {
         height = bmpOriginal.getHeight();
         width = bmpOriginal.getWidth();
 
+        System.out.println("Antes: "+width+" "+height);
+
+        /*
+        This section is an effort to solve the bug (crash) the app has with large images
+
+            =>  Check the image dimensions to check either it is too big. If it's the case,
+                reduce image dimensions
+            =>  Those dimensions were chosen arbitrarily
+         */
+        int max_width, max_height;
+        max_width = 1024;
+        max_height = height/(width/max_width);
+        if(width > max_width && height > max_height){
+            bmpOriginal = Bitmap.createScaledBitmap(bmpOriginal, max_width, max_height, false);
+            width = bmpOriginal.getWidth();
+            height = bmpOriginal.getHeight();
+        }
+        /*
+        End of bug solving effort
+         */
+
+        System.out.println("Depois: "+width+" "+height);
+
         Bitmap bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bmpGrayscale);
         Paint paint = new Paint();
