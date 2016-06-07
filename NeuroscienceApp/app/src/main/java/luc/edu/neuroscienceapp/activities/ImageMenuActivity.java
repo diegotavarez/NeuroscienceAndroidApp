@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Camera;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -47,10 +48,14 @@ public class ImageMenuActivity extends AppCompatActivity {
         btChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileManager.getPhotoFileUri(photoFileName,getApplicationContext(),APP_TAG));
-                startActivityForResult(takePhotoIntent, CAMERA_REQUEST);
-                imageSelected = true;
+//                Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileManager.getPhotoFileUri(photoFileName,getApplicationContext(),APP_TAG));
+//                startActivityForResult(takePhotoIntent, CAMERA_REQUEST);
+//                imageSelected = true;
+
+                /*
+                    Try new approach using a camera class implementation
+                 */
             }
         });
 
