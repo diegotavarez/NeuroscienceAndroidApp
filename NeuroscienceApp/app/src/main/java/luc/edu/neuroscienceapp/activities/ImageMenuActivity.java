@@ -56,6 +56,11 @@ public class ImageMenuActivity extends AppCompatActivity {
                 /*
                     Try new approach using a camera class implementation
                  */
+                Intent cameraIntent = new Intent(ImageMenuActivity.this, CameraActivity.class);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                imageSelected = true;
+
+
             }
         });
 

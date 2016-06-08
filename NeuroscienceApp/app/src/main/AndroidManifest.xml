@@ -47,6 +47,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SoundMenuActivity"></activity>
+        <activity
+            android:name=".activities.CameraActivity"
+            android:label="@string/camera_activity" />
     </application>
 
 </manifest>

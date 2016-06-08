@@ -40,4 +40,6 @@
 
     <string name="title_activity_about">About the App</string>
 
+    <string name="camera_activity">Take a picture</string>
+
 </resources>
