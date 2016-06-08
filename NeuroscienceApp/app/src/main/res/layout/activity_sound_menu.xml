@@ -27,7 +27,7 @@
             android:paddingBottom="@dimen/activity_horizontal_margin"
             android:textColor="@color/colorTextLight"
             android:layout_height="match_parent"
-            android:text="@string/main_subtitle"/>
+            android:text="@string/main_subtitle_sound"/>
 
         <ImageView
             android:layout_width="match_parent"

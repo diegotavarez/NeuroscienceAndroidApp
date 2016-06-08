@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         image_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Clicked image button", Toast.LENGTH_SHORT).show();
                 Intent image_intent = new Intent(MainActivity.this, ImageMenuActivity.class);
                 startActivity(image_intent);
 
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         sound_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Clicked sound button", Toast.LENGTH_SHORT).show();
                 Intent sound_intent = new Intent(MainActivity.this, SoundMenuActivity.class);
                 startActivity(sound_intent);
 
