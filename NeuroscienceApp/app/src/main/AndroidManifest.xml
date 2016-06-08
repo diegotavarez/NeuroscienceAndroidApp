@@ -36,15 +36,23 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.ImageExamplePatchesActivity"
-            android:label="@string/title_activity_example_patches" />
+            android:label="@string/title_activity_example_patches"
+
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".activities.AboutActivity"
-            android:label="@string/title_activity_about" />
+            android:label="@string/title_activity_about"
+
+            android:theme="@style/AppTheme"/>
         <activity android:name=".activities.MainActivity">
 
         </activity>
-        <activity android:name=".activities.SoundMenuActivity" />
-        <activity android:name=".activities.SoundGalleryActivity" />
+        <activity android:name=".activities.SoundMenuActivity"
+
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activities.SoundGalleryActivity"
+
+            android:theme="@style/AppTheme"/>
         <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
