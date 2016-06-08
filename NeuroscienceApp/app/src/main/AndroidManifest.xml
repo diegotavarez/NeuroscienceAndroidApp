@@ -37,14 +37,20 @@
             android:name=".activities.AboutActivity"
             android:label="@string/title_activity_about" />
         <activity android:name=".activities.MainActivity">
+
+        </activity>
+        <activity android:name=".activities.SoundMenuActivity" />
+        <activity android:name=".activities.SoundGalleryActivity" />
+        <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SoundMenuActivity" />
-        <activity android:name=".activities.SoundGalleryActivity"></activity>
+
+
     </application>
+
 
 </manifest>
