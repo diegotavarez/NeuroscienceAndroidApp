@@ -21,13 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/album_cover_height"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:padding="5dp">
 
             <ImageView
                 android:id="@+id/thumbnail"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="@dimen/album_cover_height"
+                android:layout_marginRight="2.5dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="fitXY" />
@@ -36,6 +38,7 @@
                 android:id="@+id/thumbnail_ica"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="2.5dp"
                 android:layout_height="@dimen/album_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
