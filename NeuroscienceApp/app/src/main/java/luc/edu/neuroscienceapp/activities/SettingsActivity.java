@@ -1,12 +1,17 @@
 package luc.edu.neuroscienceapp.activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.pavelsikun.seekbarpreference.SeekBarPreference;
 
@@ -25,6 +30,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .replace(android.R.id.content, new PreferencesScreen())
                 .commit();
 
+
         ActionBar toolbar = getSupportActionBar();
         if(toolbar != null) {
             toolbar.setDisplayHomeAsUpEnabled(true);
@@ -39,10 +45,12 @@ public class SettingsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static class PreferencesScreen extends PreferenceFragment {
+    public static class PreferencesScreen extends PreferenceFragment implements  SharedPreferences.OnSharedPreferenceChangeListener{
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
+
+
         }
 
         @Override
@@ -55,8 +63,27 @@ public class SettingsActivity extends AppCompatActivity {
             pref.setMaxValue(10000);
             pref.setDefaultValue(150);
             pref.setInterval(50);
+            pref.setCurrentValue(PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("luc.edu.neuroscienceapp.precision",0));
+
+            Toast.makeText(getActivity(),"CURRENT VALUE: " + PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("luc.edu.neuroscienceapp.precision",0), Toast.LENGTH_SHORT).show();
+
+            pref.setKey("luc.edu.neuroscienceapp.precision");
             pref.setMeasurementUnit("patches");
             getPreferenceScreen().addPreference(pref);
+
+            pref.setOnPreferenceChangeListener(new android.preference.Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(android.preference.Preference preference, Object newValue) {
+                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putInt("luc.edu.neuroscienceapp.precision", (int)newValue);
+                    Toast.makeText(getActivity(),"NEW VALUE: " + (int) newValue, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            });
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key){
+            findPreference("luc.edu.neuroscienceapp.precision").setDefaultValue(0);
         }
 
 
