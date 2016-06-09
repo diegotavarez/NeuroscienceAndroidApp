@@ -23,6 +23,7 @@ import org.fastica.FastICAException;
 import java.io.ByteArrayOutputStream;
 
 import luc.edu.neuroscienceapp.R;
+
 import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
@@ -88,7 +89,11 @@ public class ImagePatchesActivity extends AppCompatActivity {
             startActivity(intentAbout);
             return true;
         }
-
+        if (id == R.id.action_settings) {
+            Intent intentSettings = new Intent(ImagePatchesActivity.this, SettingsActivity.class);
+            startActivity(intentSettings);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

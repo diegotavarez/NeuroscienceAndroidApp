@@ -73,7 +73,11 @@ public class ImageChannelConversionActivity extends AppCompatActivity {
             startActivity(intentAbout);
             return true;
         }
-
+        if (id == R.id.action_settings) {
+            Intent intentSettings = new Intent(ImageChannelConversionActivity.this, SettingsActivity.class);
+            startActivity(intentSettings);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }
