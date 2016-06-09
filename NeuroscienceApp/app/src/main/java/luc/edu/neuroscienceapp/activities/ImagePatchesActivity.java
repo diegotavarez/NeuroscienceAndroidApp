@@ -9,11 +9,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.fastica.FastICAException;
 
@@ -28,6 +31,7 @@ public class ImagePatchesActivity extends AppCompatActivity {
     private ProgressDialog mProgressDialog;
     public Bitmap[] processedBitmaps = new Bitmap[0];
     public Bitmap scaledBitmap;
+    public int numberOfPatches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,10 @@ public class ImagePatchesActivity extends AppCompatActivity {
         scaledBitmap = Bitmap.createScaledBitmap(bt, bt.getWidth(), bt.getHeight(), false);
         processedBitmaps = new Bitmap[0];
         mProgressDialog = new ProgressDialog(ImagePatchesActivity.this);
+
+        numberOfPatches = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("luc.edu.neuroscienceapp.precision",150);
+        Toast.makeText(getApplicationContext(),String.valueOf(numberOfPatches) + " patches", Toast.LENGTH_SHORT).show();
+
         new PatchesExtractor().execute();
 
     }
@@ -105,7 +113,7 @@ public class ImagePatchesActivity extends AppCompatActivity {
 
             Bitmap[] bitmaps = null;
             try {
-                bitmaps = ImageProcessing.process(scaledBitmap);
+                bitmaps = ImageProcessing.process(scaledBitmap, numberOfPatches,20);
             } catch (FastICAException e) {
                 e.printStackTrace();
             }

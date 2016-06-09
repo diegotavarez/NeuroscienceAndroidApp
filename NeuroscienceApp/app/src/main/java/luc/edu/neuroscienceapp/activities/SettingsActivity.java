@@ -63,9 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
             pref.setMaxValue(10000);
             pref.setDefaultValue(150);
             pref.setInterval(50);
-            pref.setCurrentValue(PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("luc.edu.neuroscienceapp.precision",0));
-
-            Toast.makeText(getActivity(),"CURRENT VALUE: " + PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("luc.edu.neuroscienceapp.precision",0), Toast.LENGTH_SHORT).show();
+            pref.setCurrentValue(PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("luc.edu.neuroscienceapp.precision",150));
 
             pref.setKey("luc.edu.neuroscienceapp.precision");
             pref.setMeasurementUnit("patches");
@@ -83,7 +81,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key){
-            findPreference("luc.edu.neuroscienceapp.precision").setDefaultValue(0);
+            findPreference("luc.edu.neuroscienceapp.precision").setDefaultValue(150);
         }
 
 
