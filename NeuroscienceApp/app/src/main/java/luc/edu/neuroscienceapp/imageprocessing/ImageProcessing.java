@@ -5,10 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
+import android.util.Log;
 
-import org.ejml.simple.SimpleMatrix;
-import org.fastica.FastICA;
-import org.fastica.FastICAException;
+import org.fastica.math.Matrix;
+import luc.edu.neuroscienceapp.fastica.FastICA;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -37,11 +37,11 @@ public class ImageProcessing {
         return bmpGrayscale;
     }
 
-    public static SimpleMatrix bmpToMatrix(Bitmap source)
-    {
+    // Convert Bitmap to a 2D double array
+    public static double[][] bmpToMatrix(Bitmap source) {
         int width = source.getWidth();
         int height = source.getHeight();
-        SimpleMatrix result = new SimpleMatrix(height,width);
+        double[][] result = new double[height][width];
         int[] pixels = new int[width*height];
         source.getPixels(pixels, 0, width, 0, 0, width, height);
         int pixelsIndex = 0;
@@ -52,31 +52,17 @@ public class ImageProcessing {
                 // int g = (p & 0x00ff00) >> 8;
                 // int b = (p & 0x0000ff) >> 0;
                 //// We don't need g and b values, since the image is already in grayscale (r = g = b)
-                result.set(i,j,r);
+                result[i][j] = r;
                 pixelsIndex++;
             }
         }
         return result;
     }
 
-    private static Bitmap matrixToBmp(SimpleMatrix image) {
-        int width = image.numCols();
-        int height = image.numRows();
-        Bitmap bit = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        int alpha = 255;
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                int color = (int) image.get(j,i);
-                int newcolor = (alpha << 24) | (color << 16) | (color << 8) | color;
-                bit.setPixel(i,j,newcolor);
-            }
-        }
-        return bit;
-    }
-
-    private static Bitmap matrixToBmpScaled(SimpleMatrix image) {
-        int width = image.numCols();
-        int height = image.numRows();
+    // Convert a 2D double array to grayscale Bitmap
+    private static Bitmap matrixToBmpScaled(double[][] image) {
+        int width = image[0].length;
+        int height = image.length;
         Bitmap bit = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         int alpha = 255;
         Pair<Double,Double> minmax = elementMinMax(image);
@@ -85,8 +71,9 @@ public class ImageProcessing {
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                double c = image.get(j,i);
+                double c = image[j][i];
                 int color = (int) (255 * (c - min) / (max - min));
+                // this is how Bitmap stores the color
                 int newcolor = (alpha << 24) | (color << 16) | (color << 8) | color;
                 bit.setPixel(i,j,newcolor);
             }
@@ -94,13 +81,13 @@ public class ImageProcessing {
         return bit;
     }
 
-    private static Pair<Double,Double> elementMinMax(SimpleMatrix image) {
+    // Get the minimum and maximum values of a matrix
+    private static Pair<Double,Double> elementMinMax(double[][] image) {
         double min = Double.MAX_VALUE;
         double max = Double.MIN_VALUE;
-        for (int i = 0; i < image.numRows(); ++i) {
-            for (int j = 0; j < image.numCols(); ++j) {
-                double curr = image.get(i,j);
-//                double curr = image.get(j,i);
+        for (int i = 0; i < image[0].length; ++i) {
+            for (int j = 0; j < image.length; ++j) {
+                double curr = image[i][j];
                 if (min > curr)
                     min = curr;
                 if (curr > max)
@@ -110,25 +97,27 @@ public class ImageProcessing {
         return new Pair(min,max);
     }
 
-    static double[][] toDoubleMatrix (SimpleMatrix A) {
-        double[][] result = new double[A.numRows()][A.numCols()];
-        for (int i = 0; i < A.numRows(); ++i) {
-            for (int j = 0; j < A.numCols(); ++j) {
-                result[i][j] = A.get(i,j);
-            }
-        }
-        return result;
-    }
+    //
+    private static double calculateStd(double[][] window) {
 
-    private static double calculateStd(SimpleMatrix window) {
-        double mean = window.elementSum() / window.getNumElements();
-        double var = 0;
-        for (int i = 0; i < window.numRows(); ++i) {
-            for (int j = 0; j < window.numCols(); ++j) {
-                var += Math.pow((window.get(i,j) - mean), 2);
+        double sum = 0;
+        for (int i = 0; i < window.length; ++i) {
+            for (int j = 0; j < window[0].length; ++j) {
+                sum += window[i][j];
             }
         }
-        return Math.sqrt(var/(window.getNumElements()-1));
+
+        double numel = window.length * window[0].length;
+        double mean = sum / numel;
+
+        double var = 0;
+        for (int i = 0; i < window.length; ++i) {
+            for (int j = 0; j < window[0].length; ++j) {
+                var += Math.pow((window[i][j] - mean), 2);
+            }
+        }
+
+        return Math.sqrt(var/(numel-1));
     }
 
     public static Set<Pair<Integer,Integer>> pickRandom(int n, int k1, int k2, int l1, int l2) {
@@ -143,82 +132,69 @@ public class ImageProcessing {
         return picked;
     }
 
-    static double[][] toMatrix (SimpleMatrix A) {
-        double[][] result = new double[A.numRows()][A.numCols()];
-        for (int i = 0; i < A.numRows(); ++i) {
-            for (int j = 0; j < A.numCols(); ++j) {
-                result[i][j] = A.get(i,j);
-            }
-        }
-        return result;
+
+    public static Bitmap[] process(Bitmap bmp) throws Exception {
+        return process(bmp, 500, 20);
     }
 
-    public static Bitmap[] process(Bitmap bmp) throws FastICAException {
-        return process(bmp, 150, 20);
-    }
+    public static Bitmap[] process(Bitmap bmp, int numPatches, int numIca) throws Exception {
 
-    public static Bitmap[] process(Bitmap bmp, int numPatches, int num_ica) throws FastICAException {
+        double[][] image = bmpToMatrix(bmp);
 
-        SimpleMatrix image = bmpToMatrix(bmp);
+        int imageRows = image.length;
+        int imageCols = image[0].length;
 
-
-        // Collecting patches
-        int patch_size = 8;
-        int numMaxPossiblePatches = (image.numCols()-patch_size)*(image.numRows()-patch_size);
+        // Collecting random patches
+        int patchSize = 8;
+        int numMaxPossiblePatches = (imageCols-patchSize)*(imageRows-patchSize);
         int numMaxPatches = (numPatches <= numMaxPossiblePatches) ? numPatches : numMaxPossiblePatches;
         int numTries = numPatches*2;
         int numMaxTries = (numTries <= numMaxPossiblePatches) ? numTries : numMaxPossiblePatches;
 
-        SimpleMatrix image_patches = new SimpleMatrix(patch_size*patch_size, numMaxPatches);
-        Set<Pair<Integer,Integer>> indices = pickRandom(numMaxTries, 1, image.numRows()-patch_size,
-                1, image.numCols()-patch_size);
+        double[][] imagePatches = new double[numMaxPatches][patchSize*patchSize];
+
+        // Generating pairs with non-repeating indices in the image
+        Set<Pair<Integer,Integer>> indices =
+                pickRandom(numMaxTries, 1, imageRows-patchSize, 1, imageCols-patchSize);
 
         Iterator<Pair<Integer, Integer>> iterator = indices.iterator();
 
-        int cnt = 0;
-        while (iterator.hasNext() && cnt < numMaxPatches) {
+        int row = 0, col = 0;
+        while (iterator.hasNext() && row < numMaxPatches) {
             Pair<Integer,Integer> p = iterator.next();
             int x = p.getLeft();
             int y = p.getRight();
-            SimpleMatrix window = image.extractMatrix(x, x+patch_size, y, y+patch_size);
-            double std = calculateStd(window);
-            if (std > 0) {
-                window.reshape(patch_size*patch_size, 1);
-                image_patches.insertIntoThis(0, cnt, window);
+            // still have to check if (std > 0)
+            for (int xx = x; xx < (x + patchSize); xx++) {
+                for (int yy = y; yy < (y + patchSize); yy++) {
+                    imagePatches[row][col] = image[xx][yy];
+                    col++;
+                }
             }
-            cnt++;
+            col = 0; row++;
         }
-
-//        // PCA
-//        int num_pca = 20;
-//        PrincipalComponentAnalysis pca = new PrincipalComponentAnalysis();
-//        DenseMatrix64F pc = pca.pca(image_patches.transpose());
-//        SimpleMatrix principalComponents = new SimpleMatrix(pc);
-//        principalComponents = principalComponents.transpose();
-//        principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, num_pca);
-//
-//        Bitmap[] pca_images = new Bitmap[num_pca];
-//        for (int i = 0; i < num_pca; ++i) {
-//            SimpleMatrix column = principalComponents.extractMatrix(0, principalComponents.numRows(), i, i + 1);
-//            column.reshape(patch_size, patch_size);
-//            pca_images[i] = matrixToBmpScaled(column);
-//        }
 
         // ICA
-        double[][] X = toMatrix(image_patches);
-        FastICA ica = new FastICA(X, num_ica);
-        SimpleMatrix icaMatrix = new SimpleMatrix(ica.getSeparatingMatrix());
-//        SimpleMatrix icaMatrix = new SimpleMatrix(ica.getMixingMatrix());
+        FastICA ica = new FastICA();
+        ica.fit(imagePatches, numIca);
+        double[][] icaMatrix = Matrix.mult(ica.getK(), ica.getW());
 
-        Bitmap[] ica_images = new Bitmap[num_ica];
-        for (int i = 0; i < num_ica; ++i) {
-            SimpleMatrix column = icaMatrix.extractMatrix(i, i+1, 0, icaMatrix.numCols());
-            column.reshape(patch_size, patch_size);
-            ica_images[i] = matrixToBmpScaled(column);
+
+        // The columns of icaMatrix are the independent components
+        // Here we convert them to 8x8 Bitmap windows
+        Bitmap[] icaImages = new Bitmap[numIca];
+        double[][] column = new double[patchSize][patchSize];
+        for (int c = 0; c < numIca; c++) {
+            for (int i = 0, cnt = 0; i < patchSize; i++) {
+                for (int j = 0; j < patchSize; j++) {
+                    column[i][j] = icaMatrix[cnt][c];
+                    cnt++;
+                }
+            }
+            icaImages[c] = matrixToBmpScaled(column);
         }
 
-        return ica_images;
-
+        return icaImages;
     }
 
 }

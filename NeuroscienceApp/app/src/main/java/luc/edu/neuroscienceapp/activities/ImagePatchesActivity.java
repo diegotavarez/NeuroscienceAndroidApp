@@ -114,7 +114,7 @@ public class ImagePatchesActivity extends AppCompatActivity {
             Bitmap[] bitmaps = null;
             try {
                 bitmaps = ImageProcessing.process(scaledBitmap, numberOfPatches,20);
-            } catch (FastICAException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
