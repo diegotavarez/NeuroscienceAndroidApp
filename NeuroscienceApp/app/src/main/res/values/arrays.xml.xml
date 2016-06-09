@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="dialog_options">
-        <item>Take Photo</item>
-        <item>Choose from Library</item>
-        <item>Cancel</item>
-    </string-array>
-</resources>

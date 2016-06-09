@@ -18,9 +18,13 @@
             android:label="@string/title_activity_image_channel_conversion"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/action_settings"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".activities.ImageMenuActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.ImageGalleryActivity"
             android:label="@string/title_activity_gallery"
@@ -35,21 +39,37 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.ImageExamplePatchesActivity"
-            android:label="@string/title_activity_example_patches" />
+            android:label="@string/title_activity_example_patches"
+
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".activities.AboutActivity"
-            android:label="@string/title_activity_about" />
+            android:label="@string/title_activity_about"
+
+            android:theme="@style/AppTheme"/>
         <activity android:name=".activities.MainActivity">
+
+        </activity>
+        <activity android:name=".activities.SoundMenuActivity"
+
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activities.SoundGalleryActivity"
+
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SoundMenuActivity"></activity>
         <activity
             android:name=".activities.CameraActivity"
             android:label="@string/camera_activity" />
+        <activity
+            android:name=".activities.CameraDisplayActivity"
+            android:label="@string/camera_display_activity" />
     </application>
+
 
 </manifest>

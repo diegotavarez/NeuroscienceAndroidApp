@@ -27,7 +27,7 @@
             android:paddingBottom="@dimen/activity_horizontal_margin"
             android:textColor="@color/colorTextLight"
             android:layout_height="match_parent"
-            android:text="@string/main_subtitle"/>
+            android:text="@string/main_subtitle_sound"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                 android:id="@+id/bt_gallery"
                 android:layout_centerHorizontal="true"
                 android:alpha="0.3"
-                android:src="@drawable/gallery_icon"
+                android:src="@drawable/choose_sound"
                 android:background="@android:color/transparent"/>
 
             <TextView
@@ -112,7 +112,8 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:layout_width="60dp"
+
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:scaleType="fitXY"
                 android:text="@string/option_choose_sound"
@@ -120,7 +121,7 @@
                 android:alpha="0.3"
                 android:layout_below="@+id/bt_examples"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/camera_icon"
+                android:src="@drawable/play_button"
                 android:background="@android:color/transparent"/>
 
 

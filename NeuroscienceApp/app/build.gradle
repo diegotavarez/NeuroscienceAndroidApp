@@ -35,4 +35,6 @@ dependencies {
     // Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
+    //Material SeekBar Preference
+    compile 'com.pavelsikun:material-seekbar-preference:2.3.0+'
 }
