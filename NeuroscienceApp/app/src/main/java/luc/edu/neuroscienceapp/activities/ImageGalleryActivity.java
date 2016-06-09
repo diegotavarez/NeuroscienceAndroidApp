@@ -96,6 +96,7 @@ public class ImageGalleryActivity extends AppCompatActivity {
      */
     private void prepareAlbums() {
         int[] covers = Global.covers;
+        int[] covers_ica = Global.covers_ica;
         String[] titles = Global.titles;
         boolean[] labels = Global.labels;
 
@@ -107,7 +108,7 @@ public class ImageGalleryActivity extends AppCompatActivity {
             } else {
                 lab = "Non-natural Image";
             }
-            a = new CardImage(titles[i], covers[i], i, lab);
+            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
             albumList.add(a);
         }
 

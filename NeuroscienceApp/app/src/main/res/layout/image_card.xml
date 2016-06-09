@@ -33,7 +33,7 @@
                 android:scaleType="fitXY" />
 
             <ImageView
-                android:id="@+id/thumbnail_2"
+                android:id="@+id/thumbnail_ica"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="@dimen/album_cover_height"

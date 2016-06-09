@@ -33,7 +33,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, category, id;
-        public ImageView thumbnail;
+        public ImageView thumbnail, thumbnail_ica;
         public LinearLayout cardColor;
 
         public MyViewHolder(View view) {
@@ -44,6 +44,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             cardColor = (LinearLayout) view.findViewById(R.id.card_color);
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+            thumbnail_ica = (ImageView) view.findViewById(R.id.thumbnail_ica);
         }
 
     }
@@ -70,6 +71,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         holder.category.setText(album.getCategory());
         holder.id.setText(String.valueOf(album.getId()));
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
+        Glide.with(mContext).load(album.getThumbnailIca()).into(holder.thumbnail_ica);
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
