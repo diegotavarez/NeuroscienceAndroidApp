@@ -83,6 +83,16 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             }
         });
 
+        holder.thumbnail_ica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCard = new Intent(mContext, ImageGrayscaleCardActivity.class);
+                intentCard.putExtra("card_id", holder.id.getText().toString());
+                intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intentCard);
+            }
+        });
+
 
         if (holder.category.getText().toString().equals("Natural Image")) {
             holder.cardColor.setBackgroundColor(Color.parseColor("#8bc34a"));
