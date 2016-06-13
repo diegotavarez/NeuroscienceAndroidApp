@@ -35,13 +35,27 @@ public class Global {
           R.drawable.keyboard,
           R.drawable.laser,
           R.drawable.wolf,
-          R.drawable.bedroom,
-          R.drawable.flowers,
-          R.drawable.grass,
-          R.drawable.grasshopper,
+          R.drawable.bird,
+          R.drawable.cow,
+          R.drawable.cricket,
+          R.drawable.footstep,
+          R.drawable.wind,
           R.drawable.cat,
-          R.drawable.starry_night,
-          R.drawable.newspaper,
+          R.drawable.human_no
+  };
+
+  public static int[] sounds = new int[]{
+          R.raw.bear,
+          R.raw.typing,
+          R.raw.laser,
+          R.raw.wolf,
+          R.raw.bird,
+          R.raw.cow,
+          R.raw.cricket,
+          R.raw.footsteps,
+          R.raw.wind,
+          R.raw.cat,
+          R.raw.human_no
   };
 
   public static int[] covers_ica = new int[]{
@@ -77,13 +91,13 @@ public class Global {
             "Keyboard",
             "Laser",
             "Wolf",
-            "Bedroom",
-            "Flowers",
-            "Grass",
-            "Grasshopper",
+            "Bird",
+            "Cow",
+            "Cricket",
+            "Footsteps",
+            "Wind",
             "Cat",
-            "Starry Night",
-            "Newspaper"
+            "Human Speech"
     };
 
   public static String[] titles = new String[]{

@@ -6,6 +6,7 @@ package luc.edu.neuroscienceapp.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import java.util.List;
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.activities.ImageGrayscaleCardActivity;
 import luc.edu.neuroscienceapp.entities.CardImage;
+import luc.edu.neuroscienceapp.entities.Global;
 
 public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHolder> {
 
@@ -33,7 +35,7 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, category, id;
-        public ImageView thumbnail, thumbnail_ica;
+        public ImageView thumbnail, thumbnail_ica, play_button;
         public LinearLayout cardColor;
 
         public MyViewHolder(View view) {
@@ -45,6 +47,7 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             thumbnail_ica = (ImageView) view.findViewById(R.id.thumbnail_ica);
+            play_button = (ImageView) view.findViewById(R.id.play_button);
         }
 
     }
@@ -65,7 +68,7 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        CardImage album = imageList.get(position);
+        final CardImage album = imageList.get(position);
 
         holder.title.setText(album.getName());
         holder.category.setText(album.getCategory());
@@ -93,6 +96,14 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
             }
         });
 
+        holder.play_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer mPlayer2;
+                mPlayer2= MediaPlayer.create(mContext, Global.sounds[album.getId()]);
+                mPlayer2.start();
+            }
+        });
 
         if (holder.category.getText().toString().equals("Harmonic Sound")) {
             holder.cardColor.setBackgroundColor(Color.parseColor("#8bc34a"));
