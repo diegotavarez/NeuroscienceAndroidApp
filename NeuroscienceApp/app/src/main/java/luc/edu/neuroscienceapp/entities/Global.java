@@ -30,6 +30,20 @@ public class Global {
           R.drawable.newspaper,
   };
 
+  public static int[] sound_covers = new int[]{
+          R.drawable.bear,
+          R.drawable.keyboard,
+          R.drawable.laser,
+          R.drawable.wolf,
+          R.drawable.bedroom,
+          R.drawable.flowers,
+          R.drawable.grass,
+          R.drawable.grasshopper,
+          R.drawable.cat,
+          R.drawable.starry_night,
+          R.drawable.newspaper,
+  };
+
   public static int[] covers_ica = new int[]{
           R.drawable.carpet_ica,
           R.drawable.tv_static_ica,
@@ -58,7 +72,19 @@ public class Global {
           R.drawable.newspaper_grayscale,
   };
 
-
+    public static String[] sound_titles = new String[]{
+            "Bear",
+            "Keyboard",
+            "Laser",
+            "Wolf",
+            "Bedroom",
+            "Flowers",
+            "Grass",
+            "Grasshopper",
+            "Cat",
+            "Starry Night",
+            "Newspaper"
+    };
 
   public static String[] titles = new String[]{
           "Carpet",

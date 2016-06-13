@@ -51,8 +51,8 @@
 
             android:theme="@style/AppTheme"/>
         <activity android:name=".activities.SoundGalleryActivity"
-
-            android:theme="@style/AppTheme"/>
+            android:label="@string/title_activity_gallery"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

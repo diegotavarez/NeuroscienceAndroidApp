@@ -21,13 +21,14 @@ import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
+import luc.edu.neuroscienceapp.adapters.SoundsAdapter;
 import luc.edu.neuroscienceapp.entities.CardImage;
 import luc.edu.neuroscienceapp.entities.Global;
 
 public class SoundGalleryActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ImagesAdapter adapter;
+    private SoundsAdapter adapter;
     private List<CardImage> albumList;
 
     @Override
@@ -42,7 +43,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         albumList = new ArrayList<>();
-        adapter = new ImagesAdapter(getApplicationContext(), albumList);
+        adapter = new SoundsAdapter(getApplicationContext(), albumList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -95,18 +96,18 @@ public class SoundGalleryActivity extends AppCompatActivity {
      * Adding few albums for testing
      */
     private void prepareAlbums() {
-        int[] covers = Global.covers; //Change!
+        int[] covers = Global.sound_covers;
         int[] covers_ica = Global.covers_ica;
-        String[] titles = Global.titles;
+        String[] titles = Global.sound_titles;
         boolean[] labels = Global.labels;
 
         CardImage a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (labels[i]) {
-                lab = "Natural Image";
+                lab = "Harmonic Sound";
             } else {
-                lab = "Non-natural Image";
+                lab = "Inharmonic Sound";
             }
             a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
             albumList.add(a);
