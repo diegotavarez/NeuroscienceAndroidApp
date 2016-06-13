@@ -97,7 +97,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
      */
     private void prepareAlbums() {
         int[] covers = Global.sound_covers;
-        int[] covers_ica = Global.covers_ica;
+        int[] covers_ica = Global.sound_covers_ica;
         String[] titles = Global.sound_titles;
         boolean[] labels = Global.labels;
 

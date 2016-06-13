@@ -72,6 +72,20 @@ public class Global {
           R.drawable.newspaper_ica,
   };
 
+    public static int[] sound_covers_ica = new int[]{
+            R.drawable.bear_filters,
+            R.drawable.typing_filters,
+            R.drawable.laser_filters,
+            R.drawable.wolf_filters,
+            R.drawable.bedroom_ica,
+            R.drawable.cow_filters,
+            R.drawable.cricket_filters,
+            R.drawable.footsteps_filters,
+            R.drawable.wind_filters,
+            R.drawable.cat_filters,
+            R.drawable.human_no_filters,
+    };
+
   public static int[] covers_grayscale = new int[]{
           R.drawable.carpet_grayscale,
           R.drawable.tv_static_grayscale,
