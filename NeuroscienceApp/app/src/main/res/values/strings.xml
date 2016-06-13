@@ -44,7 +44,8 @@
 
     <string name="title_activity_about">About the App</string>
 
-    <!--Slider Strings-->
+    <string name="camera_activity">Take a picture</string>
+    <string name="camera_display_activity">Confirm picture</string>
 
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>

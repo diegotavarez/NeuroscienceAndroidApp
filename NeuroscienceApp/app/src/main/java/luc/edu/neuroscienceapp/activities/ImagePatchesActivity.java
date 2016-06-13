@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -57,7 +58,21 @@ public class ImagePatchesActivity extends AppCompatActivity {
             }
         });
 
-        Bitmap bt = Global.imgGrayscale;
+        /*
+         * Load image stored by the camera implementation
+         */
+        Intent intent = getIntent();
+        boolean fromCamera = intent.getExtras().getBoolean("fromCamera");
+        Bitmap bt;
+        if(fromCamera){
+            final String picturePath = getIntent().getExtras().getString("picture");
+            bt = BitmapFactory.decodeFile(picturePath);
+        /*
+         * Or convert the image coming from the Gallery
+         */
+        } else {
+            bt = Global.imgGrayscale;
+        }
         scaledBitmap = Bitmap.createScaledBitmap(bt, bt.getWidth(), bt.getHeight(), false);
         processedBitmaps = new Bitmap[0];
         mProgressDialog = new ProgressDialog(ImagePatchesActivity.this);
