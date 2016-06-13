@@ -45,6 +45,8 @@ public class CameraActivity extends Activity {
     private int PICTURE_WIDTH = 2048;
     private int PICTURE_HEIGHT = 1152;
 
+    private static Handler handler;
+
     private void createCamera(){
         // Create an instance of Camera
         try{
@@ -91,26 +93,24 @@ public class CameraActivity extends Activity {
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(mPreview);
 
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                // Load the next Activity used to show the picture taken
+                Intent confirmationIntent = new Intent(CameraActivity.this, CameraDisplayActivity.class);
+                confirmationIntent.putExtra("picture", getOutputPhotoFile().toString());
+                startActivityForResult(confirmationIntent, PICTURE_CONFIRMATION);
+            }
+        };
         btCapture = (ImageButton) findViewById(R.id.bt_capture);
         btCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /** This method is asynchronous. Therefore, the following approach tries to solve the communication problem */
-                final Handler handler = new Handler() {
-                    @Override
-                    public void handleMessage(Message msg) {
-                        // Load the next Activity used to show the picture taken
-                        Intent confirmationIntent = new Intent(CameraActivity.this, CameraDisplayActivity.class);
-                        confirmationIntent.putExtra("picture", getOutputPhotoFile().toString());
-                        startActivityForResult(confirmationIntent, PICTURE_CONFIRMATION);
-                    }
-                };
-
                 Runnable runnable = new Runnable() {
                     public void run() {
                         // Insert network call here!
                         mCamera.takePicture(null, null, null, mPicture); // Using jpeg
-                        handler.sendEmptyMessage(0);
                     }
                 };
                 Thread mythread = new Thread(runnable);
@@ -145,7 +145,7 @@ public class CameraActivity extends Activity {
                 FileOutputStream fos = new FileOutputStream(pictureFile);
                 fos.write(data);
                 fos.close();
-
+                handler.sendEmptyMessage(0);
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -155,7 +155,6 @@ public class CameraActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        releaseCamera();          // release the camera immediately on pause event
     }
 
     @Override
