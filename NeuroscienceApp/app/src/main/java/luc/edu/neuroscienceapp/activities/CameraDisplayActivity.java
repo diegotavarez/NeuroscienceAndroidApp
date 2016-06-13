@@ -3,11 +3,9 @@ package luc.edu.neuroscienceapp.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.media.Image;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -16,7 +14,7 @@ import java.io.File;
 import luc.edu.neuroscienceapp.R;
 
 /**
- * Created by captain on 6/9/16.
+ * Created by vinicius on 6/9/16.
  */
 public class CameraDisplayActivity extends Activity {
 
@@ -26,7 +24,7 @@ public class CameraDisplayActivity extends Activity {
         setContentView(R.layout.activity_camera_display);
 
         Intent intent = getIntent();
-        String picturePath = intent.getExtras().getString("picture");
+        final String picturePath = intent.getExtras().getString("picture");
         System.out.println(picturePath);
         ImageView imageview;
         imageview = (ImageView) findViewById(R.id.picture_preview);
@@ -37,6 +35,20 @@ public class CameraDisplayActivity extends Activity {
             @Override
             public void onClick(View v) {
                 setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
+
+        ImageButton btConfirm = (ImageButton) findViewById(R.id.bt_confirm);
+        btConfirm.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                setResult(RESULT_OK);
+
+                Intent intentPatches = new Intent(CameraDisplayActivity.this, ImagePatchesActivity.class);
+                intentPatches.putExtra("picture", picturePath);
+                intentPatches.putExtra("fromCamera", true);
+                startActivity(intentPatches);
             }
         });
     }

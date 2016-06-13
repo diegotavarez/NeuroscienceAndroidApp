@@ -48,6 +48,7 @@ public class ImageChannelConversionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentPatches = new Intent(ImageChannelConversionActivity.this, ImagePatchesActivity.class);
+                intentPatches.putExtra("fromCamera", false);
                 startActivity(intentPatches);
             }
         });

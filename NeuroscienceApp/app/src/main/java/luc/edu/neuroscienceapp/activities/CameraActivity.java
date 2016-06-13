@@ -12,16 +12,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.view.Surface;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.view.View;
-import android.widget.ImageView;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.net.URI;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.utils.FileManager;
@@ -123,8 +120,6 @@ public class CameraActivity extends Activity {
         if(resultCode == PICTURE_CONFIRMATION) {
             if (requestCode == RESULT_OK) {
 
-            } else if (requestCode == RESULT_CANCELED) {   // User
-                System.out.println("voltando");
             }
         }
     }
@@ -182,5 +177,14 @@ public class CameraActivity extends Activity {
             mCamera.release();        // release the camera for other applications
             mCamera = null;
         }
+    }
+
+    /**
+     * The camera should be released when return to the main menu
+     */
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        releaseCamera();
     }
 }
