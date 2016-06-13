@@ -1,17 +1,27 @@
 package luc.edu.neuroscienceapp.activities;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.Parameters;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
 import android.view.Surface;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.net.URI;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.utils.FileManager;
@@ -23,7 +33,9 @@ import luc.edu.neuroscienceapp.views.CameraPreview;
  * This approach is deprecated in API level 21
  */
 public class CameraActivity extends Activity {
-    public String photoFileName = "photo.jpg";
+    public static final int PICTURE_CONFIRMATION = 0;
+    public String photoFileName = "photo.bmp";
+    public final String APP_TAG = "NeuroscienceApp";
     FileManager fileManager = new FileManager();
     static final int MEDIA_TYPE_IMAGE = 1;
 
@@ -42,6 +54,20 @@ public class CameraActivity extends Activity {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private File getOutputPhotoFile() {
+
+        File directory = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), getPackageName());
+
+        if (!directory.exists()) {
+            if (!directory.mkdirs()) {
+                return null;
+            }
+        }
+
+        return new File(directory.getPath() + File.separator + photoFileName);
     }
 
     @Override
@@ -69,21 +95,47 @@ public class CameraActivity extends Activity {
         btCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCamera.takePicture(null, null, null, mPicture); // Using jpeg
-                // Load the next Activity used to show the picture taken
+                /** This method is asynchronous. Therefore, the following approach tries to solve the communication problem */
+                final Handler handler = new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        // Load the next Activity used to show the picture taken
+                        Intent confirmationIntent = new Intent(CameraActivity.this, CameraDisplayActivity.class);
+                        confirmationIntent.putExtra("picture", getOutputPhotoFile().toString());
+                        startActivityForResult(confirmationIntent, PICTURE_CONFIRMATION);
+                    }
+                };
 
+                Runnable runnable = new Runnable() {
+                    public void run() {
+                        // Insert network call here!
+                        mCamera.takePicture(null, null, null, mPicture); // Using jpeg
+                        handler.sendEmptyMessage(0);
+                    }
+                };
+                Thread mythread = new Thread(runnable);
+                mythread.start();
             }
         });
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == PICTURE_CONFIRMATION) {
+            if (requestCode == RESULT_OK) {
+
+            } else if (requestCode == RESULT_CANCELED) {   // User
+                System.out.println("voltando");
+            }
+        }
+    }
+
 
     /** Responsible to process the returned image from the camera */
-    private Camera.PictureCallback mPicture = new Camera.PictureCallback() {
+    private PictureCallback mPicture = new PictureCallback() {
 
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
-//
-            File pictureFile = getOutputMediaFile();
+            File pictureFile = getOutputPhotoFile();
             if (pictureFile == null){
                 // Error
                 return;
@@ -97,44 +149,8 @@ public class CameraActivity extends Activity {
             } catch (Exception e){
                 e.printStackTrace();
             }
-//
-//            try {
-//                FileOutputStream fos = new FileOutputStream(pictureFile);
-//                fos.write(data);
-//                fos.close();
-//            } catch (FileNotFoundException e) {
-//                Log.d(TAG, "File not found: " + e.getMessage());
-//            } catch (IOException e) {
-//                Log.d(TAG, "Error accessing file: " + e.getMessage());
-//            }
         }
     };
-
-    private static File getOutputMediaFile() {
-        FileManager manager = new FileManager();
-        File mediaStorageDir;
-        try{
-            mediaStorageDir = manager.createTemporaryFile("photo","jpg");
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-//
-//        if (!mediaStorageDir.exists()) {
-//            if (!mediaStorageDir.mkdirs()) {
-//                Log.d("MyCameraApp", "failed to create directory");
-//                return null;
-//            }
-//        }
-        // Create a media file name
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
-//                .format(new Date());
-//        File mediaFile;
-//        mediaFile = new File(mediaStorageDir.getPath() + File.separator
-//                + "IMG_" + timeStamp + ".jpg");
-
-        return mediaStorageDir;
-    }
 
     @Override
     protected void onPause() {
