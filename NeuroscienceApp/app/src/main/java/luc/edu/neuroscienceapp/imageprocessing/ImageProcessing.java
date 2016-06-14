@@ -7,6 +7,8 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.util.Log;
 
+import org.ejml.data.DenseMatrix64F;
+import org.ejml.simple.SimpleMatrix;
 import org.fastica.math.Matrix;
 import luc.edu.neuroscienceapp.fastica.FastICA;
 
@@ -54,6 +56,16 @@ public class ImageProcessing {
                 //// We don't need g and b values, since the image is already in grayscale (r = g = b)
                 result[i][j] = r;
                 pixelsIndex++;
+            }
+        }
+        return result;
+    }
+
+    static double[][] toMatrix (DenseMatrix64F A) {
+        double[][] result = new double[A.numRows][A.numCols];
+        for (int i = 0; i < A.numRows; ++i) {
+            for (int j = 0; j < A.numCols; ++j) {
+                result[i][j] = A.get(i,j);
             }
         }
         return result;
@@ -174,11 +186,24 @@ public class ImageProcessing {
             col = 0; row++;
         }
 
+        // PCA
+        int numPca = 30;
+        PrincipalComponentAnalysis pca = new PrincipalComponentAnalysis();
+        SimpleMatrix pcaIn = new SimpleMatrix(imagePatches.clone());
+
+        DenseMatrix64F pc = pca.pca(pcaIn);
+		SimpleMatrix principalComponents = new SimpleMatrix(pc);
+		principalComponents = principalComponents.transpose();
+		principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, numPca);
+        double[][] pcaMatrix = toMatrix(principalComponents.getMatrix());
+
         // ICA
         FastICA ica = new FastICA();
         ica.fit(imagePatches, numIca);
         double[][] icaMatrix = Matrix.mult(ica.getK(), ica.getW());
 
+        // Choice between PCA and ICA
+        icaMatrix = pcaMatrix.clone();
 
         // The columns of icaMatrix are the independent components
         // Here we convert them to 8x8 Bitmap windows

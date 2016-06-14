@@ -43,6 +43,11 @@
 
             android:theme="@style/AppTheme"/>
         <activity
+            android:name=".activities.SoundExampleFiltersActivity"
+            android:label="@string/title_activity_example_patches"
+
+            android:theme="@style/AppTheme"/>
+        <activity
             android:name=".activities.AboutActivity"
             android:label="@string/title_activity_about"
 
