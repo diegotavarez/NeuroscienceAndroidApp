@@ -2,10 +2,12 @@ package luc.edu.neuroscienceapp.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.Parameters;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import android.view.Surface;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.view.View;
+
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -78,7 +82,7 @@ public class CameraActivity extends Activity {
         // To make camera parameters take effect, applications have to call setParameters(Camera.Parameters).
         Camera.Parameters camParams = mCamera.getParameters();
         camParams.setColorEffect(Camera.Parameters.EFFECT_MONO);
-        camParams.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+        camParams.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         camParams.setPictureSize(PICTURE_WIDTH, PICTURE_HEIGHT);
         camParams.setJpegQuality(90);
         mCamera.setParameters(camParams);
@@ -138,7 +142,26 @@ public class CameraActivity extends Activity {
 
             try{
                 FileOutputStream fos = new FileOutputStream(pictureFile);
-                fos.write(data);
+                /**
+                 * The following code solves saves the image as a jpg and rotate it if necessary
+                 *
+                 *
+                 */
+                Bitmap image = BitmapFactory.decodeByteArray(data, 0, data.length);
+                ExifInterface exif=new ExifInterface(pictureFile.toString());
+
+                if(exif.getAttribute(ExifInterface.TAG_ORIENTATION).equalsIgnoreCase("6")){
+                    image= TransformationUtils.rotateImage(image, 90);
+                } else if(exif.getAttribute(ExifInterface.TAG_ORIENTATION).equalsIgnoreCase("8")){
+                    image= TransformationUtils.rotateImage(image, 270);
+                } else if(exif.getAttribute(ExifInterface.TAG_ORIENTATION).equalsIgnoreCase("3")){
+                    image= TransformationUtils.rotateImage(image, 180);
+                } else if(exif.getAttribute(ExifInterface.TAG_ORIENTATION).equalsIgnoreCase("0")){
+                    image= TransformationUtils.rotateImage(image, 90);
+                }
+
+                image.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+//                fos.write(data);
                 fos.close();
                 handler.sendEmptyMessage(0);
             } catch (Exception e){
@@ -155,6 +178,9 @@ public class CameraActivity extends Activity {
     @Override
     protected void onResume(){
         super.onResume();
+        /**
+         * The following code makes the camera to follow the display orientation
+         */
         createCamera();
         Camera.CameraInfo info = new Camera.CameraInfo();
         Camera.getCameraInfo(Camera.CameraInfo.CAMERA_FACING_BACK, info);
@@ -168,6 +194,9 @@ public class CameraActivity extends Activity {
             case Surface.ROTATION_270: degrees = 270; break;
         }
         int result = (info.orientation - degrees + 360) % 360;
+        Camera.Parameters params = mCamera.getParameters();
+        params.setRotation(result);
+        mCamera.setParameters(params);
         mCamera.setDisplayOrientation(result);
     }
 
