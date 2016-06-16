@@ -34,7 +34,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_gallery);
+        setContentView(R.layout.activity_sound_gallery);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -54,7 +54,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
         prepareAlbums();
 
         try {
-            Glide.with(this).load(R.drawable.real_receptive_fields).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.sound_filters).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }

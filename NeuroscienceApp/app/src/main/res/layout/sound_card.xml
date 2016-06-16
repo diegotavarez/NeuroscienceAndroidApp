@@ -78,30 +78,36 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:paddingRight="@dimen/album_title_padding"
                     android:paddingTop="@dimen/album_title_padding"
-                    android:textColor="@color/colorText"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:text="Title"
+                    android:textStyle="bold"
                     android:textSize="@dimen/album_title" />
 
                 <TextView
                     android:id="@+id/category"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/songs_count_padding_bottom"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|right"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:text="Category"
                     android:textColor="@color/colorAccent"
-                    android:textStyle="italic"
+                    android:textStyle="normal"
                     android:paddingRight="@dimen/album_title_padding"
+                    android:background="@color/colorPrimary"
                     android:textSize="@dimen/category_size" />
             </LinearLayout>
 

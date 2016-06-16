@@ -77,7 +77,7 @@ public class Global {
             R.drawable.typing_filters,
             R.drawable.laser_filters,
             R.drawable.wolf_filters,
-            R.drawable.bedroom_ica,
+            R.drawable.birdfilters,
             R.drawable.cow_filters,
             R.drawable.cricket_filters,
             R.drawable.footsteps_filters,

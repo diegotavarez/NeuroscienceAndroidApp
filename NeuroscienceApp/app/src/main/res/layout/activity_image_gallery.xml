@@ -32,6 +32,15 @@ android:fitsSystemWindows="true">
             android:layout_height="match_parent">
 
             <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:alpha="0.1"
+            android:backgroundTint="@color/colorAccent"
+            android:src="@drawable/real_receptive_fields_bw"
+            android:id="@+id/imageView" />
+
+            <ImageView
                 android:id="@+id/backdrop"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -59,9 +68,9 @@ android:fitsSystemWindows="true">
                     android:text="@string/backdrop_title"
                     android:layout_gravity="right"
                     android:gravity="right"
-                    android:textStyle="italic"
+                    android:textStyle="bold"
                     android:alpha="0.8"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="#C6FF00"
                     android:textSize="@dimen/backdrop_title" />
 
                 <TextView

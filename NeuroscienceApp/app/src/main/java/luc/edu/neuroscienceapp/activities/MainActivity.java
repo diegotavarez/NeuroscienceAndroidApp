@@ -10,14 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button image_button;
-    Button sound_button;
+    ImageButton image_button;
+    ImageButton sound_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        image_button = (Button) findViewById(R.id.image_button);
-        sound_button = (Button) findViewById(R.id.sound_button);
+        image_button = (ImageButton) findViewById(R.id.image_button);
+        sound_button = (ImageButton) findViewById(R.id.sound_button);
 
         image_button.setOnClickListener(new View.OnClickListener() {
             @Override

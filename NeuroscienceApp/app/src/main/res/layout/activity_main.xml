@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +16,18 @@
         android:orientation="horizontal"
         android:weightSum="1"
         android:background="@color/colorPrimary">
-
+        <TextView
+            android:layout_width="230dp"
+            android:paddingLeft="50dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal|center_vertical"
+            android:textStyle="italic"
+            android:textSize="17sp"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:textColor="@color/colorTextLight"
+            android:layout_height="match_parent"
+            android:text="@string/main_subtitle_sound"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -26,7 +36,7 @@
             android:alpha="0.8"
             android:backgroundTint="@color/colorAccent"
             android:src="@drawable/halfbrain"
-            android:id="@+id/imageView" /> <!---Change photo-->
+            android:id="@+id/imageView" />
 
 
     </LinearLayout>
@@ -40,30 +50,60 @@
         android:orientation="horizontal"
         android:id="@+id/layout_buttons">
 
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/option_image"
-            android:id="@+id/image_button"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical">
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="fitXY"
+                android:id="@+id/image_button"
+                android:layout_centerHorizontal="true"
+                android:alpha="0.8"
+                android:src="@drawable/gallery_icon"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="@string/option_image" />
+        </LinearLayout>
 
 
-
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/option_sound"
-            android:id="@+id/sound_button"
-            android:layout_below="@+id/image_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical" />
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="fitXY"
+                android:id="@+id/sound_button"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/choose_sound"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="@string/option_sound" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
 
 </LinearLayout>
-
-
