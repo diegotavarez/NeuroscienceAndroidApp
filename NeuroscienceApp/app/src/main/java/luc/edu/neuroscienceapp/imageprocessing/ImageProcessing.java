@@ -10,7 +10,10 @@ import android.util.Log;
 import org.ejml.data.DenseMatrix64F;
 import org.ejml.simple.SimpleMatrix;
 import org.fastica.math.Matrix;
-import luc.edu.neuroscienceapp.fastica.FastICA;
+
+import luc.edu.neuroscienceapp.fastICAclone.FastICAclone;
+//import luc.edu.neuroscienceapp.fastica.FastICA;
+import luc.edu.neuroscienceapp.fastICAclone.FastICA;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -167,7 +170,7 @@ public class ImageProcessing {
 
         // Generating pairs with non-repeating indices in the image
         Set<Pair<Integer,Integer>> indices =
-                pickRandom(numMaxTries, 1, imageRows-patchSize, 1, imageCols-patchSize);
+                pickRandom(numMaxTries, 1, imageRows - patchSize, 1, imageCols - patchSize);
 
         Iterator<Pair<Integer, Integer>> iterator = indices.iterator();
 
@@ -186,24 +189,34 @@ public class ImageProcessing {
             col = 0; row++;
         }
 
+        long start = System.currentTimeMillis();
         // PCA
-        int numPca = 30;
-        PrincipalComponentAnalysis pca = new PrincipalComponentAnalysis();
-        SimpleMatrix pcaIn = new SimpleMatrix(imagePatches.clone());
+//        int numPca = 30;
+//        PrincipalComponentAnalysis pca = new PrincipalComponentAnalysis();
+//        SimpleMatrix pcaIn = new SimpleMatrix(imagePatches.clone());
 
-        DenseMatrix64F pc = pca.pca(pcaIn);
-		SimpleMatrix principalComponents = new SimpleMatrix(pc);
-		principalComponents = principalComponents.transpose();
-		principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, numPca);
-        double[][] pcaMatrix = toMatrix(principalComponents.getMatrix());
+        FastICA fastIca = new FastICA(imagePatches, numIca);
+//        FastICAclone fastIca = new FastICAclone(imagePatches, numIca);
 
-        // ICA
-        FastICA ica = new FastICA();
-        ica.fit(imagePatches, numIca);
-        double[][] icaMatrix = Matrix.mult(ica.getK(), ica.getW());
+
+//        DenseMatrix64F pc = pca.pca(pcaIn);
+//		SimpleMatrix principalComponents = new SimpleMatrix(pc);
+//		principalComponents = principalComponents.transpose();
+//		principalComponents = principalComponents.extractMatrix(0, principalComponents.numCols(), 0, numPca);
+//        double[][] pcaMatrix = toMatrix(principalComponents.getMatrix());
+//
+//        // ICA
+//        FastICA ica = new FastICA();
+//        ica.fit(imagePatches, numIca);
+//        double[][] icaMatrix = Matrix.mult(ica.getK(), ica.getW());
+
+        double[][] icaMatrix = fastIca.getSeparatingMatrix();
+//        double[][] icaMatrix = fastIca.getResultMatrix();
+
+//        System.out.println("Time: "+(System.currentTimeMillis()-start));
 
         // Choice between PCA and ICA
-        icaMatrix = pcaMatrix.clone();
+//        icaMatrix = pcaMatrix.clone();
 
         // The columns of icaMatrix are the independent components
         // Here we convert them to 8x8 Bitmap windows
@@ -212,7 +225,8 @@ public class ImageProcessing {
         for (int c = 0; c < numIca; c++) {
             for (int i = 0, cnt = 0; i < patchSize; i++) {
                 for (int j = 0; j < patchSize; j++) {
-                    column[i][j] = icaMatrix[cnt][c];
+//                    column[i][j] = icaMatrix[cnt][c];
+                    column[i][j] = icaMatrix[c][cnt];
                     cnt++;
                 }
             }
