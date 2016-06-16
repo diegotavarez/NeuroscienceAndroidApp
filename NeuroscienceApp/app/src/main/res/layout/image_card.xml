@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:id="@+id/card_color"
-                android:background="@color/colorAccent"
+                android:background="@android:color/white"
                 android:orientation="vertical">
 
             </LinearLayout>
@@ -69,8 +69,8 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:paddingRight="@dimen/album_title_padding"
-                    android:paddingTop="@dimen/album_title_padding"
-                    android:background="@color/colorAccent"
+                    android:paddingBottom="10dp"
+                    android:background="@android:color/white"
                     android:textColor="@color/colorPrimary"
                     android:text="Title"
                     android:textStyle="bold"
@@ -86,10 +86,10 @@
                     android:paddingTop="3dp"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:text="Category"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="normal"
                     android:paddingRight="@dimen/album_title_padding"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorAccent"
                     android:textSize="@dimen/category_size" />
             </LinearLayout>
 
