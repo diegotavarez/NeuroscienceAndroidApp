@@ -12,29 +12,36 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="@dimen/img_width_height"
-            android:layout_height="@dimen/img_width_height"
-            android:src="@drawable/examples_icon" />
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="fitEnd"
+            android:alpha="0.8"
+            android:backgroundTint="@color/colorAccent"
+            android:src="@drawable/halfbrain"
+            android:id="@+id/imageView" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp"
             android:text="@string/slide_4_title"
-            android:textColor="@android:color/white"
             android:textSize="@dimen/slide_title"
-            android:textStyle="bold" />
+            android:textStyle="italic"
+            android:textColor="@color/colorAccent"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:paddingLeft="@dimen/desc_padding"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
             android:paddingRight="@dimen/desc_padding"
             android:text="@string/slide_4_desc"
             android:textAlignment="center"
+            android:textStyle="italic"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />
 
     </LinearLayout>
-
 </RelativeLayout>
