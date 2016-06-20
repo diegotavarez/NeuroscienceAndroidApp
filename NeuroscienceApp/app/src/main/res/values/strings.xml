@@ -52,6 +52,9 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
+    <string name="image_title">Efficient Coding for Images</string>
+    <string name="sound_title">Efficient Coding for Sounds</string>
+
     <string name="slide_1_title">Efficient Coding</string>
     <string name="slide_1_desc">Efficient coding is a term from Neuroscience that refers to the process that the brain does in order to transmit sensory information with the minimum amount of neurons firing as possible.</string>
     <string name="slide_2_title">Natural Images and Sounds</string>

@@ -9,49 +9,47 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:layout_weight="2.5"
         android:elevation="@dimen/activity_horizontal_margin"
         android:orientation="vertical"
-        android:weightSum="1"
         android:background="@color/colorPrimary">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:alpha="0.1"
-            android:backgroundTint="@color/colorAccent"
-            android:src="@drawable/sound_filters"
+            android:layout_height="80dp"
+            android:layout_gravity="left"
+            android:foregroundGravity="left"
+            android:paddingLeft="30dp"
+            android:layout_marginBottom="15dp"
+            android:scaleType="fitStart"
+            android:alpha="0.8"
+            android:src="@drawable/filters_sound"
             android:id="@+id/imageView" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_marginTop="-130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="100dp"
-            android:paddingRight="100dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
+            android:text="@string/sound_title"
+            android:textSize="@dimen/slide_title"
             android:textStyle="bold"
-            android:alpha="0.8"
-            android:textColor="#EA80FC"
-            android:textSize="@dimen/backdrop_title"
-            android:text="@string/option_sound"/>
+            android:paddingLeft="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:gravity="center_vertical|left"
+            android:paddingRight="30dp"
+            android:textColor="@color/colorAccent"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="100dp"
-            android:paddingRight="100dp"
-            android:layout_marginBottom="-80dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:textStyle="italic"
-            android:textSize="17sp"
-            android:textColor="@color/colorTextLight"
-            android:text="@string/main_subtitle"/>
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:gravity="center_vertical|left"
+            android:textStyle="normal"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/slide_desc"
+            android:text="@string/main_subtitle_sound"/>
     </LinearLayout>
 
     <LinearLayout
