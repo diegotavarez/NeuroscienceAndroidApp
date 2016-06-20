@@ -87,7 +87,6 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:paddingRight="@dimen/album_title_padding"
-                    android:background="@android:color/white"
                     android:textColor="@color/colorPrimary"
                     android:text="Title"
                     android:textStyle="bold"
@@ -97,17 +96,15 @@
                     android:id="@+id/category"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|right"
-                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center_vertical"
                     android:paddingBottom="3dp"
-                    android:paddingTop="3dp"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:layout_marginRight="10dp"
                     android:text="Category"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="normal"
                     android:paddingRight="@dimen/album_title_padding"
-                    android:background="@color/colorAccent"
                     android:textSize="@dimen/category_size" />
             </LinearLayout>
 

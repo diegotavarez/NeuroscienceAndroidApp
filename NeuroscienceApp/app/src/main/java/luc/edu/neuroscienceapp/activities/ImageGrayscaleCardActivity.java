@@ -25,9 +25,9 @@ public class ImageGrayscaleCardActivity extends AppCompatActivity {
 
         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0);
-        Snackbar snackbar = Snackbar
-                .make(viewGroup, getResources().getString(R.string.step_2), Snackbar.LENGTH_SHORT);
-        snackbar.show();
+//        Snackbar snackbar = Snackbar
+//                .make(viewGroup, getResources().getString(R.string.step_2), Snackbar.LENGTH_SHORT);
+//        snackbar.show();
 
         int[] covers = Global.covers_grayscale;
 

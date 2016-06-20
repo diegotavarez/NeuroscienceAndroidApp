@@ -107,11 +107,9 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
         });
 
         if (holder.category.getText().toString().equals("Harmonic Sound")) {
-            holder.category.setBackgroundColor(Color.parseColor("#FFE0B2"));
+            holder.category.setTextColor(Color.parseColor("#EF6C00"));
         } else {
-            holder.category.setBackgroundColor(Color.parseColor("#CFD8DC"));
-
-
+            holder.category.setTextColor(Color.parseColor("#37474F"));
         }
 
     }

@@ -52,7 +52,7 @@ public class Global {
           R.raw.bird,
           R.raw.cow,
           R.raw.cricket,
-          R.raw.footsteps,
+          R.raw.footsteps_concrete,
           R.raw.wind,
           R.raw.cat,
           R.raw.human_no

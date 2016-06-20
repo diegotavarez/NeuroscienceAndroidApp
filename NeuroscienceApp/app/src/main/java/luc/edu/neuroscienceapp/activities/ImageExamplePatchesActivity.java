@@ -39,7 +39,7 @@ public class ImageExamplePatchesActivity extends AppCompatActivity {
         btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ImageExamplePatchesActivity.this, ImageMenuActivity.class);
+                Intent intent = new Intent(ImageExamplePatchesActivity.this, ImageGalleryActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish(); // call this to finish the current activitys

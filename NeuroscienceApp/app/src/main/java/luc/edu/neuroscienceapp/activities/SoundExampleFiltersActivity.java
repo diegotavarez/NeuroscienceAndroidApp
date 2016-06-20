@@ -38,7 +38,7 @@ public class SoundExampleFiltersActivity extends Activity {
         btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SoundExampleFiltersActivity.this, SoundMenuActivity.class);
+                Intent intent = new Intent(SoundExampleFiltersActivity.this, SoundGalleryActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish(); // call this to finish the current activitys

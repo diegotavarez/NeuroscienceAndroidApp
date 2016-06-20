@@ -8,38 +8,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:scaleType="fitEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:layout_marginBottom="30dp"
+            android:paddingLeft="@dimen/desc_padding"
+            android:layout_gravity="center_horizontal"
+            android:paddingRight="@dimen/desc_padding"
             android:alpha="0.8"
             android:backgroundTint="@color/colorAccent"
-            android:src="@drawable/halfbrain"
+            android:src="@drawable/filters"
             android:id="@+id/imageView" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-50dp"
             android:text="@string/slide_3_title"
             android:textSize="@dimen/slide_title"
-            android:textStyle="italic"
+            android:textStyle="bold"
+            android:paddingLeft="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:gravity="center_vertical|left"
+            android:paddingRight="30dp"
             android:textColor="@color/colorAccent"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="@dimen/desc_padding"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:paddingRight="@dimen/desc_padding"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:gravity="center_vertical|left"
             android:text="@string/slide_3_desc"
-            android:textAlignment="center"
-            android:textStyle="italic"
+            android:textStyle="normal"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />
 

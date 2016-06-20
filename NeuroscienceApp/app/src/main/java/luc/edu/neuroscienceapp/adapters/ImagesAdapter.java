@@ -95,9 +95,9 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
 
         if (holder.category.getText().toString().equals("Natural Image")) {
-            holder.category.setBackgroundColor(Color.parseColor("#FFE0B2"));
+            holder.category.setTextColor(Color.parseColor("#EF6C00"));
         } else {
-            holder.category.setBackgroundColor(Color.parseColor("#CFD8DC"));
+            holder.category.setTextColor(Color.parseColor("#37474F"));
         }
 
     }
