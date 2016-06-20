@@ -13,20 +13,28 @@
         android:gravity="center_vertical"
         android:layout_weight="2.5"
         android:elevation="@dimen/activity_horizontal_margin"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="left"
-            android:foregroundGravity="left"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:foregroundGravity="center_vertical"
             android:paddingLeft="30dp"
-            android:layout_marginBottom="15dp"
-            android:scaleType="fitStart"
+            android:layout_marginBottom="0dp"
+            android:scaleType="centerInside"
             android:alpha="0.8"
             android:src="@drawable/filters_sound"
             android:id="@+id/imageView" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_weight="2.5"
+            android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,6 +59,7 @@
             android:textSize="@dimen/slide_desc"
             android:text="@string/main_subtitle_sound"/>
     </LinearLayout>
+        </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -67,6 +76,8 @@
             android:layout_gravity="center_horizontal|center_vertical"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical">
+
+
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="50dp"

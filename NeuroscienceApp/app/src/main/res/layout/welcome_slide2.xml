@@ -30,8 +30,8 @@
             android:textSize="@dimen/slide_title"
             android:textStyle="bold"
             android:paddingLeft="30dp"
-            android:layout_gravity="center_vertical|left"
-            android:gravity="center_vertical|left"
+            android:layout_gravity="center_vertical|center"
+            android:gravity="center_vertical|center"
             android:paddingRight="30dp"
             android:textColor="@color/colorAccent"/>
 
@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:layout_gravity="center_vertical|left"
-            android:gravity="center_vertical|left"
+            android:layout_gravity="center_vertical|center"
+            android:gravity="center_vertical|center"
             android:text="@string/slide_2_desc"
             android:textStyle="normal"
             android:textColor="@android:color/white"
