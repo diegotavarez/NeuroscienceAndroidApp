@@ -70,7 +70,7 @@ android:fitsSystemWindows="true">
                     android:gravity="right"
                     android:textStyle="bold"
                     android:alpha="0.8"
-                    android:textColor="#C6FF00"
+                    android:textColor="@color/colorAccent"
                     android:textSize="@dimen/backdrop_title" />
 
                 <TextView

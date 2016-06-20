@@ -52,9 +52,8 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
-    <string name="slide_1_title">Receptive Fields</string>
-    <string name="slide_1_desc">This app generates receptive fields that look the same from the ones that are found in the brain.</string>
-
+    <string name="slide_1_title">Efficient Coding</string>
+    <string name="slide_1_desc">is a term from Neuroscience that refers to the process that the brain does in order to transmit sensory information with the minimum amount of neurons firing as possible.</string>
     <string name="slide_2_title">Movie Tickets</string>
     <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
 

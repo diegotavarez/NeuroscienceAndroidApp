@@ -69,7 +69,6 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:paddingRight="@dimen/album_title_padding"
-                    android:paddingBottom="10dp"
                     android:background="@android:color/white"
                     android:textColor="@color/colorPrimary"
                     android:text="Title"
@@ -78,10 +77,10 @@
 
                 <TextView
                     android:id="@+id/category"
-                    android:layout_width="fill_parent"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical|right"
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="center_vertical|center_horizontal"
                     android:paddingBottom="3dp"
                     android:paddingTop="3dp"
                     android:paddingLeft="@dimen/album_title_padding"
@@ -89,6 +88,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textStyle="normal"
                     android:paddingRight="@dimen/album_title_padding"
+                    android:layout_marginRight="10dp"
                     android:background="@color/colorAccent"
                     android:textSize="@dimen/category_size" />
             </LinearLayout>

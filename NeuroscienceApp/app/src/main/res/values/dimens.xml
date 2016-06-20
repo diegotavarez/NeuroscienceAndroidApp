@@ -29,6 +29,6 @@
     <dimen name="dots_margin_bottom">20dp</dimen>
     <dimen name="img_width_height">120dp</dimen>
     <dimen name="slide_title">30dp</dimen>
-    <dimen name="slide_desc">16dp</dimen>
+    <dimen name="slide_desc">18dp</dimen>
     <dimen name="desc_padding">80dp</dimen>
 </resources>
