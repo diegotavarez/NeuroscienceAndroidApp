@@ -45,7 +45,7 @@
                     android:layout_height="@dimen/album_cover_height"
                     android:layout_marginRight="2.5dp"
                     android:background="#44000000"
-                    android:src="@drawable/play_button_white"
+                    android:src="@drawable/selector_play"
                     android:layout_marginTop="-180dp"
                     android:layout_gravity="center_horizontal"
                     android:clickable="true"

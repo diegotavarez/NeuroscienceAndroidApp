@@ -85,7 +85,7 @@
                 android:id="@+id/bt_examples"
                 android:layout_centerHorizontal="true"
                 android:alpha="0.8"
-                android:src="@drawable/examples_icon"
+                android:src="@drawable/selector_examples"
                 android:background="@android:color/transparent"/>
 
             <TextView
