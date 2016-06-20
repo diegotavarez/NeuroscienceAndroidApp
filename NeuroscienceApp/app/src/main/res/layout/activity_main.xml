@@ -56,13 +56,12 @@
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical">
             <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitXY"
                 android:id="@+id/image_button"
                 android:layout_centerHorizontal="true"
-                android:alpha="0.8"
-                android:src="@drawable/gallery_icon"
+                android:src="@drawable/filters_image"
                 android:background="@android:color/transparent"/>
 
             <TextView
@@ -78,18 +77,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="80dp"
             android:layout_gravity="center_horizontal|center_vertical"
             android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical">
 
             <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitXY"
                 android:id="@+id/sound_button"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/choose_sound"
+                android:src="@drawable/filters_sound"
                 android:background="@android:color/transparent"/>
 
             <TextView

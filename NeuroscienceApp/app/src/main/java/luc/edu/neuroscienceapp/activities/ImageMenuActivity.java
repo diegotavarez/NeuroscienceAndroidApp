@@ -146,7 +146,12 @@ public class ImageMenuActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
-
+        if (id == R.id.action_what_is) {
+            Intent intent = new Intent(ImageMenuActivity.this, WelcomeActivity.class);
+            intent.putExtra("menu","menu");
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

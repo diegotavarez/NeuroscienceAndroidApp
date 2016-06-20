@@ -38,8 +38,12 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Checking for first time launch - before calling setContentView()
+
+        Intent intent = getIntent();
+        String menu = intent.getStringExtra("menu");
+
         prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
+        if (!prefManager.isFirstTimeLaunch() && menu == null) {
             launchHomeScreen();
             finish();
         }

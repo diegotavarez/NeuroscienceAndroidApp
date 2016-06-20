@@ -72,6 +72,11 @@ public class ImageExamplePatchesActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
+        if (id == R.id.action_what_is) {
+            Intent intent = new Intent(ImageExamplePatchesActivity.this, WelcomeActivity.class);
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }
