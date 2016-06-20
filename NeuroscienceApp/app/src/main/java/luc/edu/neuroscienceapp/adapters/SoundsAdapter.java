@@ -102,7 +102,9 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
             public void onClick(View v) {
                 MediaPlayer mPlayer2;
                 mPlayer2= MediaPlayer.create(mContext, Global.sounds[album.getId()]);
+                holder.play_button.setSelected(true);
                 mPlayer2.start();
+                holder.play_button.setSelected(false);
             }
         });
 
