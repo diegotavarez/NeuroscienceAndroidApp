@@ -17,17 +17,16 @@
         android:weightSum="1"
         android:background="@color/colorPrimary">
         <TextView
-            android:layout_width="230dp"
-            android:paddingLeft="50dp"
+            android:layout_width="250dp"
+            android:paddingLeft="30dp"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal|center_vertical"
-            android:textStyle="italic"
-            android:textSize="17sp"
+            android:gravity="left|center_vertical"
+            android:textSize="@dimen/slide_desc"
             android:paddingTop="@dimen/activity_horizontal_margin"
             android:paddingBottom="@dimen/activity_horizontal_margin"
             android:textColor="@color/colorTextLight"
             android:layout_height="match_parent"
-            android:text="@string/main_subtitle_sound"/>
+            android:text="@string/slide_4_desc" />
 
         <ImageView
             android:layout_width="match_parent"
