@@ -99,7 +99,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
         int[] covers = Global.sound_covers;
         int[] covers_ica = Global.sound_covers_ica;
         String[] titles = Global.sound_titles;
-        boolean[] labels = Global.labels;
+        boolean[] labels = Global.sound_labels;
 
         CardImage a = null;
         String lab = "";
@@ -107,7 +107,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
             if (labels[i]) {
                 lab = "Harmonic Sound";
             } else {
-                lab = "Inharmonic Sound";
+                lab = "Non-harmonic Sound";
             }
             a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
             albumList.add(a);

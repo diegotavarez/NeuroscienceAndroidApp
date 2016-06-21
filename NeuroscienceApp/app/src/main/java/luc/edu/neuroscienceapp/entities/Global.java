@@ -114,6 +114,21 @@ public class Global {
             "Human Speech"
     };
 
+  public static boolean[] sound_labels = new boolean[]{
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          false
+  };
+
+
   public static String[] titles = new String[]{
           "Carpet",
           "TV Static",
