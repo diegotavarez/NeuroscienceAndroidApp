@@ -2,6 +2,7 @@ package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +22,11 @@ public class SoundMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound_menu);
 
+        ActionBar toolbar = getSupportActionBar();
+        if(toolbar != null) {
+            toolbar.setDisplayHomeAsUpEnabled(true);
+        }
+
         btExamples = (ImageButton) findViewById(R.id.bt_examples);
         btChoose = (ImageButton) findViewById(R.id.bt_choose);
         btGallery = (ImageButton) findViewById(R.id.bt_gallery);
@@ -33,8 +39,6 @@ public class SoundMenuActivity extends AppCompatActivity {
                 startActivity(intentGallery);
             }
         });
-
-
     }
 
     @Override
@@ -51,7 +55,9 @@ public class SoundMenuActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        if(item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
         if (id == R.id.action_about) {
             Intent intentAbout = new Intent(SoundMenuActivity.this, AboutActivity.class);
             startActivity(intentAbout);

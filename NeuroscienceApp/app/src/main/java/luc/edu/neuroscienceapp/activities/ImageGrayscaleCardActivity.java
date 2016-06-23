@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +29,10 @@ public class ImageGrayscaleCardActivity extends AppCompatActivity {
 //        Snackbar snackbar = Snackbar
 //                .make(viewGroup, getResources().getString(R.string.step_2), Snackbar.LENGTH_SHORT);
 //        snackbar.show();
+        ActionBar toolbar = getSupportActionBar();
+        if(toolbar != null) {
+            toolbar.setDisplayHomeAsUpEnabled(true);
+        }
 
         int[] covers = Global.covers_grayscale;
 
@@ -62,7 +67,9 @@ public class ImageGrayscaleCardActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        if(item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
         if (id == R.id.action_about) {
             Intent intentAbout = new Intent(ImageGrayscaleCardActivity.this, AboutActivity.class);
             startActivity(intentAbout);

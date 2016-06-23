@@ -1,5 +1,6 @@
 package luc.edu.neuroscienceapp.activities;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,11 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) { //Comentário teste
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        ActionBar toolbar = getSupportActionBar();
+        if(toolbar != null) {
+            toolbar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
@@ -29,7 +35,9 @@ public class AboutActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        if(item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
         if (id == R.id.action_settings) {
             return true;
         }

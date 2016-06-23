@@ -28,7 +28,7 @@
         <activity
             android:name=".activities.ImageGalleryActivity"
             android:label="@string/title_activity_gallery"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.ImageGrayscaleCardActivity"
             android:label="@string/backdrop_title"
@@ -60,7 +60,7 @@
             android:theme="@style/AppTheme"/>
         <activity android:name=".activities.SoundGalleryActivity"
             android:label="@string/title_activity_gallery"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

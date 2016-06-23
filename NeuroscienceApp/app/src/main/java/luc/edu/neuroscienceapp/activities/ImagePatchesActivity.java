@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceManager;
@@ -46,6 +47,10 @@ public class ImagePatchesActivity extends AppCompatActivity {
 //                .make(viewGroup, getResources().getString(R.string.step_3), Snackbar.LENGTH_SHORT);
 //
 //        snackbar.show();
+        ActionBar toolbar = getSupportActionBar();
+        if(toolbar != null) {
+            toolbar.setDisplayHomeAsUpEnabled(true);
+        }
 
         btFinish = (FloatingActionButton) findViewById(R.id.fab_finish);
         btFinish.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +104,9 @@ public class ImagePatchesActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if(item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
         if (id == R.id.action_about) {
             Intent intentAbout = new Intent(ImagePatchesActivity.this, AboutActivity.class);
             startActivity(intentAbout);

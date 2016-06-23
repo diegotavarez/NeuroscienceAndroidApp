@@ -3,6 +3,7 @@ package luc.edu.neuroscienceapp.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceManager;
@@ -26,7 +27,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putInt("luc.edu.neuroscienceapp.precision", 150);
 
-
+        ActionBar toolbar = getSupportActionBar();
+        if(toolbar != null) {
+            toolbar.setDisplayHomeAsUpEnabled(true);
+        }
 
         image_button = (ImageButton) findViewById(R.id.image_button);
         sound_button = (ImageButton) findViewById(R.id.sound_button);
@@ -64,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        if(item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
         if (id == R.id.action_about) {
             Intent intentAbout = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intentAbout);

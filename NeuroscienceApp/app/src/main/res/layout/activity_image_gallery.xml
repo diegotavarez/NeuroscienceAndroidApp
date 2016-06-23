@@ -29,7 +29,8 @@ android:fitsSystemWindows="true">
         <RelativeLayout
             android:layout_width="match_parent"
             android:elevation="5dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="-85dp">
 
             <ImageView
             android:layout_width="match_parent"
@@ -46,6 +47,7 @@ android:fitsSystemWindows="true">
                 android:layout_height="150dp"
                 android:layout_centerVertical="true"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingTop="10dp"
                 android:fitsSystemWindows="true"
                 android:scaleType="fitStart"
                 android:alpha="1"
@@ -58,30 +60,22 @@ android:fitsSystemWindows="true">
                 android:layout_marginBottom="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:fitsSystemWindows="true"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/love_music"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/backdrop_title"
-                    android:layout_gravity="right"
-                    android:gravity="right"
-                    android:textStyle="bold"
-                    android:alpha="0.8"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/backdrop_title" />
 
                 <TextView
                     android:layout_width="180dp"
                     android:layout_gravity="right"
                     android:gravity="right"
+                    android:layout_centerVertical="true"
                     android:layout_height="wrap_content"
                     android:text="@string/backdrop_subtitle"
                     android:textColor="@color/colorTextLight"
-                    android:textStyle="italic"
-                    android:textSize="@dimen/backdrop_subtitle" />
+                    android:textStyle="normal"
+                    android:textSize="@dimen/slide_desc"
+                    />
 
             </LinearLayout>
         </RelativeLayout>
