@@ -6,6 +6,7 @@ package luc.edu.neuroscienceapp.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import java.util.List;
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.activities.ImageGrayscaleCardActivity;
 import luc.edu.neuroscienceapp.entities.CardImage;
+import luc.edu.neuroscienceapp.entities.Global;
 
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHolder> {
 
@@ -33,7 +35,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, category, id;
-        public ImageView thumbnail, thumbnail_ica;
+        public ImageView thumbnail, thumbnail_ica,bg;
         public LinearLayout cardColor, card;
 
         public MyViewHolder(View view) {
@@ -43,6 +45,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             id = (TextView) view.findViewById(R.id.id);
             cardColor = (LinearLayout) view.findViewById(R.id.card_color);
             card = (LinearLayout) view.findViewById(R.id.card);
+            bg = (ImageView) view.findViewById(R.id.bg);
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             thumbnail_ica = (ImageView) view.findViewById(R.id.thumbnail_ica);
@@ -73,6 +76,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         holder.id.setText(String.valueOf(album.getId()));
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
         Glide.with(mContext).load(album.getThumbnailIca()).into(holder.thumbnail_ica);
+        Glide.with(mContext).load(Global.covers[album.getId()]).into(holder.bg);
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,16 +98,15 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             }
         });
 
-
         if (holder.category.getText().toString().equals("Natural Image")) {
-            holder.card.setBackgroundColor(Color.parseColor("#DCEDC8"));
-            holder.category.setTextColor(Color.parseColor("#33691E"));
-            holder.title.setTextColor(Color.parseColor("#33691E"));
+            holder.card.setBackgroundColor(Color.parseColor("#EF6C00"));
+            holder.category.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.title.setTextColor(Color.parseColor("#FFFFFF"));
 
         } else {
-            holder.card.setBackgroundColor(Color.parseColor("#CFD8DC"));
-            holder.category.setTextColor(Color.parseColor("#37474F"));
-            holder.title.setTextColor(Color.parseColor("#37474F"));
+            holder.card.setBackgroundColor(Color.parseColor("#263238"));
+            holder.category.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.title.setTextColor(Color.parseColor("#FFFFFF"));
 
         }
 

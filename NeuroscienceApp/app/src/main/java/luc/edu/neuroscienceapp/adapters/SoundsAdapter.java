@@ -36,8 +36,8 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, category, id;
-        public ImageView thumbnail, thumbnail_ica, play_button;
-        public LinearLayout cardColor;
+        public ImageView thumbnail, thumbnail_ica, play_button, bg;
+        public LinearLayout cardColor, card;
 
         public MyViewHolder(View view) {
             super(view);
@@ -45,6 +45,8 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
             category = (TextView) view.findViewById(R.id.category);
             id = (TextView) view.findViewById(R.id.id);
             cardColor = (LinearLayout) view.findViewById(R.id.card_color);
+            card = (LinearLayout) view.findViewById(R.id.card);
+            bg = (ImageView) view.findViewById(R.id.bg);
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             thumbnail_ica = (ImageView) view.findViewById(R.id.thumbnail_ica);
@@ -76,6 +78,7 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
         holder.id.setText(String.valueOf(album.getId()));
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
         Glide.with(mContext).load(album.getThumbnailIca()).into(holder.thumbnail_ica);
+        Glide.with(mContext).load(Global.sound_covers[album.getId()]).into(holder.bg);
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,9 +112,15 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
         });
 
         if (holder.category.getText().toString().equals("Harmonic Sound")) {
-            holder.category.setTextColor(Color.parseColor("#EF6C00"));
+            holder.card.setBackgroundColor(Color.parseColor("#EF6C00"));
+            holder.category.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.title.setTextColor(Color.parseColor("#FFFFFF"));
+
         } else {
-            holder.category.setTextColor(Color.parseColor("#37474F"));
+            holder.card.setBackgroundColor(Color.parseColor("#263238"));
+            holder.category.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.title.setTextColor(Color.parseColor("#FFFFFF"));
+
         }
 
     }

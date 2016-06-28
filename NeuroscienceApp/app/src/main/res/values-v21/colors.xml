@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#37474F</color>
+    <color name="colorPrimary">#263238</color>
     <color name="colorPrimaryDark">#263238</color>
     <color name="colorAccent">#EF6C00</color>
 
@@ -18,7 +18,7 @@
     <color name="image_title">#4c4c4c</color>
 
     <!-- Screens background color-->
-    <color name="bg_screen">#37474F</color>
+    <color name="bg_screen">#263238</color>
 
 
     <!-- dots inactive colors -->
