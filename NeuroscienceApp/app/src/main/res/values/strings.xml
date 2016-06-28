@@ -64,8 +64,8 @@
     <string name="slide_3_title">How does Efficient Coding works?</string>
     <string name="slide_3_desc">Everytime you see an image, or hear a sound, your brain will activate some neurons, creating qhat are called receptive field filters.</string>
 
-    <string name="slide_4_title">Why an App?</string> 
-    <string name="slide_4_desc">With this app, you can see the receptive field filters associated to predefined images and sounds that look the same to the ones that can be seen in your brain!</string>
+    <string name="slide_4_title">Why an App?</string>
+    <string name="slide_4_desc">Now you can see the receptive field filters associated to predefined images and sounds that look the same to the ones that can be seen in your brain!</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>

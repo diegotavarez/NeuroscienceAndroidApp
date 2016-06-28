@@ -20,7 +20,7 @@
             android:layout_width="250dp"
             android:paddingLeft="30dp"
             android:layout_gravity="center_horizontal"
-            android:gravity="left|center_vertical"
+            android:gravity="center|center_vertical"
             android:textSize="@dimen/slide_desc"
             android:paddingTop="@dimen/activity_horizontal_margin"
             android:paddingBottom="@dimen/activity_horizontal_margin"
