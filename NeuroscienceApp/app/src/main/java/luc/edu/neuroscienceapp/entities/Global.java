@@ -22,12 +22,13 @@ public class Global {
           R.drawable.vaso,
           R.drawable.knob,
           R.drawable.bedroom,
+          R.drawable.starry_night,
+          R.drawable.newspaper,
           R.drawable.flowers,
           R.drawable.grass,
           R.drawable.grasshopper,
-          R.drawable.cat,
-          R.drawable.starry_night,
-          R.drawable.newspaper,
+          R.drawable.cat
+
   };
 
   public static int[] sound_covers = new int[]{
@@ -64,12 +65,13 @@ public class Global {
           R.drawable.vaso_ica,
           R.drawable.knob_ica,
           R.drawable.bedroom_ica,
+          R.drawable.starry_night_ica,
+          R.drawable.newspaper_ica,
           R.drawable.flowers_ica,
           R.drawable.grass_ica,
           R.drawable.grasshopper_ica,
-          R.drawable.cat_ica,
-          R.drawable.starry_night_ica,
-          R.drawable.newspaper_ica,
+          R.drawable.cat_ica
+
   };
 
     public static int[] sound_covers_ica = new int[]{
@@ -92,12 +94,13 @@ public class Global {
           R.drawable.vaso_grayscale,
           R.drawable.knob_grayscale,
           R.drawable.bedroom_grayscale,
+          R.drawable.starry_night_grayscale,
+          R.drawable.newspaper_grayscale,
           R.drawable.flowers_grayscale,
           R.drawable.grass_grayscale,
           R.drawable.grasshopper_grayscale,
-          R.drawable.cat_grayscale,
-          R.drawable.starry_night_grayscale,
-          R.drawable.newspaper_grayscale,
+          R.drawable.cat_grayscale
+
   };
 
     public static String[] sound_titles = new String[]{
@@ -135,12 +138,13 @@ public class Global {
           "Vase",
           "Doorknob",
           "Bedroom",
+          "Starry Night",
+          "Newspaper",
           "Flowers",
           "Grass",
           "Grasshopper",
-          "Cat",
-          "Starry Night",
-          "Newspaper"
+          "Cat"
+
   };
 
   public static boolean[] labels = new boolean[]{
@@ -149,12 +153,13 @@ public class Global {
           false,
           false,
           false,
-          true,
-          true,
-          true,
-          true,
           false,
-          false
+          false,
+          true,
+          true,
+          true,
+          true
+
   };
 
 

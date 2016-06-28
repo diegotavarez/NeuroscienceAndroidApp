@@ -34,7 +34,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, category, id;
         public ImageView thumbnail, thumbnail_ica;
-        public LinearLayout cardColor;
+        public LinearLayout cardColor, card;
 
         public MyViewHolder(View view) {
             super(view);
@@ -42,6 +42,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             category = (TextView) view.findViewById(R.id.category);
             id = (TextView) view.findViewById(R.id.id);
             cardColor = (LinearLayout) view.findViewById(R.id.card_color);
+            card = (LinearLayout) view.findViewById(R.id.card);
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             thumbnail_ica = (ImageView) view.findViewById(R.id.thumbnail_ica);
@@ -95,9 +96,15 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
 
         if (holder.category.getText().toString().equals("Natural Image")) {
-            holder.category.setTextColor(Color.parseColor("#EF6C00"));
+            holder.card.setBackgroundColor(Color.parseColor("#DCEDC8"));
+            holder.category.setTextColor(Color.parseColor("#33691E"));
+            holder.title.setTextColor(Color.parseColor("#33691E"));
+
         } else {
+            holder.card.setBackgroundColor(Color.parseColor("#CFD8DC"));
             holder.category.setTextColor(Color.parseColor("#37474F"));
+            holder.title.setTextColor(Color.parseColor("#37474F"));
+
         }
 
     }

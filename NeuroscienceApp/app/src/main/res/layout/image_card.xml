@@ -15,6 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/viewBg"
+            android:id="@+id/card"
             android:orientation="vertical">
 
         <LinearLayout
@@ -39,10 +41,14 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="2.5dp"
+                android:padding="2.5dp"
+                android:layout_gravity="center_vertical"
+                android:foregroundGravity="center_vertical"
                 android:layout_height="@dimen/album_cover_height"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:scaleType="fitXY" />
+                android:background="@android:color/white"
+                android:scaleType="centerInside" />
         </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,7 +88,7 @@
                     android:paddingBottom="3dp"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:text="Category"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@android:color/white"
                     android:textStyle="normal"
                     android:paddingRight="@dimen/album_title_padding"
                     android:layout_marginRight="10dp"
