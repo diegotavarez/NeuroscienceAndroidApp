@@ -20,7 +20,7 @@
             android:paddingRight="@dimen/desc_padding"
             android:alpha="0.8"
             android:backgroundTint="@color/colorAccent"
-            android:src="@drawable/firing"
+            android:src="@drawable/natural_image"
             android:id="@+id/imageView" />
 
         <TextView
