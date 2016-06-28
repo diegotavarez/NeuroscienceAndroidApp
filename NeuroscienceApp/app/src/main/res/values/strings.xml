@@ -57,12 +57,12 @@
     <string name="sound_title">Efficient Coding for Sounds</string>
 
     <string name="slide_2_title">What is Efficient Coding?</string>
-    <string name="slide_2_desc">Efficient coding is the process that the brain does in order to transmit sensory information with the minimum amount of neurons firing as possible.</string>
-    <string name="slide_1_title">Natural Images and Sounds</string>
-    <string name="slide_1_desc">Our brains have evolved to use efficient coding algorithms specifically to process natural images and sounds, like animal vocalizations, environmental sounds and human speech.</string>
+    <string name="slide_2_desc">The process that the brain does in order to transmit sensory information with the minimum amount of neurons firing as possible.</string>
+    <string name="slide_1_title">What do we want to show?</string>
+    <string name="slide_1_desc">We want to show you that our brains have evolved to process natural images and sounds, like animal vocalizations, environmental sounds and human speech. This process is called efficient coding.</string>
 
-    <string name="slide_3_title">How does Efficient Coding works?</string>
-    <string name="slide_3_desc">Everytime you see an image, or hear a sound, your brain will activate some neurons, creating qhat are called receptive field filters.</string>
+    <string name="slide_3_title">And how does it work?</string>
+    <string name="slide_3_desc">Everytime you see an image, or hear a sound, your brain will activate some neurons, creating what are called receptive field filters. </string>
 
     <string name="slide_4_title">Why an App?</string>
     <string name="slide_4_desc">Now you can see the receptive field filters associated to predefined images and sounds that look the same to the ones that can be seen in your brain!</string>
