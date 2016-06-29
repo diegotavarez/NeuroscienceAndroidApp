@@ -1,6 +1,7 @@
 package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -34,11 +36,59 @@ public class ImageGalleryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImagesAdapter adapter;
     private List<CardImage> albumList;
+    private Button btAll, btNatural, btArtificial, btGroups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_gallery);
+
+        btAll = (Button) findViewById(R.id.bt_all);
+        btNatural = (Button) findViewById(R.id.bt_natural);
+        btArtificial = (Button) findViewById(R.id.bt_artificial);
+        btGroups = (Button) findViewById(R.id.bt_groups);
+
+        btAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+
+            }
+        });
+
+        btNatural.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+            }
+        });
+
+        btArtificial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+            }
+        });
+
+        btGroups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+            }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         initCollapsingToolbar();

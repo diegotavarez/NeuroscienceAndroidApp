@@ -45,7 +45,7 @@ android:fitsSystemWindows="true">
                 android:id="@+id/backdrop"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_centerVertical="true"
+                android:layout_marginTop="80dp"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingTop="10dp"
                 android:fitsSystemWindows="true"
@@ -55,13 +55,12 @@ android:fitsSystemWindows="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_marginTop="120dp"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
                 android:fitsSystemWindows="true"
-                android:gravity="center_vertical"
                 android:orientation="vertical">
 
 
@@ -74,11 +73,69 @@ android:fitsSystemWindows="true">
                     android:text="@string/backdrop_subtitle"
                     android:textColor="@color/colorTextLight"
                     android:textStyle="normal"
-                    android:textSize="@dimen/slide_desc"
+                    android:textSize="14sp"
                     />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="230dp"
+                android:layout_height="50dp"
+                android:weightSum="4"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:id="@+id/bt_all"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent"
+                    android:text="All"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:id="@+id/bt_natural"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent"
+                    android:text="Natural Images"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:id="@+id/bt_artificial"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent"
+                    android:text="Artificial Images"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:id="@+id/bt_groups"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent"
+                    android:text="Groups"/>
+                </LinearLayout>
         </RelativeLayout>
+
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -86,6 +143,7 @@ android:fitsSystemWindows="true">
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
 
     </android.support.design.widget.CollapsingToolbarLayout>
 
