@@ -1,6 +1,7 @@
 package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -24,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
-import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
 import luc.edu.neuroscienceapp.adapters.SoundsAdapter;
 import luc.edu.neuroscienceapp.entities.CardImage;
 import luc.edu.neuroscienceapp.entities.Global;
@@ -33,7 +34,8 @@ public class SoundGalleryActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private SoundsAdapter adapter;
-    private List<CardImage> albumList;
+    private List<CardImage> cards;
+    private Button btAll, btHarmonic, btNonHarmonic, btGroups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +52,72 @@ public class SoundGalleryActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        albumList = new ArrayList<>();
-        adapter = new SoundsAdapter(getApplicationContext(), albumList);
+
+        btAll = (Button) findViewById(R.id.bt_all);
+        btHarmonic = (Button) findViewById(R.id.bt_harmonic);
+        btNonHarmonic = (Button) findViewById(R.id.bt_nonharmonic);
+        btGroups = (Button) findViewById(R.id.bt_groups);
+
+        btAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+
+                loadAll();
+
+            }
+        });
+
+        btHarmonic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+
+                loadHarmonic();
+
+            }
+        });
+
+        btNonHarmonic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+
+                loadNonHarmonic();
+
+            }
+        });
+
+        btGroups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+
+                loadAll();
+            }
+        });
+
+        cards = new ArrayList<>();
+        adapter = new SoundsAdapter(getApplicationContext(), cards);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
 
-        prepareAlbums();
+        loadAll();
 
         try {
             Glide.with(this).load(R.drawable.sound_filters).into((ImageView) findViewById(R.id.backdrop));
@@ -103,7 +161,9 @@ public class SoundGalleryActivity extends AppCompatActivity {
     /**
      * Adding few albums for testing
      */
-    private void prepareAlbums() {
+    private void loadAll() {
+        cards.clear();
+
         int[] covers = Global.sound_covers;
         int[] covers_ica = Global.sound_covers_ica;
         String[] titles = Global.sound_titles;
@@ -118,37 +178,59 @@ public class SoundGalleryActivity extends AppCompatActivity {
                 lab = "Non-harmonic Sound";
             }
             a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-            albumList.add(a);
+            cards.add(a);
         }
 
-
-//        CardImage a = new CardImage("Carpet", covers[0],0,"Non-natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Cat", covers[1],1,"Natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Flowers", covers[2],2,"Natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Grass", covers[3],3,"Natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Grasshopper", covers[4],4,"Natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Newspaper", covers[5],5,"Artificial Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Starry Night", covers[6],6,"Artificial Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("TV Static", covers[7],7,"Artificial Image");
-//        albumList.add(a);
-
+        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
+    private void loadHarmonic() {
+        cards.clear();
+
+        int[] covers = Global.sound_covers;
+        int[] covers_ica = Global.sound_covers_ica;
+        String[] titles = Global.sound_titles;
+        boolean[] labels = Global.sound_labels;
+
+        CardImage a = null;
+        String lab = "";
+        for (int i = 0; i < covers.length; i++) {
+            if (labels[i]) {
+                lab = "Harmonic Sound";
+                a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
+                cards.add(a);
+            }
+        }
+
+        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void loadNonHarmonic() {
+        cards.clear();
+
+        int[] covers = Global.sound_covers;
+        int[] covers_ica = Global.sound_covers_ica;
+        String[] titles = Global.sound_titles;
+        boolean[] labels = Global.sound_labels;
+
+        CardImage a = null;
+        String lab = "";
+        for (int i = 0; i < covers.length; i++) {
+            if (!labels[i]) {
+                lab = "Non-harmonic Sound";
+                a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
+                cards.add(a);
+            }
+        }
+
+        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
     /**
      * RecyclerView item decoration - give equal margin around grid item
      */

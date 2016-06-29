@@ -45,7 +45,7 @@ android:fitsSystemWindows="true">
                 android:id="@+id/backdrop"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="90dp"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingTop="10dp"
                 android:fitsSystemWindows="true"
@@ -96,7 +96,7 @@ android:fitsSystemWindows="true">
                     android:textSize="12sp"
                     android:background="@android:color/transparent"
                     android:layout_height="match_parent"
-                    android:text="All"/>
+                    android:text="All\nImages"/>
 
                 <Button
                     android:layout_width="0dp"
