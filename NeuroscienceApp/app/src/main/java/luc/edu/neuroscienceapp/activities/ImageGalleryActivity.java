@@ -2,7 +2,6 @@ package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,7 +34,7 @@ public class ImageGalleryActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ImagesAdapter adapter;
-    private List<CardImage> albumList;
+    private List<CardImage> cards;
     private Button btAll, btNatural, btArtificial, btGroups;
 
     @Override
@@ -56,6 +55,8 @@ public class ImageGalleryActivity extends AppCompatActivity {
                 btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
 
+                loadAll();
+
             }
         });
 
@@ -66,6 +67,9 @@ public class ImageGalleryActivity extends AppCompatActivity {
                 btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+
+                loadNatural();
+
             }
         });
 
@@ -76,6 +80,9 @@ public class ImageGalleryActivity extends AppCompatActivity {
                 btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+
+                loadArtificial();
+
             }
         });
 
@@ -86,6 +93,8 @@ public class ImageGalleryActivity extends AppCompatActivity {
                 btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+
+                loadAll();
             }
         });
 
@@ -99,22 +108,15 @@ public class ImageGalleryActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
-        albumList = new ArrayList<>();
-        adapter = new ImagesAdapter(getApplicationContext(), albumList);
+        cards = new ArrayList<>();
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
 
-
-
-
-        prepareAlbums();
+        loadAll();
 
         try {
             Glide.with(this).load(R.drawable.real_receptive_fields).into((ImageView) findViewById(R.id.backdrop));
@@ -158,7 +160,9 @@ public class ImageGalleryActivity extends AppCompatActivity {
     /**
      * Adding few albums for testing
      */
-    private void prepareAlbums() {
+    private void loadAll() {
+        cards.clear();
+
         int[] covers = Global.covers;
         int[] covers_ica = Global.covers_ica;
         String[] titles = Global.titles;
@@ -173,34 +177,53 @@ public class ImageGalleryActivity extends AppCompatActivity {
                 lab = "Non-natural Image";
             }
             a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-            albumList.add(a);
+            cards.add(a);
         }
 
+        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
 
-//        CardImage a = new CardImage("Carpet", covers[0],0,"Non-natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Cat", covers[1],1,"Natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Flowers", covers[2],2,"Natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Grass", covers[3],3,"Natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Grasshopper", covers[4],4,"Natural Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Newspaper", covers[5],5,"Artificial Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("Starry Night", covers[6],6,"Artificial Image");
-//        albumList.add(a);
-//
-//        a = new CardImage("TV Static", covers[7],7,"Artificial Image");
-//        albumList.add(a);
+    private void loadNatural() {
+        cards.clear();
+        int[] covers = Global.covers;
+        int[] covers_ica = Global.covers_ica;
+        String[] titles = Global.titles;
+        boolean[] labels = Global.labels;
 
+        CardImage a = null;
+        String lab = "";
+        for (int i = 0; i < covers.length; i++) {
+            if (labels[i]) {
+                lab = "Natural Image";
+                a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
+                cards.add(a);
+            }
+        }
+        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void loadArtificial() {
+        cards.clear();
+        int[] covers = Global.covers;
+        int[] covers_ica = Global.covers_ica;
+        String[] titles = Global.titles;
+        boolean[] labels = Global.labels;
+
+        CardImage a = null;
+        String lab = "";
+        for (int i = 0; i < covers.length; i++) {
+            if (!labels[i]) {
+                lab = "Artificial Image";
+                a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
+                cards.add(a);
+            }
+        }
+        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
