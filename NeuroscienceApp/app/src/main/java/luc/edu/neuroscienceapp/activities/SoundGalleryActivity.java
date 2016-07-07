@@ -35,7 +35,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SoundsAdapter adapter;
     private List<CardImage> cards;
-    private Button btAll, btHarmonic, btNonHarmonic, btGroups;
+    private Button btHarmonic, btNonHarmonic, btGroups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,28 +53,14 @@ public class SoundGalleryActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
 
-        btAll = (Button) findViewById(R.id.bt_all);
         btHarmonic = (Button) findViewById(R.id.bt_harmonic);
         btNonHarmonic = (Button) findViewById(R.id.bt_nonharmonic);
         btGroups = (Button) findViewById(R.id.bt_groups);
 
-        btAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
-                btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
-                btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
-                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
-
-                loadAll();
-
-            }
-        });
 
         btHarmonic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
@@ -87,7 +73,6 @@ public class SoundGalleryActivity extends AppCompatActivity {
         btNonHarmonic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
@@ -100,7 +85,6 @@ public class SoundGalleryActivity extends AppCompatActivity {
         btGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));

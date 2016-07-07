@@ -35,35 +35,21 @@ public class ImageGalleryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImagesAdapter adapter;
     private List<CardImage> cards;
-    private Button btAll, btNatural, btArtificial, btGroups;
+    private Button btNatural, btArtificial, btGroups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_gallery);
 
-        btAll = (Button) findViewById(R.id.bt_all);
         btNatural = (Button) findViewById(R.id.bt_natural);
         btArtificial = (Button) findViewById(R.id.bt_artificial);
         btGroups = (Button) findViewById(R.id.bt_groups);
 
-        btAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
-                btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
-                btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
-                btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
-
-                loadAll();
-
-            }
-        });
 
         btNatural.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
@@ -76,7 +62,6 @@ public class ImageGalleryActivity extends AppCompatActivity {
         btArtificial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
@@ -89,7 +74,6 @@ public class ImageGalleryActivity extends AppCompatActivity {
         btGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btAll.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
