@@ -107,7 +107,7 @@
                         android:padding="5dp"
                         android:background="@android:color/transparent"
                         android:layout_height="match_parent"
-                        android:text="Dissonant Sounds"/>
+                        android:text="Inharmonic Sounds"/>
 
                     <Button
                         android:layout_width="0dp"
