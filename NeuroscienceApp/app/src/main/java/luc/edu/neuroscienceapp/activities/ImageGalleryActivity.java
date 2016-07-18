@@ -78,7 +78,7 @@ public class ImageGalleryActivity extends AppCompatActivity {
                 btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
 
-                loadAll();
+                loadGroups();
             }
         });
 
@@ -160,6 +160,27 @@ public class ImageGalleryActivity extends AppCompatActivity {
             } else {
                 lab = "Non-natural Image";
             }
+            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
+            cards.add(a);
+        }
+
+        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void loadGroups() {
+        cards.clear();
+
+        int[] covers = Global.image_groups_covers;
+        int[] covers_ica = Global.image_groups_ica;
+        String[] titles = Global.image_groups_titles;
+        boolean[] labels = Global.labels;
+
+        CardImage a = null;
+        String lab = "";
+        for (int i = 0; i < covers.length; i++) {
+            lab = Global.IMAGE_GROUP;
             a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
             cards.add(a);
         }

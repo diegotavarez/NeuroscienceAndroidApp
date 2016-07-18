@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
@@ -34,10 +35,18 @@ public class ImageGrayscaleCardActivity extends AppCompatActivity {
             toolbar.setDisplayHomeAsUpEnabled(true);
         }
 
-        int[] covers = Global.covers_grayscale;
-
         Bundle extras = getIntent().getExtras();
         final int cardId = Integer.parseInt(extras.getString("card_id"));
+        final String category = extras.getString("category");
+        Toast.makeText(getApplicationContext(),category,Toast.LENGTH_SHORT).show();
+
+        int[] covers;
+        if(category.equals(Global.IMAGE_GROUP)){
+            covers = Global.image_groups_covers_grayscale;
+        }else
+        {
+            covers = Global.covers_grayscale;
+        }
 
         grayscalePicture = (ImageView) findViewById(R.id.grayscale_picture);
         grayscalePicture.setBackground(getDrawable(covers[cardId]));
@@ -48,6 +57,16 @@ public class ImageGrayscaleCardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ImageGrayscaleCardActivity.this, ImageExamplePatchesActivity.class);
                 intent.putExtra("grayscale_card_id",cardId);
+
+                if(category.equals(Global.IMAGE_GROUP)) {
+                    intent.putExtra("category", Global.IMAGE_GROUP);
+                }
+                else
+                {
+                    intent.putExtra("category", Global.NORMAL);
+
+                }
+
                 startActivity(intent);
             }
         });

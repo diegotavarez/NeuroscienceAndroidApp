@@ -16,6 +16,10 @@ public class Global {
   public static Bitmap imgGrayscale;
   public static byte[] bytesBitmap;
 
+  public static final String IMAGE_GROUP = "IMAGE_GROUP";
+  public static final String NORMAL = "normal";
+  public static final String SOUND_GROUP = "SOUND_GROUP";
+
   public static int[] covers = new int[]{
           R.drawable.carpet,
           R.drawable.tv_static,
@@ -43,6 +47,11 @@ public class Global {
           R.drawable.wind,
           R.drawable.cat,
           R.drawable.human_no
+  };
+
+  public static int[] image_groups_covers = new int[]{
+          R.drawable.animals,
+          R.drawable.landscapes
   };
 
   public static int[] sounds = new int[]{
@@ -74,6 +83,12 @@ public class Global {
 
   };
 
+  public static int[] image_groups_ica = new int[]{
+          R.drawable.animals_ica,
+          R.drawable.landscapes_ica
+
+  };
+
     public static int[] sound_covers_ica = new int[]{
             R.drawable.bear_filters,
             R.drawable.typing_filters,
@@ -100,6 +115,12 @@ public class Global {
           R.drawable.grass_grayscale,
           R.drawable.grasshopper_grayscale,
           R.drawable.cat_grayscale
+
+  };
+
+  public static int[] image_groups_covers_grayscale = new int[]{
+          R.drawable.animals,
+          R.drawable.landscapes,
 
   };
 
@@ -144,6 +165,13 @@ public class Global {
           "Grass",
           "Grasshopper",
           "Cat"
+
+  };
+
+
+  public static String[] image_groups_titles = new String[]{
+          "Animals",
+          "Landscapes"
 
   };
 

@@ -26,17 +26,26 @@ public class ImageExamplePatchesActivity extends AppCompatActivity {
 
         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0);
-//        Snackbar snackbar = Snackbar
-//                .make(viewGroup, getResources().getString(R.string.step_3), Snackbar.LENGTH_SHORT);
-//        snackbar.show();
+
+
+        Bundle extras = getIntent().getExtras();
+        int cardId = getIntent().getIntExtra("grayscale_card_id",0);
+
+        final String category = extras.getString("category");
+
         ActionBar toolbar = getSupportActionBar();
         if(toolbar != null) {
             toolbar.setDisplayHomeAsUpEnabled(true);
         }
 
-        int[] covers = Global.covers_ica;
+        int[] covers;
+        if(category.equals(Global.IMAGE_GROUP)){
+            covers = Global.image_groups_ica;
+        }else
+        {
+            covers = Global.covers_ica;
+        }
 
-        int cardId = getIntent().getIntExtra("grayscale_card_id",0);
         grayscalePicture = (ImageView) findViewById(R.id.patches_picture);
         grayscalePicture.setBackground(getDrawable(covers[cardId]));
 

@@ -76,7 +76,12 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         holder.id.setText(String.valueOf(album.getId()));
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
         Glide.with(mContext).load(album.getThumbnailIca()).into(holder.thumbnail_ica);
-        Glide.with(mContext).load(Global.covers[album.getId()]).into(holder.bg);
+
+        if(album.getCategory().equals(Global.IMAGE_GROUP)){
+            Glide.with(mContext).load(Global.image_groups_covers[album.getId()]).into(holder.bg);
+        }else{
+            Glide.with(mContext).load(Global.covers[album.getId()]).into(holder.bg);
+        }
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +89,16 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
                 Intent intentCard = new Intent(mContext, ImageGrayscaleCardActivity.class);
                 intentCard.putExtra("card_id", holder.id.getText().toString());
                 intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(intentCard);
+
+                if(holder.category.getText().toString().equals(Global.IMAGE_GROUP)) {
+                    intentCard.putExtra("category", Global.IMAGE_GROUP);
+                }
+                else
+                {
+                    intentCard.putExtra("category", "normal");
+
+                }
+                    mContext.startActivity(intentCard);
             }
         });
 
@@ -94,6 +108,16 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
                 Intent intentCard = new Intent(mContext, ImageGrayscaleCardActivity.class);
                 intentCard.putExtra("card_id", holder.id.getText().toString());
                 intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                if(holder.category.getText().toString().equals(Global.IMAGE_GROUP)) {
+                    intentCard.putExtra("category", Global.IMAGE_GROUP);
+                }
+                else
+                {
+                    intentCard.putExtra("category", "normal");
+
+                }
+
                 mContext.startActivity(intentCard);
             }
         });
