@@ -86,6 +86,16 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
                 Intent intentCard = new Intent(mContext, ImageGrayscaleCardActivity.class);
                 intentCard.putExtra("card_id", holder.id.getText().toString());
                 intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                if(holder.category.getText().toString().equals(Global.SOUND_GROUP)) {
+                    intentCard.putExtra("category", Global.SOUND_GROUP);
+                }
+                else
+                {
+                    intentCard.putExtra("category", "normal");
+
+                }
+
                 mContext.startActivity(intentCard);
             }
         });
@@ -96,6 +106,16 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
                 Intent intentCard = new Intent(mContext, SoundExampleFiltersActivity.class);
                 intentCard.putExtra("card_id", holder.id.getText().toString());
                 intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                if(holder.category.getText().toString().equals(Global.SOUND_GROUP)) {
+                    intentCard.putExtra("category", Global.SOUND_GROUP);
+                }
+                else
+                {
+                    intentCard.putExtra("category", "normal");
+
+                }
+
                 mContext.startActivity(intentCard);
             }
         });
@@ -104,7 +124,15 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
             @Override
             public void onClick(View v) {
                 MediaPlayer mPlayer2;
-                mPlayer2= MediaPlayer.create(mContext, Global.sounds[album.getId()]);
+
+                if(holder.category.getText().toString().equals(Global.SOUND_GROUP)) {
+                    mPlayer2= MediaPlayer.create(mContext, Global.sounds_group[album.getId()]);
+                }
+                else
+                {
+                    mPlayer2= MediaPlayer.create(mContext, Global.sounds[album.getId()]);
+                }
+
                 holder.play_button.setSelected(true);
                 mPlayer2.start();
                 holder.play_button.setSelected(false);

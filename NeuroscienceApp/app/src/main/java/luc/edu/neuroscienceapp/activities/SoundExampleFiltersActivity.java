@@ -33,10 +33,17 @@ public class SoundExampleFiltersActivity extends AppCompatActivity {
             toolbar.setDisplayHomeAsUpEnabled(true);
         }
 
-        int[] filters = Global.sound_covers_ica;
-
         Bundle extras = getIntent().getExtras();
         final int cardId = Integer.parseInt(extras.getString("card_id"));
+        final String category = extras.getString("category");
+
+        int[] filters;
+        if(category.equals(Global.IMAGE_GROUP)){
+            filters = Global.sound_groups_ica;
+        }else
+        {
+            filters = Global.sound_covers_ica;
+        }
 
         sound_filters = (ImageView) findViewById(R.id.patches_picture);
         sound_filters.setBackground(getDrawable(filters[cardId]));

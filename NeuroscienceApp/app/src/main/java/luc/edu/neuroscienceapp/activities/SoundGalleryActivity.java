@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
+import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
 import luc.edu.neuroscienceapp.adapters.SoundsAdapter;
 import luc.edu.neuroscienceapp.entities.CardImage;
 import luc.edu.neuroscienceapp.entities.Global;
@@ -89,7 +90,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
                 btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
 
-                loadAll();
+                loadGroups();
             }
         });
 
@@ -142,9 +143,28 @@ public class SoundGalleryActivity extends AppCompatActivity {
 //        });
     }
 
-    /**
-     * Adding few albums for testing
-     */
+
+    private void loadGroups() {
+        cards.clear();
+
+        int[] covers = Global.sound_group_covers;
+        int[] covers_ica = Global.sound_groups_ica;
+        String[] titles = Global.sound_groups_titles;
+        boolean[] labels = Global.labels;
+
+        CardImage a = null;
+        String lab = "";
+        for (int i = 0; i < covers.length; i++) {
+            lab = Global.SOUND_GROUP;
+            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
+            cards.add(a);
+        }
+
+        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
     private void loadAll() {
         cards.clear();
 

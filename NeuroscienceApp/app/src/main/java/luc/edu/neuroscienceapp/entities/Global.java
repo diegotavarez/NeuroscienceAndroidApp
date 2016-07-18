@@ -49,6 +49,12 @@ public class Global {
           R.drawable.human_no
   };
 
+
+  public static int[] sound_group_covers = new int[]{
+          R.drawable.puncutated,
+          R.drawable.human_no
+  };
+
   public static int[] image_groups_covers = new int[]{
           R.drawable.animals,
           R.drawable.landscapes
@@ -66,6 +72,11 @@ public class Global {
           R.raw.wind,
           R.raw.cat,
           R.raw.human_no
+  };
+
+  public static int[] sounds_group = new int[]{
+          R.raw.punctuated,
+          R.raw.speech
   };
 
   public static int[] covers_ica = new int[]{
@@ -103,6 +114,13 @@ public class Global {
             R.drawable.human_no_filters,
     };
 
+
+  public static int[] sound_groups_ica = new int[]{
+          R.drawable.punctuated_ica,
+          R.drawable.speech_ica
+
+  };
+
   public static int[] covers_grayscale = new int[]{
           R.drawable.carpet_grayscale,
           R.drawable.tv_static_grayscale,
@@ -121,6 +139,12 @@ public class Global {
   public static int[] image_groups_covers_grayscale = new int[]{
           R.drawable.animals,
           R.drawable.landscapes,
+
+  };
+
+  public static int[] sound_groups_covers_grayscale = new int[]{
+          R.drawable.puncutated,
+          R.drawable.human_no,
 
   };
 
@@ -172,6 +196,12 @@ public class Global {
   public static String[] image_groups_titles = new String[]{
           "Animals",
           "Landscapes"
+
+  };
+
+  public static String[] sound_groups_titles = new String[]{
+          "Puntuated Sounds",
+          "Speech"
 
   };
 
