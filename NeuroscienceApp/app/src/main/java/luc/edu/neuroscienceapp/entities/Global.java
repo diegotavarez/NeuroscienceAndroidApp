@@ -57,7 +57,8 @@ public class Global {
 
   public static int[] image_groups_covers = new int[]{
           R.drawable.animals,
-          R.drawable.landscapes
+          R.drawable.landscapes,
+          R.drawable.non_natural
   };
 
   public static int[] sounds = new int[]{
@@ -96,7 +97,8 @@ public class Global {
 
   public static int[] image_groups_ica = new int[]{
           R.drawable.animals_ica,
-          R.drawable.landscapes_ica
+          R.drawable.landscapes_ica,
+          R.drawable.non_natural_ica
 
   };
 
@@ -139,6 +141,7 @@ public class Global {
   public static int[] image_groups_covers_grayscale = new int[]{
           R.drawable.animals,
           R.drawable.landscapes,
+          R.drawable.non_natural_bw
 
   };
 
@@ -195,7 +198,8 @@ public class Global {
 
   public static String[] image_groups_titles = new String[]{
           "Animals",
-          "Landscapes"
+          "Landscapes",
+          "Non-natural"
 
   };
 
