@@ -6,7 +6,6 @@ package luc.edu.neuroscienceapp.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -78,9 +77,9 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         Glide.with(mContext).load(album.getThumbnailIca()).into(holder.thumbnail_ica);
 
         if(album.getCategory().equals(Global.IMAGE_GROUP)){
-            Glide.with(mContext).load(Global.image_groups_covers[album.getId()]).into(holder.bg);
+            Glide.with(mContext).load(Global.image_groups_thumbnails[album.getId()]).into(holder.bg);
         }else{
-            Glide.with(mContext).load(Global.covers[album.getId()]).into(holder.bg);
+            Glide.with(mContext).load(Global.thumbnails[album.getId()]).into(holder.bg);
         }
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {

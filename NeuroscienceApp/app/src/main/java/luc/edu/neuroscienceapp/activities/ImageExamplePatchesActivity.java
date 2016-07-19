@@ -2,7 +2,6 @@ package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,10 +39,10 @@ public class ImageExamplePatchesActivity extends AppCompatActivity {
 
         int[] covers;
         if(category.equals(Global.IMAGE_GROUP)){
-            covers = Global.image_groups_ica;
+            covers = Global.image_groups_ica_thumbnails;
         }else
         {
-            covers = Global.covers_ica;
+            covers = Global.image_ica_thumbnails;
         }
 
         grayscalePicture = (ImageView) findViewById(R.id.patches_picture);

@@ -10,7 +10,6 @@ import luc.edu.neuroscienceapp.R;
 // can be thrown when there are many transactions in progress even when most of the individual
 // transactions are of moderate size.
 
-
 public class Global {
   public static Bitmap img;
   public static Bitmap imgGrayscale;
@@ -20,7 +19,10 @@ public class Global {
   public static final String NORMAL = "normal";
   public static final String SOUND_GROUP = "SOUND_GROUP";
 
-  public static int[] covers = new int[]{
+  /**
+   * The thumbnails of the examples of images of the app.
+   */
+  public static int[] thumbnails = new int[]{
           R.drawable.carpet,
           R.drawable.tv_static,
           R.drawable.vaso,
@@ -35,7 +37,10 @@ public class Global {
 
   };
 
-  public static int[] sound_covers = new int[]{
+  /**
+   * The thumbnails of the examples of sounds of the app.
+   */
+  public static int[] sound_thumbnails = new int[]{
           R.drawable.bear,
           R.drawable.keyboard,
           R.drawable.laser,
@@ -49,17 +54,25 @@ public class Global {
           R.drawable.human_no
   };
 
-
-  public static int[] sound_group_covers = new int[]{
+  /**
+   * The thumbnails of the groups of sound of the app.
+   */
+  public static int[] sound_group_thumbnails = new int[]{
           R.drawable.puncutated,
           R.drawable.human_no
   };
 
-  public static int[] image_groups_covers = new int[]{
+  /**
+   * The thumbnails of the groups of images of the app.
+   */
+  public static int[] image_groups_thumbnails = new int[]{
           R.drawable.animals,
           R.drawable.landscapes
   };
 
+  /**
+   * The sound files for the sound examples of the app.
+   */
   public static int[] sounds = new int[]{
           R.raw.bear,
           R.raw.typing,
@@ -74,12 +87,18 @@ public class Global {
           R.raw.human_no
   };
 
+  /**
+   * The sound files for the sound group examples of the app.
+   */
   public static int[] sounds_group = new int[]{
           R.raw.punctuated,
           R.raw.speech
   };
 
-  public static int[] covers_ica = new int[]{
+  /**
+   * The thumbnails of the ica filters for the examples of image of the app.
+   */
+  public static int[] image_ica_thumbnails = new int[]{
           R.drawable.carpet_ica,
           R.drawable.tv_static_ica,
           R.drawable.vaso_ica,
@@ -94,13 +113,19 @@ public class Global {
 
   };
 
-  public static int[] image_groups_ica = new int[]{
+  /**
+   * The thumbnails of the ica filters for the examples of groups of images of the app.
+   */
+  public static int[] image_groups_ica_thumbnails = new int[]{
           R.drawable.animals_ica,
           R.drawable.landscapes_ica
 
   };
 
-    public static int[] sound_covers_ica = new int[]{
+  /**
+   * The thumbnails of the ica filters for the examples of sound of the app.
+   */
+    public static int[] sound_ica_thumbnails = new int[]{
             R.drawable.bear_filters,
             R.drawable.typing_filters,
             R.drawable.laser_filters,
@@ -114,14 +139,19 @@ public class Global {
             R.drawable.human_no_filters,
     };
 
-
-  public static int[] sound_groups_ica = new int[]{
+  /**
+   * The thumbnails of the ica filters for the examples of groups of sounds of the app.
+   */
+  public static int[] sound_groups_ica_thumbnails = new int[]{
           R.drawable.punctuated_ica,
           R.drawable.speech_ica
 
   };
 
-  public static int[] covers_grayscale = new int[]{
+  /**
+   * The thumbnails of the examples of images of the app, converted to grayscale.
+   */
+  public static int[] image_grayscale_thumbnails = new int[]{
           R.drawable.carpet_grayscale,
           R.drawable.tv_static_grayscale,
           R.drawable.vaso_grayscale,
@@ -136,19 +166,19 @@ public class Global {
 
   };
 
+  /**
+   * The thumbnails of the examples of groups of images of the app, converted to grayscale.
+   */
   public static int[] image_groups_covers_grayscale = new int[]{
           R.drawable.animals,
           R.drawable.landscapes,
 
   };
 
-  public static int[] sound_groups_covers_grayscale = new int[]{
-          R.drawable.puncutated,
-          R.drawable.human_no,
-
-  };
-
-    public static String[] sound_titles = new String[]{
+  /**
+   * The names of the examples of sounds.
+   */
+    public static String[] sound_names = new String[]{
             "Bear",
             "Keyboard",
             "Laser",
@@ -162,7 +192,10 @@ public class Global {
             "Human Speech"
     };
 
-  public static boolean[] sound_labels = new boolean[]{
+  /**
+   * An array of booleans that determines which sounds are harmonic and which are not of the examples.
+   */
+  public static boolean[] harmonic_sounds = new boolean[]{
           true,
           false,
           true,
@@ -176,8 +209,10 @@ public class Global {
           false
   };
 
-
-  public static String[] titles = new String[]{
+  /**
+   * The names of the examples of images.
+   */
+  public static String[] image_names = new String[]{
           "Carpet",
           "TV Static",
           "Vase",
@@ -192,20 +227,28 @@ public class Global {
 
   };
 
-
-  public static String[] image_groups_titles = new String[]{
+  /**
+   * The names of the examples of groups of images.
+   */
+  public static String[] image_groups_names = new String[]{
           "Animals",
           "Landscapes"
 
   };
 
-  public static String[] sound_groups_titles = new String[]{
+  /**
+   * The names of the examples of groups of sounds.
+   */
+  public static String[] sound_groups_names = new String[]{
           "Puntuated Sounds",
           "Speech"
 
   };
 
-  public static boolean[] labels = new boolean[]{
+  /**
+   * An array of booleans that determines which images are natural and which are not of the examples.
+   */
+  public static boolean[] natural_images = new boolean[]{
           false,
           false,
           false,

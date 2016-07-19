@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
-import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
 import luc.edu.neuroscienceapp.adapters.SoundsAdapter;
 import luc.edu.neuroscienceapp.entities.CardImage;
 import luc.edu.neuroscienceapp.entities.Global;
@@ -147,10 +146,10 @@ public class SoundGalleryActivity extends AppCompatActivity {
     private void loadGroups() {
         cards.clear();
 
-        int[] covers = Global.sound_group_covers;
-        int[] covers_ica = Global.sound_groups_ica;
-        String[] titles = Global.sound_groups_titles;
-        boolean[] labels = Global.labels;
+        int[] covers = Global.sound_group_thumbnails;
+        int[] covers_ica = Global.sound_groups_ica_thumbnails;
+        String[] titles = Global.sound_groups_names;
+        boolean[] labels = Global.natural_images;
 
         CardImage a = null;
         String lab = "";
@@ -168,10 +167,10 @@ public class SoundGalleryActivity extends AppCompatActivity {
     private void loadAll() {
         cards.clear();
 
-        int[] covers = Global.sound_covers;
-        int[] covers_ica = Global.sound_covers_ica;
-        String[] titles = Global.sound_titles;
-        boolean[] labels = Global.sound_labels;
+        int[] covers = Global.sound_thumbnails;
+        int[] covers_ica = Global.sound_ica_thumbnails;
+        String[] titles = Global.sound_names;
+        boolean[] labels = Global.harmonic_sounds;
 
         CardImage a = null;
         String lab = "";
@@ -193,10 +192,10 @@ public class SoundGalleryActivity extends AppCompatActivity {
     private void loadHarmonic() {
         cards.clear();
 
-        int[] covers = Global.sound_covers;
-        int[] covers_ica = Global.sound_covers_ica;
-        String[] titles = Global.sound_titles;
-        boolean[] labels = Global.sound_labels;
+        int[] covers = Global.sound_thumbnails;
+        int[] covers_ica = Global.sound_ica_thumbnails;
+        String[] titles = Global.sound_names;
+        boolean[] labels = Global.harmonic_sounds;
 
         CardImage a = null;
         String lab = "";
@@ -216,10 +215,10 @@ public class SoundGalleryActivity extends AppCompatActivity {
     private void loadNonHarmonic() {
         cards.clear();
 
-        int[] covers = Global.sound_covers;
-        int[] covers_ica = Global.sound_covers_ica;
-        String[] titles = Global.sound_titles;
-        boolean[] labels = Global.sound_labels;
+        int[] covers = Global.sound_thumbnails;
+        int[] covers_ica = Global.sound_ica_thumbnails;
+        String[] titles = Global.sound_names;
+        boolean[] labels = Global.harmonic_sounds;
 
         CardImage a = null;
         String lab = "";

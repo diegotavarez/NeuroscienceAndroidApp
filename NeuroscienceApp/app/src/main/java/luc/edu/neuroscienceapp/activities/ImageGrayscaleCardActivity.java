@@ -3,7 +3,6 @@ package luc.edu.neuroscienceapp.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -45,7 +44,7 @@ public class ImageGrayscaleCardActivity extends AppCompatActivity {
             covers = Global.image_groups_covers_grayscale;
         }else
         {
-            covers = Global.covers_grayscale;
+            covers = Global.image_grayscale_thumbnails;
         }
 
         grayscalePicture = (ImageView) findViewById(R.id.grayscale_picture);
