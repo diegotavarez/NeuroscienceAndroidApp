@@ -147,10 +147,10 @@ public class ImageGalleryActivity extends AppCompatActivity {
     private void loadAll() {
         cards.clear();
 
-        int[] covers = Global.covers;
-        int[] covers_ica = Global.covers_ica;
-        String[] titles = Global.titles;
-        boolean[] labels = Global.labels;
+        int[] covers = Global.thumbnails;
+        int[] covers_ica = Global.image_ica_thumbnails;
+        String[] titles = Global.image_names;
+        boolean[] labels = Global.natural_images;
 
         CardImage a = null;
         String lab = "";
@@ -172,10 +172,10 @@ public class ImageGalleryActivity extends AppCompatActivity {
     private void loadGroups() {
         cards.clear();
 
-        int[] covers = Global.image_groups_covers;
-        int[] covers_ica = Global.image_groups_ica;
-        String[] titles = Global.image_groups_titles;
-        boolean[] labels = Global.labels;
+        int[] covers = Global.image_groups_thumbnails;
+        int[] covers_ica = Global.image_groups_ica_thumbnails;
+        String[] titles = Global.image_groups_names;
+        boolean[] labels = Global.natural_images;
 
         CardImage a = null;
         String lab = "";
@@ -192,10 +192,10 @@ public class ImageGalleryActivity extends AppCompatActivity {
 
     private void loadNatural() {
         cards.clear();
-        int[] covers = Global.covers;
-        int[] covers_ica = Global.covers_ica;
-        String[] titles = Global.titles;
-        boolean[] labels = Global.labels;
+        int[] covers = Global.thumbnails;
+        int[] covers_ica = Global.image_ica_thumbnails;
+        String[] titles = Global.image_names;
+        boolean[] labels = Global.natural_images;
 
         CardImage a = null;
         String lab = "";
@@ -213,10 +213,10 @@ public class ImageGalleryActivity extends AppCompatActivity {
 
     private void loadArtificial() {
         cards.clear();
-        int[] covers = Global.covers;
-        int[] covers_ica = Global.covers_ica;
-        String[] titles = Global.titles;
-        boolean[] labels = Global.labels;
+        int[] covers = Global.thumbnails;
+        int[] covers_ica = Global.image_ica_thumbnails;
+        String[] titles = Global.image_names;
+        boolean[] labels = Global.natural_images;
 
         CardImage a = null;
         String lab = "";

@@ -1,20 +1,15 @@
 package luc.edu.neuroscienceapp.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
@@ -39,10 +34,10 @@ public class SoundExampleFiltersActivity extends AppCompatActivity {
 
         int[] filters;
         if(category.equals(Global.IMAGE_GROUP)){
-            filters = Global.sound_groups_ica;
+            filters = Global.sound_groups_ica_thumbnails;
         }else
         {
-            filters = Global.sound_covers_ica;
+            filters = Global.sound_ica_thumbnails;
         }
 
         sound_filters = (ImageView) findViewById(R.id.patches_picture);

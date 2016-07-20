@@ -78,7 +78,7 @@ public class SoundsAdapter extends RecyclerView.Adapter<SoundsAdapter.MyViewHold
         holder.id.setText(String.valueOf(album.getId()));
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
         Glide.with(mContext).load(album.getThumbnailIca()).into(holder.thumbnail_ica);
-        Glide.with(mContext).load(Global.sound_covers[album.getId()]).into(holder.bg);
+        Glide.with(mContext).load(Global.sound_thumbnails[album.getId()]).into(holder.bg);
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
