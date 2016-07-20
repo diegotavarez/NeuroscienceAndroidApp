@@ -89,6 +89,7 @@ public class ImageExamplePatchesActivity extends AppCompatActivity {
         }
         if (id == R.id.action_what_is) {
             Intent intent = new Intent(ImageExamplePatchesActivity.this, WelcomeActivity.class);
+            intent.putExtra("menu","menu");
             startActivity(intent);
             return true;
         }

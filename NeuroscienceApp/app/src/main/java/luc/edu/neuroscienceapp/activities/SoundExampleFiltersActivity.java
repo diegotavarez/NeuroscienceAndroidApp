@@ -85,6 +85,7 @@ public class SoundExampleFiltersActivity extends AppCompatActivity {
         }
         if (id == R.id.action_what_is) {
             Intent intent = new Intent(SoundExampleFiltersActivity.this, WelcomeActivity.class);
+            intent.putExtra("menu","menu");
             startActivity(intent);
             return true;
         }
