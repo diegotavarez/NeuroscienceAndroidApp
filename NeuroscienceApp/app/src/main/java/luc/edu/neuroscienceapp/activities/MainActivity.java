@@ -12,6 +12,9 @@ import android.widget.ImageButton;
 
 import luc.edu.neuroscienceapp.R;
 
+/**
+ * @author Diego Tavares
+ */
 public class MainActivity extends AppCompatActivity {
 
     ImageButton image_button;

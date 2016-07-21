@@ -19,6 +19,7 @@ import java.util.Set;
 
 /**
  * Created by diegotavarez on 5/19/16.
+ * @author Alana Laryssa Seabra
  */
 public class ImageProcessing {
 

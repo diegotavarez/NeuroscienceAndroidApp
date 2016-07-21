@@ -12,6 +12,9 @@ import android.widget.ImageButton;
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.utils.FileManager;
 
+/**
+ * @author Diego Tavares
+ */
 public class SoundMenuActivity extends AppCompatActivity {
 
     ImageButton btExamples, btChoose, btGallery;

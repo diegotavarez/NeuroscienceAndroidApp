@@ -23,6 +23,9 @@ import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.utils.FileManager;
 
+/**
+ * @author Diego Tavares
+ */
 public class ImageMenuActivity extends AppCompatActivity {
     public static final int CAMERA_REQUEST = 1;
     public static final int GALLERY_REQUEST = 2;

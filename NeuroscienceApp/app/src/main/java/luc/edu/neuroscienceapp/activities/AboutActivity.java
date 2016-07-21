@@ -8,6 +8,9 @@ import android.view.MenuItem;
 
 import luc.edu.neuroscienceapp.R;
 
+/**
+ * @author Diego Tavares
+ */
 public class AboutActivity extends AppCompatActivity {
 
     @Override

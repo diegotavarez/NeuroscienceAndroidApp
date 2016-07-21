@@ -2,6 +2,7 @@ package luc.edu.neuroscienceapp.entities;
 
 /**
  * Created by diegotavarez on 5/23/16.
+ * @author Diego Tavares
  */
 public class Example {
     private String name;

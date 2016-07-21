@@ -7,6 +7,7 @@ import android.view.SurfaceView;
 
 /**
  * Created by captain on 6/9/16.
+ * @author Vinicius Marques
  */
 public class CameraDisplayPreview extends SurfaceView implements SurfaceHolder.Callback {
 

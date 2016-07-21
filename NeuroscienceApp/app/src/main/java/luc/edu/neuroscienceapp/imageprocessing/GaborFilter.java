@@ -2,6 +2,9 @@ package luc.edu.neuroscienceapp.imageprocessing;
 
 import org.ejml.simple.SimpleMatrix;
 
+/**
+ * @author Alana Laryssa Seabra
+ */
 public class GaborFilter {
 	public SimpleMatrix filter;
 	public double mean;

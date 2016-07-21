@@ -27,6 +27,9 @@ import luc.edu.neuroscienceapp.activities.ImageGrayscaleExampleActivity;
 import luc.edu.neuroscienceapp.entities.Example;
 import luc.edu.neuroscienceapp.entities.Global;
 
+/**
+ * @author Diego Tavares
+ */
 public class ImageExamplesAdapter extends RecyclerView.Adapter<ImageExamplesAdapter.MyViewHolder> {
 
     private Context mContext;

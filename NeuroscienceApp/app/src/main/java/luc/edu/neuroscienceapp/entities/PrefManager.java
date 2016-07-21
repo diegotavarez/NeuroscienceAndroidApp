@@ -3,6 +3,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import luc.edu.neuroscienceapp.R;
 
+/**
+ * @author Diego Tavares
+ */
 public class PrefManager {
     SharedPreferences pref;
     SharedPreferences.Editor editor;

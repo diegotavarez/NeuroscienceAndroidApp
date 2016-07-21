@@ -9,6 +9,7 @@ import java.io.IOException;
 
 /**
  * Created by vinicius on 6/7/16.
+ * @author Vinicius Marques
  */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     private SurfaceHolder mHolder;

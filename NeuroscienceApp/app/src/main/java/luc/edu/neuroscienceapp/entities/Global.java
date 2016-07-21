@@ -10,6 +10,9 @@ import luc.edu.neuroscienceapp.R;
 // can be thrown when there are many transactions in progress even when most of the individual
 // transactions are of moderate size.
 
+/**
+ * @author Diego Tavares
+ */
 public class Global {
   public static Bitmap img;
   public static Bitmap imgGrayscale;

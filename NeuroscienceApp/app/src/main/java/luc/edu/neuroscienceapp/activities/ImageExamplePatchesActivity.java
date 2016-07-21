@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 
+/**
+ * @author Diego Tavares
+ */
 public class ImageExamplePatchesActivity extends AppCompatActivity {
     ImageView grayscalePicture;
     FloatingActionButton btFinish;

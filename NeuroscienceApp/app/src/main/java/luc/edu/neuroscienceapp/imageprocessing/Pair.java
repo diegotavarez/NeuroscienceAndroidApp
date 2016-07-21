@@ -1,5 +1,8 @@
 package luc.edu.neuroscienceapp.imageprocessing;
 
+/**
+ * @author Laryssa Seabra
+ */
 public class Pair<L,R> {
 
   private final L left;

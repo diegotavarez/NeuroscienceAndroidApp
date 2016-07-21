@@ -18,6 +18,9 @@ import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
+/**
+ * @author Diego Tavares
+ */
 public class ImageGrayscaleActivity extends AppCompatActivity {
     FloatingActionButton btStep2;
 

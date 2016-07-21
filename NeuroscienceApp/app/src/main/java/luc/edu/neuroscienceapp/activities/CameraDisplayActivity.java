@@ -15,6 +15,7 @@ import luc.edu.neuroscienceapp.R;
 
 /**
  * Created by vinicius on 6/9/16.
+ * @author Vinicius Marques
  */
 public class CameraDisplayActivity extends Activity {
 

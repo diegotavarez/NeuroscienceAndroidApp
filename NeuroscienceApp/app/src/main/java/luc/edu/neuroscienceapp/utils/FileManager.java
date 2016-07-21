@@ -12,6 +12,7 @@ import java.io.File;
 
 /**
  * Created by diegotavarez on 5/20/16.
+ * @author Alana Larysa Seabra
  */
 public class FileManager {
     public File createTemporaryFile(String part, String ext) throws Exception

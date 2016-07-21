@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 
+/**
+ * @author Diego Tavares
+ */
 public class SoundExampleFiltersActivity extends AppCompatActivity {
     ImageView sound_filters;
     ImageButton btFinish;

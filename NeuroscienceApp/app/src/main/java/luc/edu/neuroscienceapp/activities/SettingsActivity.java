@@ -19,6 +19,7 @@ import luc.edu.neuroscienceapp.R;
 
 /**
  * Created by diegotavarez on 6/8/16.
+ * @author Diego Tavares
  */
 public class SettingsActivity extends AppCompatActivity {
 

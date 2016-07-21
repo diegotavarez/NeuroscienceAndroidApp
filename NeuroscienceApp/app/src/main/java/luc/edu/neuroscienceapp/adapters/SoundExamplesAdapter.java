@@ -29,6 +29,9 @@ import luc.edu.neuroscienceapp.activities.SoundExampleFiltersActivity;
 import luc.edu.neuroscienceapp.entities.Example;
 import luc.edu.neuroscienceapp.entities.Global;
 
+/**
+ * @author Diego Tavares
+ */
 public class SoundExamplesAdapter extends RecyclerView.Adapter<SoundExamplesAdapter.MyViewHolder> {
 
     private Context mContext;

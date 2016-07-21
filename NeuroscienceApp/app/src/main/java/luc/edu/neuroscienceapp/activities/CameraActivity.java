@@ -32,6 +32,8 @@ import luc.edu.neuroscienceapp.views.CameraPreview;
  * Created by vinicius on 6/7/16.
  *
  * This approach is deprecated in API level 21
+ *
+ * @author Vinicius Marques
  */
 public class CameraActivity extends Activity {
     public static final int PICTURE_CONFIRMATION = 0;
