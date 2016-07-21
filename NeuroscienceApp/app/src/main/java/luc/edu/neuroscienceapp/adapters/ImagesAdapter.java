@@ -23,7 +23,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
-import luc.edu.neuroscienceapp.activities.ImageGrayscaleCardActivity;
+import luc.edu.neuroscienceapp.activities.ImageGrayscaleExampleActivity;
 import luc.edu.neuroscienceapp.entities.CardImage;
 import luc.edu.neuroscienceapp.entities.Global;
 
@@ -85,7 +85,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentCard = new Intent(mContext, ImageGrayscaleCardActivity.class);
+                Intent intentCard = new Intent(mContext, ImageGrayscaleExampleActivity.class);
                 intentCard.putExtra("card_id", holder.id.getText().toString());
                 intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -104,7 +104,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         holder.thumbnail_ica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentCard = new Intent(mContext, ImageGrayscaleCardActivity.class);
+                Intent intentCard = new Intent(mContext, ImageGrayscaleExampleActivity.class);
                 intentCard.putExtra("card_id", holder.id.getText().toString());
                 intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

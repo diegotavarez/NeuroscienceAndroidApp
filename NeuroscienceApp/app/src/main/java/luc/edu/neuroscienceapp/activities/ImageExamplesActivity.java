@@ -26,58 +26,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
-import luc.edu.neuroscienceapp.adapters.SoundsAdapter;
+import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
 import luc.edu.neuroscienceapp.entities.CardImage;
 import luc.edu.neuroscienceapp.entities.Global;
 
-public class SoundGalleryActivity extends AppCompatActivity {
+public class ImageExamplesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private SoundsAdapter adapter;
+    private ImagesAdapter adapter;
     private List<CardImage> cards;
-    private Button btHarmonic, btNonHarmonic, btGroups;
+    private Button btNatural, btArtificial, btGroups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sound_gallery);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        initCollapsingToolbar();
+        setContentView(R.layout.activity_image_gallery);
 
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
-
-        btHarmonic = (Button) findViewById(R.id.bt_harmonic);
-        btNonHarmonic = (Button) findViewById(R.id.bt_nonharmonic);
+        btNatural = (Button) findViewById(R.id.bt_natural);
+        btArtificial = (Button) findViewById(R.id.bt_artificial);
         btGroups = (Button) findViewById(R.id.bt_groups);
 
 
-        btHarmonic.setOnClickListener(new View.OnClickListener() {
+        btNatural.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
-                btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
 
-                loadHarmonic();
+                loadNatural();
 
             }
         });
 
-        btNonHarmonic.setOnClickListener(new View.OnClickListener() {
+        btArtificial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
-                btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
 
-                loadNonHarmonic();
+                loadArtificial();
 
             }
         });
@@ -85,16 +74,26 @@ public class SoundGalleryActivity extends AppCompatActivity {
         btGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
-                btNonHarmonic.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btNatural.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
+                btArtificial.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.cardview_light_background));
                 btGroups.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
 
                 loadGroups();
             }
         });
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        initCollapsingToolbar();
+
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         cards = new ArrayList<>();
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -104,7 +103,7 @@ public class SoundGalleryActivity extends AppCompatActivity {
         loadAll();
 
         try {
-            Glide.with(this).load(R.drawable.sound_filters).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.real_receptive_fields).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -142,98 +141,97 @@ public class SoundGalleryActivity extends AppCompatActivity {
 //        });
     }
 
-
-    private void loadGroups() {
+    /**
+     * Adding few albums for testing
+     */
+    private void loadAll() {
         cards.clear();
 
-        int[] covers = Global.sound_group_thumbnails;
-        int[] covers_ica = Global.sound_groups_ica_thumbnails;
-        String[] titles = Global.sound_groups_names;
+        int[] covers = Global.thumbnails;
+        int[] covers_ica = Global.image_ica_thumbnails;
+        String[] titles = Global.image_names;
         boolean[] labels = Global.natural_images;
 
         CardImage a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
-            lab = Global.SOUND_GROUP;
-            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-            cards.add(a);
-        }
-
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-    }
-
-    private void loadAll() {
-        cards.clear();
-
-        int[] covers = Global.sound_thumbnails;
-        int[] covers_ica = Global.sound_ica_thumbnails;
-        String[] titles = Global.sound_names;
-        boolean[] labels = Global.harmonic_sounds;
-
-        CardImage a = null;
-        String lab = "";
-        for (int i = 0; i < covers.length; i++) {
             if (labels[i]) {
-                lab = "Harmonic Sound";
+                lab = "Natural Image";
             } else {
-                lab = "Non-harmonic Sound";
+                lab = "Non-natural Image";
             }
             a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
             cards.add(a);
         }
 
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        adapter = new ImagesAdapter(getApplicationContext(), cards);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
-    private void loadHarmonic() {
+    private void loadGroups() {
         cards.clear();
 
-        int[] covers = Global.sound_thumbnails;
-        int[] covers_ica = Global.sound_ica_thumbnails;
-        String[] titles = Global.sound_names;
-        boolean[] labels = Global.harmonic_sounds;
+        int[] covers = Global.image_groups_thumbnails;
+        int[] covers_ica = Global.image_groups_ica_thumbnails;
+        String[] titles = Global.image_groups_names;
+        boolean[] labels = Global.natural_images;
+
+        CardImage a = null;
+        String lab = "";
+        for (int i = 0; i < covers.length; i++) {
+            lab = Global.IMAGE_GROUP;
+            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
+            cards.add(a);
+        }
+
+        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void loadNatural() {
+        cards.clear();
+        int[] covers = Global.thumbnails;
+        int[] covers_ica = Global.image_ica_thumbnails;
+        String[] titles = Global.image_names;
+        boolean[] labels = Global.natural_images;
 
         CardImage a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (labels[i]) {
-                lab = "Harmonic Sound";
+                lab = "Natural Image";
                 a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
                 cards.add(a);
             }
         }
-
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        adapter = new ImagesAdapter(getApplicationContext(), cards);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
-    private void loadNonHarmonic() {
+    private void loadArtificial() {
         cards.clear();
-
-        int[] covers = Global.sound_thumbnails;
-        int[] covers_ica = Global.sound_ica_thumbnails;
-        String[] titles = Global.sound_names;
-        boolean[] labels = Global.harmonic_sounds;
+        int[] covers = Global.thumbnails;
+        int[] covers_ica = Global.image_ica_thumbnails;
+        String[] titles = Global.image_names;
+        boolean[] labels = Global.natural_images;
 
         CardImage a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (!labels[i]) {
-                lab = "Non-harmonic Sound";
+                lab = "Artificial Image";
                 a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
                 cards.add(a);
             }
         }
-
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        adapter = new ImagesAdapter(getApplicationContext(), cards);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
+
     /**
      * RecyclerView item decoration - give equal margin around grid item
      */
@@ -300,17 +298,17 @@ public class SoundGalleryActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.action_about) {
-            Intent intentAbout = new Intent(SoundGalleryActivity.this, AboutActivity.class);
+            Intent intentAbout = new Intent(ImageExamplesActivity.this, AboutActivity.class);
             startActivity(intentAbout);
             return true;
         }
         if (id == R.id.action_settings) {
-            Intent intentSettings = new Intent(SoundGalleryActivity.this, SettingsActivity.class);
+            Intent intentSettings = new Intent(ImageExamplesActivity.this, SettingsActivity.class);
             startActivity(intentSettings);
             return true;
         }
         if (id == R.id.action_what_is) {
-            Intent intent = new Intent(SoundGalleryActivity.this, WelcomeActivity.class);
+            Intent intent = new Intent(ImageExamplesActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);
             return true;

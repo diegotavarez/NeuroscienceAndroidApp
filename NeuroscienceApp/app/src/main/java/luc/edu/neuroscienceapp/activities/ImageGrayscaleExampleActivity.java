@@ -15,7 +15,7 @@ import android.widget.Toast;
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 
-public class ImageGrayscaleCardActivity extends AppCompatActivity {
+public class ImageGrayscaleExampleActivity extends AppCompatActivity {
     ImageView grayscalePicture;
     private FloatingActionButton btNext;
 
@@ -54,7 +54,7 @@ public class ImageGrayscaleCardActivity extends AppCompatActivity {
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ImageGrayscaleCardActivity.this, ImageExamplePatchesActivity.class);
+                Intent intent = new Intent(ImageGrayscaleExampleActivity.this, ImageExamplePatchesActivity.class);
                 intent.putExtra("grayscale_card_id",cardId);
 
                 if(category.equals(Global.IMAGE_GROUP)) {
@@ -89,17 +89,17 @@ public class ImageGrayscaleCardActivity extends AppCompatActivity {
             onBackPressed();
         }
         if (id == R.id.action_about) {
-            Intent intentAbout = new Intent(ImageGrayscaleCardActivity.this, AboutActivity.class);
+            Intent intentAbout = new Intent(ImageGrayscaleExampleActivity.this, AboutActivity.class);
             startActivity(intentAbout);
             return true;
         }
         if (id == R.id.action_settings) {
-            Intent intentSettings = new Intent(ImageGrayscaleCardActivity.this, SettingsActivity.class);
+            Intent intentSettings = new Intent(ImageGrayscaleExampleActivity.this, SettingsActivity.class);
             startActivity(intentSettings);
             return true;
         }
         if (id == R.id.action_what_is) {
-            Intent intent = new Intent(ImageGrayscaleCardActivity.this, WelcomeActivity.class);
+            Intent intent = new Intent(ImageGrayscaleExampleActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);
             return true;

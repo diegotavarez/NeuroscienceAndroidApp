@@ -26,11 +26,11 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.ImageGalleryActivity"
+            android:name=".activities.ImageExamplesActivity"
             android:label="@string/title_activity_gallery"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.ImageGrayscaleCardActivity"
+            android:name=".activities.ImageGrayscaleExampleActivity"
             android:label="@string/backdrop_title"
             android:theme="@style/AppTheme" />
         <activity
@@ -58,7 +58,7 @@
         <activity android:name=".activities.SoundMenuActivity"
 
             android:theme="@style/AppTheme"/>
-        <activity android:name=".activities.SoundGalleryActivity"
+        <activity android:name=".activities.SoundExamplesActivity"
             android:label="@string/title_activity_gallery"
             android:theme="@style/AppTheme" />
         <activity android:name=".activities.WelcomeActivity">

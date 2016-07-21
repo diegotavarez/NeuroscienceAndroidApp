@@ -72,7 +72,7 @@ public class ImageMenuActivity extends AppCompatActivity {
         btExamples.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentGallery = new Intent(ImageMenuActivity.this, ImageGalleryActivity.class);
+                Intent intentGallery = new Intent(ImageMenuActivity.this, ImageExamplesActivity.class);
                 startActivity(intentGallery);
             }
         });

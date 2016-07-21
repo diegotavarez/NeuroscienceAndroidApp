@@ -47,7 +47,7 @@ public class SoundExampleFiltersActivity extends AppCompatActivity {
         btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SoundExampleFiltersActivity.this, SoundGalleryActivity.class);
+                Intent intent = new Intent(SoundExampleFiltersActivity.this, SoundExamplesActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish(); // call this to finish the current activitys

@@ -1,7 +1,6 @@
 package luc.edu.neuroscienceapp.activities;
 
 import android.content.Intent;
-import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,7 +34,7 @@ public class SoundMenuActivity extends AppCompatActivity {
         btExamples.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentGallery = new Intent(SoundMenuActivity.this, SoundGalleryActivity.class);
+                Intent intentGallery = new Intent(SoundMenuActivity.this, SoundExamplesActivity.class);
                 startActivity(intentGallery);
             }
         });
