@@ -3,7 +3,7 @@
 
     <item android:id="@+id/action_about" android:title="@string/about"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_what_is" android:title="@string/what_is"
+    <item android:id="@+id/action_info" android:title="@string/what_is"
         android:orderInCategory="100" app:showAsAction="always" android:icon="@drawable/info"/>
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />

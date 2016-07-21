@@ -26,15 +26,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
-import luc.edu.neuroscienceapp.adapters.ImagesAdapter;
-import luc.edu.neuroscienceapp.entities.CardImage;
+import luc.edu.neuroscienceapp.adapters.ImageExamplesAdapter;
+import luc.edu.neuroscienceapp.entities.Example;
 import luc.edu.neuroscienceapp.entities.Global;
 
 public class ImageExamplesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ImagesAdapter adapter;
-    private List<CardImage> cards;
+    private ImageExamplesAdapter adapter;
+    private List<Example> examples;
     private Button btNatural, btArtificial, btGroups;
 
     @Override
@@ -93,7 +93,7 @@ public class ImageExamplesActivity extends AppCompatActivity {
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        cards = new ArrayList<>();
+        examples = new ArrayList<>();
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -145,14 +145,14 @@ public class ImageExamplesActivity extends AppCompatActivity {
      * Adding few albums for testing
      */
     private void loadAll() {
-        cards.clear();
+        examples.clear();
 
         int[] covers = Global.thumbnails;
         int[] covers_ica = Global.image_ica_thumbnails;
         String[] titles = Global.image_names;
         boolean[] labels = Global.natural_images;
 
-        CardImage a = null;
+        Example a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (labels[i]) {
@@ -160,74 +160,74 @@ public class ImageExamplesActivity extends AppCompatActivity {
             } else {
                 lab = "Non-natural Image";
             }
-            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-            cards.add(a);
+            a = new Example(titles[i], covers[i], covers_ica[i], i, lab);
+            examples.add(a);
         }
 
-        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        adapter = new ImageExamplesAdapter(getApplicationContext(), examples);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
     private void loadGroups() {
-        cards.clear();
+        examples.clear();
 
         int[] covers = Global.image_groups_thumbnails;
         int[] covers_ica = Global.image_groups_ica_thumbnails;
         String[] titles = Global.image_groups_names;
         boolean[] labels = Global.natural_images;
 
-        CardImage a = null;
+        Example a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             lab = Global.IMAGE_GROUP;
-            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-            cards.add(a);
+            a = new Example(titles[i], covers[i], covers_ica[i], i, lab);
+            examples.add(a);
         }
 
-        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        adapter = new ImageExamplesAdapter(getApplicationContext(), examples);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
     private void loadNatural() {
-        cards.clear();
+        examples.clear();
         int[] covers = Global.thumbnails;
         int[] covers_ica = Global.image_ica_thumbnails;
         String[] titles = Global.image_names;
         boolean[] labels = Global.natural_images;
 
-        CardImage a = null;
+        Example a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (labels[i]) {
                 lab = "Natural Image";
-                a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-                cards.add(a);
+                a = new Example(titles[i], covers[i], covers_ica[i], i, lab);
+                examples.add(a);
             }
         }
-        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        adapter = new ImageExamplesAdapter(getApplicationContext(), examples);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
     private void loadArtificial() {
-        cards.clear();
+        examples.clear();
         int[] covers = Global.thumbnails;
         int[] covers_ica = Global.image_ica_thumbnails;
         String[] titles = Global.image_names;
         boolean[] labels = Global.natural_images;
 
-        CardImage a = null;
+        Example a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (!labels[i]) {
                 lab = "Artificial Image";
-                a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-                cards.add(a);
+                a = new Example(titles[i], covers[i], covers_ica[i], i, lab);
+                examples.add(a);
             }
         }
-        adapter = new ImagesAdapter(getApplicationContext(), cards);
+        adapter = new ImageExamplesAdapter(getApplicationContext(), examples);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
@@ -307,7 +307,7 @@ public class ImageExamplesActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_what_is) {
+        if (id == R.id.action_info) {
             Intent intent = new Intent(ImageExamplesActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);

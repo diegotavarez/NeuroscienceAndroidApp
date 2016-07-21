@@ -67,7 +67,7 @@ public class SoundMenuActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_what_is) {
+        if (id == R.id.action_info) {
             Intent intent = new Intent(SoundMenuActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);

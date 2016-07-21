@@ -22,6 +22,13 @@ import luc.edu.neuroscienceapp.R;
  */
 public class SettingsActivity extends AppCompatActivity {
 
+    /**
+     * This activity is for development purpose only. It is not intended to be in the final version of the app,
+     * but it's a good way to control the number of the patches that are processed in the ICA algorithm without having
+     * to change the code. Also, due to hardware constraints, the number of patches may have to be reduced to adapt
+     * the processing capabilities of different Android devices.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

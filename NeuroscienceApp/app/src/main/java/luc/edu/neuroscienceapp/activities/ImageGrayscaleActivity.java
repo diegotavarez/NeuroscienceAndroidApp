@@ -18,7 +18,7 @@ import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.entities.Global;
 import luc.edu.neuroscienceapp.imageprocessing.ImageProcessing;
 
-public class ImageChannelConversionActivity extends AppCompatActivity {
+public class ImageGrayscaleActivity extends AppCompatActivity {
     FloatingActionButton btStep2;
 
     @Override
@@ -53,7 +53,7 @@ public class ImageChannelConversionActivity extends AppCompatActivity {
         btStep2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentPatches = new Intent(ImageChannelConversionActivity.this, ImagePatchesActivity.class);
+                Intent intentPatches = new Intent(ImageGrayscaleActivity.this, ImagePatchesActivity.class);
                 intentPatches.putExtra("fromCamera", false);
                 startActivity(intentPatches);
             }
@@ -79,17 +79,17 @@ public class ImageChannelConversionActivity extends AppCompatActivity {
             onBackPressed();
         }
         if (id == R.id.action_about) {
-            Intent intentAbout = new Intent(ImageChannelConversionActivity.this, AboutActivity.class);
+            Intent intentAbout = new Intent(ImageGrayscaleActivity.this, AboutActivity.class);
             startActivity(intentAbout);
             return true;
         }
         if (id == R.id.action_settings) {
-            Intent intentSettings = new Intent(ImageChannelConversionActivity.this, SettingsActivity.class);
+            Intent intentSettings = new Intent(ImageGrayscaleActivity.this, SettingsActivity.class);
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_what_is) {
-            Intent intent = new Intent(ImageChannelConversionActivity.this, WelcomeActivity.class);
+        if (id == R.id.action_info) {
+            Intent intent = new Intent(ImageGrayscaleActivity.this, WelcomeActivity.class);
             startActivity(intent);
             return true;
         }

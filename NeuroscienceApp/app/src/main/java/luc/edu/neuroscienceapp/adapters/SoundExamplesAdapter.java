@@ -6,6 +6,7 @@ package luc.edu.neuroscienceapp.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,17 +25,18 @@ import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
 import luc.edu.neuroscienceapp.activities.ImageGrayscaleExampleActivity;
-import luc.edu.neuroscienceapp.entities.CardImage;
+import luc.edu.neuroscienceapp.activities.SoundExampleFiltersActivity;
+import luc.edu.neuroscienceapp.entities.Example;
 import luc.edu.neuroscienceapp.entities.Global;
 
-public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHolder> {
+public class SoundExamplesAdapter extends RecyclerView.Adapter<SoundExamplesAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<CardImage> imageList;
+    private List<Example> imageList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, category, id;
-        public ImageView thumbnail, thumbnail_ica,bg;
+        public ImageView thumbnail, thumbnail_ica, play_button, bg;
         public LinearLayout cardColor, card;
 
         public MyViewHolder(View view) {
@@ -48,12 +50,13 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             thumbnail_ica = (ImageView) view.findViewById(R.id.thumbnail_ica);
+            play_button = (ImageView) view.findViewById(R.id.play_button);
         }
 
     }
 
 
-    public ImagesAdapter(Context mContext, List<CardImage> albumList) {
+    public SoundExamplesAdapter(Context mContext, List<Example> albumList) {
         this.mContext = mContext;
         this.imageList = albumList;
     }
@@ -61,26 +64,21 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.image_card, parent, false);
+                .inflate(R.layout.sound_card, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        CardImage album = imageList.get(position);
+        final Example album = imageList.get(position);
 
         holder.title.setText(album.getName());
         holder.category.setText(album.getCategory());
         holder.id.setText(String.valueOf(album.getId()));
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
         Glide.with(mContext).load(album.getThumbnailIca()).into(holder.thumbnail_ica);
-
-        if(album.getCategory().equals(Global.IMAGE_GROUP)){
-            Glide.with(mContext).load(Global.image_groups_thumbnails[album.getId()]).into(holder.bg);
-        }else{
-            Glide.with(mContext).load(Global.thumbnails[album.getId()]).into(holder.bg);
-        }
+        Glide.with(mContext).load(Global.sound_thumbnails[album.getId()]).into(holder.bg);
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,27 +87,8 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
                 intentCard.putExtra("card_id", holder.id.getText().toString());
                 intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                if(holder.category.getText().toString().equals(Global.IMAGE_GROUP)) {
-                    intentCard.putExtra("category", Global.IMAGE_GROUP);
-                }
-                else
-                {
-                    intentCard.putExtra("category", "normal");
-
-                }
-                    mContext.startActivity(intentCard);
-            }
-        });
-
-        holder.thumbnail_ica.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentCard = new Intent(mContext, ImageGrayscaleExampleActivity.class);
-                intentCard.putExtra("card_id", holder.id.getText().toString());
-                intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                if(holder.category.getText().toString().equals(Global.IMAGE_GROUP)) {
-                    intentCard.putExtra("category", Global.IMAGE_GROUP);
+                if(holder.category.getText().toString().equals(Global.SOUND_GROUP)) {
+                    intentCard.putExtra("category", Global.SOUND_GROUP);
                 }
                 else
                 {
@@ -121,7 +100,46 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             }
         });
 
-        if (holder.category.getText().toString().equals("Natural Image")) {
+        holder.thumbnail_ica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCard = new Intent(mContext, SoundExampleFiltersActivity.class);
+                intentCard.putExtra("card_id", holder.id.getText().toString());
+                intentCard.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                if(holder.category.getText().toString().equals(Global.SOUND_GROUP)) {
+                    intentCard.putExtra("category", Global.SOUND_GROUP);
+                }
+                else
+                {
+                    intentCard.putExtra("category", "normal");
+
+                }
+
+                mContext.startActivity(intentCard);
+            }
+        });
+
+        holder.play_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer mPlayer2;
+
+                if(holder.category.getText().toString().equals(Global.SOUND_GROUP)) {
+                    mPlayer2= MediaPlayer.create(mContext, Global.sounds_group[album.getId()]);
+                }
+                else
+                {
+                    mPlayer2= MediaPlayer.create(mContext, Global.sounds[album.getId()]);
+                }
+
+                holder.play_button.setSelected(true);
+                mPlayer2.start();
+                holder.play_button.setSelected(false);
+            }
+        });
+
+        if (holder.category.getText().toString().equals("Harmonic Sound")) {
             holder.card.setBackgroundColor(Color.parseColor("#EF6C00"));
             holder.category.setTextColor(Color.parseColor("#FFFFFF"));
             holder.title.setTextColor(Color.parseColor("#FFFFFF"));
@@ -172,7 +190,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         return imageList.size();
     }
 
-    public final CardImage getItem(final int position) {
+    public final Example getItem(final int position) {
         return imageList.get(position);
     }
 

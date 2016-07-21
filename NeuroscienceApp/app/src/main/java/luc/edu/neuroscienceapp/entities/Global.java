@@ -244,7 +244,7 @@ public class Global {
    * The names of the examples of groups of sounds.
    */
   public static String[] sound_groups_names = new String[]{
-          "Puntuated Sounds",
+          "Punctuated Sounds",
           "Speech"
 
   };

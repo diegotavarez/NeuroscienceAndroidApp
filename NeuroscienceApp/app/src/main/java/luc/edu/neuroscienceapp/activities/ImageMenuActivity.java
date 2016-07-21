@@ -154,7 +154,7 @@ public class ImageMenuActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_what_is) {
+        if (id == R.id.action_info) {
             Intent intent = new Intent(ImageMenuActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);
@@ -196,7 +196,7 @@ public class ImageMenuActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute( byte[] result )  {
-            Intent intent = new Intent(getApplicationContext(), ImageChannelConversionActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ImageGrayscaleActivity.class);
 
             //intent.putExtra("initial_image",result);
             Global.bytesBitmap = result;

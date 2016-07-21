@@ -7,22 +7,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import org.fastica.FastICAException;
-
-import java.io.ByteArrayOutputStream;
 
 import luc.edu.neuroscienceapp.R;
 
@@ -43,10 +37,7 @@ public class ImagePatchesActivity extends AppCompatActivity {
         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0);
 
-//        Snackbar snackbar = Snackbar
-//                .make(viewGroup, getResources().getString(R.string.step_3), Snackbar.LENGTH_SHORT);
-//
-//        snackbar.show();
+
         ActionBar toolbar = getSupportActionBar();
         if(toolbar != null) {
             toolbar.setDisplayHomeAsUpEnabled(true);
@@ -117,7 +108,7 @@ public class ImagePatchesActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_what_is) {
+        if (id == R.id.action_info) {
             Intent intent = new Intent(ImagePatchesActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);
@@ -133,10 +124,10 @@ public class ImagePatchesActivity extends AppCompatActivity {
             super.onPreExecute();
             // Create ProgressBar
             //mProgressDialog = new ProgressDialog(getBaseContext());
-            // Set your ProgressBar Title
+            // Set the ProgressBar Title
             mProgressDialog.setTitle("Loading");
             mProgressDialog.setIcon(R.drawable.camera_icon);
-            // Set your ProgressBar Message
+            // Set the ProgressBar Message
             mProgressDialog.setMessage("Getting patches from image");
             //  mProgressDialog.setCanceledOnTouchOutside(false);
             mProgressDialog.show();
@@ -160,6 +151,7 @@ public class ImagePatchesActivity extends AppCompatActivity {
             processedBitmaps = result;
             mProgressDialog.dismiss();
 
+            //loading patches to the imageviews
             ImageView p00 = (ImageView) findViewById(R.id.grayscale_picture_0_0);
             ImageView p01 = (ImageView) findViewById(R.id.grayscale_picture_0_1);
             ImageView p02 = (ImageView) findViewById(R.id.grayscale_picture_0_2);

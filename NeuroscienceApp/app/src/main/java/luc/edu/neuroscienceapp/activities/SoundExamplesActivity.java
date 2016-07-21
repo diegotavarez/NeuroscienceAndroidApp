@@ -26,15 +26,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import luc.edu.neuroscienceapp.R;
-import luc.edu.neuroscienceapp.adapters.SoundsAdapter;
-import luc.edu.neuroscienceapp.entities.CardImage;
+import luc.edu.neuroscienceapp.adapters.SoundExamplesAdapter;
+import luc.edu.neuroscienceapp.entities.Example;
 import luc.edu.neuroscienceapp.entities.Global;
 
 public class SoundExamplesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private SoundsAdapter adapter;
-    private List<CardImage> cards;
+    private SoundExamplesAdapter adapter;
+    private List<Example> examples;
     private Button btHarmonic, btNonHarmonic, btGroups;
 
     @Override
@@ -93,8 +93,8 @@ public class SoundExamplesActivity extends AppCompatActivity {
             }
         });
 
-        cards = new ArrayList<>();
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        examples = new ArrayList<>();
+        adapter = new SoundExamplesAdapter(getApplicationContext(), examples);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -120,59 +120,39 @@ public class SoundExamplesActivity extends AppCompatActivity {
         collapsingToolbar.setTitle(" ");
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
         appBarLayout.setExpanded(true);
-
-        // hiding & showing the title when toolbar expanded & collapsed
-//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-//            boolean isShow = false;
-//            int scrollRange = -1;
-//
-//            @Override
-//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-//                if (scrollRange == -1) {
-//                    scrollRange = appBarLayout.getTotalScrollRange();
-//                }
-//                if (scrollRange + verticalOffset == 0) {
-//                    collapsingToolbar.setTitle(getString(R.string.app_name));
-//                    isShow = true;
-//                } else if (isShow) {
-//                    collapsingToolbar.setTitle(" ");
-//                    isShow = false;
-//                }
-//            }
-//        });
     }
 
 
     private void loadGroups() {
-        cards.clear();
+        examples.clear();
 
         int[] covers = Global.sound_group_thumbnails;
         int[] covers_ica = Global.sound_groups_ica_thumbnails;
         String[] titles = Global.sound_groups_names;
         boolean[] labels = Global.natural_images;
 
-        CardImage a = null;
+        Example a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             lab = Global.SOUND_GROUP;
-            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-            cards.add(a);
+            a = new Example(titles[i], covers[i], covers_ica[i], i, lab);
+            examples.add(a);
         }
 
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        adapter = new SoundExamplesAdapter(getApplicationContext(), examples);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
     private void loadAll() {
-        cards.clear();
+        examples.clear();
 
         int[] covers = Global.sound_thumbnails;
         int[] covers_ica = Global.sound_ica_thumbnails;
         String[] titles = Global.sound_names;
         boolean[] labels = Global.harmonic_sounds;
 
-        CardImage a = null;
+        Example a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (labels[i]) {
@@ -180,57 +160,57 @@ public class SoundExamplesActivity extends AppCompatActivity {
             } else {
                 lab = "Non-harmonic Sound";
             }
-            a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-            cards.add(a);
+            a = new Example(titles[i], covers[i], covers_ica[i], i, lab);
+            examples.add(a);
         }
 
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        adapter = new SoundExamplesAdapter(getApplicationContext(), examples);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
     private void loadHarmonic() {
-        cards.clear();
+        examples.clear();
 
         int[] covers = Global.sound_thumbnails;
         int[] covers_ica = Global.sound_ica_thumbnails;
         String[] titles = Global.sound_names;
         boolean[] labels = Global.harmonic_sounds;
 
-        CardImage a = null;
+        Example a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (labels[i]) {
                 lab = "Harmonic Sound";
-                a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-                cards.add(a);
+                a = new Example(titles[i], covers[i], covers_ica[i], i, lab);
+                examples.add(a);
             }
         }
 
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        adapter = new SoundExamplesAdapter(getApplicationContext(), examples);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
     private void loadNonHarmonic() {
-        cards.clear();
+        examples.clear();
 
         int[] covers = Global.sound_thumbnails;
         int[] covers_ica = Global.sound_ica_thumbnails;
         String[] titles = Global.sound_names;
         boolean[] labels = Global.harmonic_sounds;
 
-        CardImage a = null;
+        Example a = null;
         String lab = "";
         for (int i = 0; i < covers.length; i++) {
             if (!labels[i]) {
                 lab = "Non-harmonic Sound";
-                a = new CardImage(titles[i], covers[i], covers_ica[i], i, lab);
-                cards.add(a);
+                a = new Example(titles[i], covers[i], covers_ica[i], i, lab);
+                examples.add(a);
             }
         }
 
-        adapter = new SoundsAdapter(getApplicationContext(), cards);
+        adapter = new SoundExamplesAdapter(getApplicationContext(), examples);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
@@ -309,7 +289,7 @@ public class SoundExamplesActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_what_is) {
+        if (id == R.id.action_info) {
             Intent intent = new Intent(SoundExamplesActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);

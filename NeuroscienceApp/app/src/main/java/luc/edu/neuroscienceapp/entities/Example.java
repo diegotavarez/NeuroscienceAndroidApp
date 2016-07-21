@@ -3,7 +3,7 @@ package luc.edu.neuroscienceapp.entities;
 /**
  * Created by diegotavarez on 5/23/16.
  */
-public class CardImage {
+public class Example {
     private String name;
     private int thumbnail;
     private int thumbnail_ica;
@@ -14,7 +14,7 @@ public class CardImage {
     /**
      * Instantiates a new Card image.
      */
-    public CardImage() {
+    public Example() {
     }
 
     /**
@@ -26,7 +26,7 @@ public class CardImage {
      * @param id            the id that is used to identify the thumbnails and information of an example in the Global class
      * @param category      the category of the example, which can be Natural, Non-Natural, or Group
      */
-    public CardImage(String name, int thumbnail, int thumbnail_ica, int id, String category) {
+    public Example(String name, int thumbnail, int thumbnail_ica, int id, String category) {
         this.name = name;
         this.thumbnail = thumbnail;
         this.thumbnail_ica = thumbnail_ica;

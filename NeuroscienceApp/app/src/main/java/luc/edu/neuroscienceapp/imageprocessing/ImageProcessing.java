@@ -22,6 +22,12 @@ import java.util.Set;
  */
 public class ImageProcessing {
 
+    /**
+     * This method returns a grayscale bitmap converted from the original.
+     * This method is basically used to have a more efficient computation for the ICA algorithm.
+     * @param bmpOriginal the original bitmap
+     * @return the grayscale bitmap
+     */
     public Bitmap toGrayscale(Bitmap bmpOriginal)
     {
         int width, height;
@@ -39,7 +45,11 @@ public class ImageProcessing {
         return bmpGrayscale;
     }
 
-    // Convert Bitmap to a 2D double array
+    /**
+     * Converts a Bitmap to a 2D double matrix.
+     * @param source the original bitmap
+     * @return the double matrix generated
+     */
     public static double[][] bmpToMatrix(Bitmap source) {
         int width = source.getWidth();
         int height = source.getHeight();
@@ -61,6 +71,12 @@ public class ImageProcessing {
         return result;
     }
 
+    /**
+     * Converts a DenseMatrix64F to a double matrix.
+     *
+     * @param A the original DenseMatrix
+     * @return the double matrix
+     */
     static double[][] toMatrix (DenseMatrix64F A) {
         double[][] result = new double[A.numRows][A.numCols];
         for (int i = 0; i < A.numRows; ++i) {

@@ -1,8 +1,6 @@
 package luc.edu.neuroscienceapp.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +8,7 @@ import android.support.v7.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import luc.edu.neuroscienceapp.R;
 
@@ -81,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_what_is) {
+        if (id == R.id.action_info) {
             Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);

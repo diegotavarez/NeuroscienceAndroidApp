@@ -26,9 +26,7 @@ public class ImageGrayscaleExampleActivity extends AppCompatActivity {
 
         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0);
-//        Snackbar snackbar = Snackbar
-//                .make(viewGroup, getResources().getString(R.string.step_2), Snackbar.LENGTH_SHORT);
-//        snackbar.show();
+
         ActionBar toolbar = getSupportActionBar();
         if(toolbar != null) {
             toolbar.setDisplayHomeAsUpEnabled(true);
@@ -37,7 +35,6 @@ public class ImageGrayscaleExampleActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         final int cardId = Integer.parseInt(extras.getString("card_id"));
         final String category = extras.getString("category");
-        Toast.makeText(getApplicationContext(),category,Toast.LENGTH_SHORT).show();
 
         int[] covers;
         if(category.equals(Global.IMAGE_GROUP)){
@@ -98,7 +95,7 @@ public class ImageGrayscaleExampleActivity extends AppCompatActivity {
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_what_is) {
+        if (id == R.id.action_info) {
             Intent intent = new Intent(ImageGrayscaleExampleActivity.this, WelcomeActivity.class);
             intent.putExtra("menu","menu");
             startActivity(intent);
